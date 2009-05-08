@@ -1,0 +1,41 @@
+This is a TO-DO file for turning libslab into a standalone library.
+It used to be that libslab was a subdirectory of the gnome-main-menu
+module, and other users like gnome-control-center would simply include
+it as an svn:external.
+
+However, with the move from Subversion to Git, and because libslab is
+used by other projects anyway (like openSUSE's YaST), it is better to
+have libslab as a "real" stand-alone library than as some chunk of
+code that gets magically included in other projects.
+
+
+=== Libslab infrastructure ===
+
++ Make configure.ac work; currently it is just a copy of chunks of
+  gnome-main-menu's configure.in.
+
++ Add a toplevel Makefile.am
+
++ Fix libslab/Makefile.am
+
++ Add a po/ directory and move the translations over from
+  gnome-main-menu.
+
+
+=== Remove deprecated calls ===
+
++ libslab/app-shell-startup.[ch] has some Bonobo stuff that appears to
+  be only for running the application browser as a unique app.  Remove
+  this and use a more general "unique app" framework.
+
+
+=== Users of libslab ===
+
++ Remove the libslab/ directory from gnome-main-menu, and make it use
+  libslab as a stand-alone library.
+
++ Remove the assumption in gnome-control-center that libslab is an
+  svn:external, and make it use libslab as a stand-alone library.
+
++ Make YaST not simply depend on an installed gnome-main-menu, and
+  make it look for libslab as a stand-alone library.
