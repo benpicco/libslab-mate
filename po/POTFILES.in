@@ -1,0 +1,9 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+libslab/application-tile.c
+libslab/app-shell.c
+libslab/bookmark-agent.c
+libslab/directory-tile.c
+libslab/document-tile.c
+libslab/search-bar.c
+libslab/system-tile.c

@@ -3,6 +3,7 @@ AC_INIT([libslab], [2.27.0],
 AC_CONFIG_SRCDIR([libslab])
 
 AM_INIT_AUTOMAKE([1.9 foreign no-dist-gzip dist-bzip2])
+AM_MAINTAINER_MODE
 
 AC_CONFIG_HEADERS([config.h])
 
@@ -102,6 +103,7 @@ AC_CONFIG_FILES([
 Makefile
 libslab.pc
 libslab/Makefile
+po/Makefile.in
 ])
 
 AC_OUTPUT
