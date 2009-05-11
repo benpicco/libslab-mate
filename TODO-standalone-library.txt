@@ -9,19 +9,6 @@ have libslab as a "real" stand-alone library than as some chunk of
 code that gets magically included in other projects.
 
 
-=== Libslab infrastructure ===
-
-+ Make configure.ac work; currently it is just a copy of chunks of
-  gnome-main-menu's configure.in.
-
-+ Add a toplevel Makefile.am
-
-+ Fix libslab/Makefile.am
-
-+ Add a po/ directory and move the translations over from
-  gnome-main-menu.
-
-
 === Remove deprecated calls ===
 
 + libslab/app-shell-startup.[ch] has some Bonobo stuff that appears to
