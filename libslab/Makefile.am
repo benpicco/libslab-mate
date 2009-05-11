@@ -21,16 +21,9 @@ HEADER_FILES=					\
 	system-tile.h				\
 	tile.h
 
-if ENABLE_DYNAMIC_LIBSLAB
 lib_LTLIBRARIES = libslab.la
-SOURCE_HEADER_FILES=
-else
-noinst_LTLIBRARIES = libslab.la
-SOURCE_HEADER_FILES=$(HEADER_FILES)
-endif
 
 libslab_la_SOURCES =				\
-	$(SOURCE_HEADER_FILES)			\
 	$(MARSHAL_GENERATED)			\
 	app-resizer.c				\
 	app-shell.c				\
@@ -59,19 +52,14 @@ libslab_la_SOURCES =				\
 	tile-action.c				\
 	tile.c
 
-if ENABLE_DYNAMIC_LIBSLAB
 libslab_includedir = $(includedir)/slab
 libslab_include_HEADERS = $(HEADER_FILES)
-libslab_la_LDFLAGS = \
-	-version-info $(LT_VERSION)
-endif
+libslab_la_LDFLAGS = -version-info $(LT_VERSION)
 
 libslab_la_LIBADD = $(LIBSLAB_LIBS)
 
-if ENABLE_DYNAMIC_LIBSLAB
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libslab.pc
-endif
 
 search-entry-watermark.h: search-entry-watermark.svg
 	echo '#define SEARCH_ENTRY_WATERMARK_SVG "\' > $@; \
