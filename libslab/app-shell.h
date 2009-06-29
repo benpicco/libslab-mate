@@ -54,10 +54,10 @@ typedef struct
 
 typedef struct _AppShellData
 {
-	GtkWidget *main_gnome_app;
-	gint main_gnome_app_window_x;
-	gint main_gnome_app_window_y;
-	gboolean main_gnome_app_window_shown_once;
+	GtkWidget *main_app;
+	gint main_app_window_x;
+	gint main_app_window_y;
+	gboolean main_app_window_shown_once;
 
 	GtkWidget *shell;
 	GtkWidget *groups_section;

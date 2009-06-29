@@ -41,7 +41,7 @@ apss_new_instance_cb (BonoboApplication * app, gint argc, char *argv[], gpointer
 	g_assert (NLD_IS_SEARCH_BAR (section->contents));
 	search_bar = NLD_SEARCH_BAR (section->contents);
 
-	g_object_get (app_data->main_gnome_app, "visible", &visible, NULL);
+	g_object_get (app_data->main_app, "visible", &visible, NULL);
 	if (!visible)
 	{
 		show_shell (app_data);
@@ -59,10 +59,10 @@ apss_new_instance_cb (BonoboApplication * app, gint argc, char *argv[], gpointer
 		g_strfreev (results);
 
 		/* gdk_x11_window_move_to_current_desktop(window);  */
-		gdk_x11_window_set_user_time (app_data->main_gnome_app->window, timestamp);
+		gdk_x11_window_set_user_time (app_data->main_app->window, timestamp);
 	}
 
-	gtk_window_present (GTK_WINDOW (app_data->main_gnome_app));
+	gtk_window_present (GTK_WINDOW (app_data->main_app));
 	gtk_widget_grab_focus (GTK_WIDGET (search_bar));
 
 	return argc;
