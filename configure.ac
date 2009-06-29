@@ -55,7 +55,8 @@ MODULES="glib-2.0 >= $GLIB_REQUIRED	\
 	 gdk-2.0     			\
 	 gnome-desktop-2.0		\
 	 librsvg-2.0			\
-	 libgnome-menu"
+	 libgnome-menu			\
+	 libgnomeui-2.0"
 
 PKG_CHECK_MODULES(LIBSLAB, [ $MODULES ])
 
