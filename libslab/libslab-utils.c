@@ -183,8 +183,8 @@ libslab_gnome_desktop_item_get_docpath (GnomeDesktopItem *item)
 /* Ugh, here we don't have knowledge of the screen that is being used.  So, do
  * what we can to find it.
  */
-static GdkScreen *
-get_screen (void)
+GdkScreen *
+libslab_get_current_screen (void)
 {
 	GdkEvent *event;
 	GdkScreen *screen = NULL;
@@ -222,7 +222,7 @@ libslab_gnome_desktop_item_open_help (GnomeDesktopItem *item)
 	if (doc_path) {
 		help_uri = g_strdup_printf ("ghelp:%s", doc_path);
 
-		if (!gtk_show_uri (get_screen (), help_uri, gtk_get_current_event_time (), &error)) {
+		if (!gtk_show_uri (libslab_get_current_screen (), help_uri, gtk_get_current_event_time (), &error)) {
 			g_warning ("error opening %s [%s]\n", help_uri, error->message);
 
 			g_error_free (error);
