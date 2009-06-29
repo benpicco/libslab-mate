@@ -23,7 +23,6 @@
 #endif
 
 #include <libgnome/gnome-desktop-item.h>
-#include <libgnomeui/libgnomeui.h>
 #include <gio/gio.h>
 #include <gdk/gdkkeysyms.h>
 #include <sys/types.h>
