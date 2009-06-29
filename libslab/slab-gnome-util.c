@@ -19,9 +19,9 @@
  */
 
 #include "slab-gnome-util.h"
+#include "libslab-utils.h"
 
 #include <gconf/gconf-client.h>
-#include <libgnome/gnome-url.h>
 #include <gio/gio.h>
 #include <string.h>
 
@@ -276,10 +276,7 @@ open_desktop_item_help (GnomeDesktopItem * desktop_item)
 		help_uri = g_strdup_printf ("ghelp:%s", doc_path);
 
 		error = NULL;
-
-		gnome_url_show (help_uri, &error);
-
-		if (error)
+		if (!gtk_show_uri (libslab_get_current_screen (), help_uri, gtk_get_current_event_time (), &error))
 		{
 			g_warning ("error opening %s [%s]\n", help_uri, error->message);
 
