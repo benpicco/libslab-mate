@@ -23,7 +23,7 @@
 #include "search-context-picker.h"
 #include "nld-marshal.h"
 
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 #include <gtk/gtkalignment.h>
 #include <gtk/gtkhbox.h>
 

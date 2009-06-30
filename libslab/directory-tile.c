@@ -20,7 +20,7 @@
 
 #include "directory-tile.h"
 
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 #include <string.h>
 #include <gio/gio.h>
 #include <gdk/gdk.h>
