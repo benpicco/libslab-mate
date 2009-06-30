@@ -23,7 +23,6 @@
 
 #include <string.h>
 #include <glib/gi18n-lib.h>
-#include <glib/gmacros.h>
 #include <gconf/gconf-client.h>
 
 #include "bookmark-agent.h"
