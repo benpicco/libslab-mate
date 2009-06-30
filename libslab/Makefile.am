@@ -6,7 +6,6 @@ HEADER_FILES=					\
 	$(BUILT_SOURCES)			\
 	app-resizer.h				\
 	app-shell.h				\
-	app-shell-startup.h			\
 	application-tile.h			\
 	directory-tile.h			\
 	document-tile.h				\
@@ -27,7 +26,6 @@ libslab_la_SOURCES =				\
 	$(MARSHAL_GENERATED)			\
 	app-resizer.c				\
 	app-shell.c				\
-	app-shell-startup.c			\
 	application-tile.c			\
 	bookmark-agent.h			\
 	bookmark-agent.c			\
