@@ -19,6 +19,8 @@
  */
 
 #include "search-bar.h"
+#include "config.h"
+
 #include "search-entry.h"
 #include "search-context-picker.h"
 #include "nld-marshal.h"
