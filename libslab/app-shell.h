@@ -25,6 +25,7 @@
 #include <gtk/gtk.h>
 #define GMENU_I_KNOW_THIS_IS_UNSTABLE
 #include <gmenu-tree.h>
+#include <libgnome/gnome-desktop-item.h>
 
 #include <libslab/slab-section.h>
 #include <libslab/tile.h>
