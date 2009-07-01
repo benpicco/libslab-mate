@@ -26,8 +26,8 @@
 #define GMENU_I_KNOW_THIS_IS_UNSTABLE
 #include <gmenu-tree.h>
 
-#include "slab-section.h"
-#include "tile.h"
+#include <libslab/slab-section.h>
+#include <libslab/tile.h>
 
 G_BEGIN_DECLS
 

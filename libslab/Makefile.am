@@ -2,14 +2,18 @@ INCLUDES =					\
 	$(LIBSLAB_CFLAGS)			\
 	$(WARN_CFLAGS)
 
+
 HEADER_FILES=					\
 	$(BUILT_SOURCES)			\
 	app-resizer.h				\
 	app-shell.h				\
 	application-tile.h			\
+	bookmark-agent.h			\
 	directory-tile.h			\
 	document-tile.h				\
+	double-click-detector.h			\
 	gnome-utils.h				\
+	libslab-utils.h				\
 	nameplate-tile.h			\
 	search-bar.h				\
 	search-context-picker.h			\
@@ -27,15 +31,12 @@ libslab_la_SOURCES =				\
 	app-resizer.c				\
 	app-shell.c				\
 	application-tile.c			\
-	bookmark-agent.h			\
 	bookmark-agent.c			\
 	directory-tile.c			\
 	document-tile.c				\
 	double-click-detector.c			\
-	double-click-detector.h			\
 	gnome-utils.c				\
 	libslab-utils.c				\
-	libslab-utils.h				\
 	nameplate-tile.c			\
 	search-bar.c				\
 	search-context-picker.c			\
@@ -50,8 +51,12 @@ libslab_la_SOURCES =				\
 	tile-action.c				\
 	tile.c
 
-libslab_includedir = $(includedir)/slab
-libslab_include_HEADERS = $(HEADER_FILES)
+libslab_includedir = $(includedir)/libslab
+libslab_include_HEADERS = slab.h
+
+libslab_subincludedir = $(includedir)/libslab/libslab
+libslab_subinclude_HEADERS = $(HEADER_FILES)
+
 libslab_la_LDFLAGS = -version-info $(LT_VERSION)
 
 libslab_la_LIBADD = $(LIBSLAB_LIBS)
