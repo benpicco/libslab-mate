@@ -21,6 +21,7 @@ HEADER_FILES=					\
 	shell-window.h				\
 	slab-gnome-util.h			\
 	slab-section.h				\
+	slab.h					\
 	system-tile.h				\
 	tile.h
 
@@ -52,10 +53,7 @@ libslab_la_SOURCES =				\
 	tile.c
 
 libslab_includedir = $(includedir)/libslab
-libslab_include_HEADERS = slab.h
-
-libslab_subincludedir = $(includedir)/libslab/libslab
-libslab_subinclude_HEADERS = $(HEADER_FILES)
+libslab_include_HEADERS = $(HEADER_FILES)
 
 libslab_la_LDFLAGS = -version-info $(LT_VERSION)
 
