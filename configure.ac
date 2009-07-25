@@ -1,4 +1,4 @@
-AC_INIT([libslab], [2.27.0],
+AC_INIT([libslab], [2.27.1],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=FIXME])
 AC_CONFIG_SRCDIR([libslab])
 
