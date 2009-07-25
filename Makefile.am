@@ -5,6 +5,11 @@ pkgconfig_DATA = libslab.pc
 
 GIT_START = b515f410cb472ae416995c5578d98bab7f80b504
 
+distclean-local:
+	if test "$(srcdir)" = "."; then :; else \
+		rm -f ChangeLog; \
+	fi
+
 ChangeLog:
 	@echo Creating $@
 	@if test -d "$(srcdir)/.git"; then \
