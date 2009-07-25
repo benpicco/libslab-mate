@@ -1,4 +1,5 @@
 INCLUDES =					\
+	-I$(top_srcdir)				\
 	$(LIBSLAB_CFLAGS)			\
 	$(WARN_CFLAGS)
 
