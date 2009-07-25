@@ -9,17 +9,7 @@ have libslab as a "real" stand-alone library than as some chunk of
 code that gets magically included in other projects.
 
 
-=== Remove deprecated calls ===
-
-+ libslab/app-shell-startup.[ch] has some Bonobo stuff that appears to
-  be only for running the application browser as a unique app.  Remove
-  this and use a more general "unique app" framework.
-
-
 === Users of libslab ===
-
-+ Remove the libslab/ directory from gnome-main-menu, and make it use
-  libslab as a stand-alone library.
 
 + Remove the assumption in gnome-control-center that libslab is an
   svn:external, and make it use libslab as a stand-alone library.
