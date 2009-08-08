@@ -13,6 +13,3 @@ code that gets magically included in other projects.
 
 + Remove the assumption in gnome-control-center that libslab is an
   svn:external, and make it use libslab as a stand-alone library.
-
-+ Make YaST not simply depend on an installed gnome-main-menu, and
-  make it look for libslab as a stand-alone library.
