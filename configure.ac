@@ -96,9 +96,11 @@ ac_cv_lkstrftime=yes
 ])
 AC_MSG_RESULT($ac_cv_lkstrftime)
 
-dnl ==============================================
-dnl End: strftime
-dnl ==============================================
+dnl ===============================================
+dnl Enable internal copies of libslab, but not here
+dnl ===============================================
+
+AM_CONDITIONAL(LIBSLAB_FOR_INTERNAL_USE, test "yes" = "no")
 
 AC_CONFIG_FILES([
 Makefile
