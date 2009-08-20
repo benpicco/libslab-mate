@@ -1,15 +1,15 @@
-# Swedish translation for gnome-main-menu.
-# Copyright (C) 2001-2008 Free Software Foundation, Inc.
+# Swedish translation for libslab.
+# Copyright (C) 2001-2009 Free Software Foundation, Inc.
 # Mattias Newzella <newzella@linux.nu>, 2001.
 # Gudmund Areskoug <fta@algonet.se>, 2001.
-# Daniel Nylander <po@danielnylander.se>, 2007, 2008.
+# Daniel Nylander <po@danielnylander.se>, 2007, 2008, 2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-main-menu\n"
+"Project-Id-Version: libslab\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-27 01:11+0200\n"
-"PO-Revision-Date: 2008-07-27 01:12+0100\n"
+"POT-Creation-Date: 2009-08-20 23:07+0200\n"
+"PO-Revision-Date: 2009-08-20 23:07+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -17,721 +17,521 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../application-browser/etc/application-browser.desktop.in.in.h:1
-#: ../application-browser/src/application-browser.c:93
-msgid "Application Browser"
-msgstr "Programbläddrare"
-
-#: ../application-browser/etc/application-browser.schemas.in.h:1
-msgid "Exit shell on add or remove action performed"
-msgstr "Avsluta skalet när tilläggs- eller borttagningsåtgärd utförs"
-
-#: ../application-browser/etc/application-browser.schemas.in.h:2
-msgid "Exit shell on help action performed"
-msgstr "Avsluta skalet när hjälpåtgärd utförs"
-
-#: ../application-browser/etc/application-browser.schemas.in.h:3
-msgid "Exit shell on start action performed"
-msgstr "Avsluta skalet när startåtgärd utförs"
-
-#: ../application-browser/etc/application-browser.schemas.in.h:4
-msgid "Exit shell on upgrade or uninstall action performed"
-msgstr "Avsluta skalet när uppgraderings- eller avinstallationsåtgärd utförs"
-
-#: ../application-browser/etc/application-browser.schemas.in.h:5
-msgid "Filename of existing .desktop files"
-msgstr "Filnamn för befintliga .desktop-filer"
-
-#: ../application-browser/etc/application-browser.schemas.in.h:6
-msgid "Indicates whether to close the shell when a help action is performed"
-msgstr "Indikerar huruvida skalet ska avslutas när en hjälpåtgärd utförs"
-
-#: ../application-browser/etc/application-browser.schemas.in.h:7
-msgid "Indicates whether to close the shell when a start action is performed"
-msgstr "Indikerar huruvida skalet ska avslutas när en startåtgärd utförs"
-
-#: ../application-browser/etc/application-browser.schemas.in.h:8
-msgid "Indicates whether to close the shell when an add or remove action is performed"
-msgstr "Indikerar huruvida skalet ska avslutas när en tilläggs- eller borttagningsåtgärd utförs"
-
-#: ../application-browser/etc/application-browser.schemas.in.h:9
-msgid "Indicates whether to close the shell when an upgrade or uninstall action is performed"
-msgstr "Indikerar huruvida skalet ska avslutas när en uppgraderings- eller avinstallationsåtgärd utförs"
-
-#: ../application-browser/etc/application-browser.schemas.in.h:10
-msgid "Max number of New Applications"
-msgstr "Högsta antalet nya program"
-
-#: ../application-browser/etc/application-browser.schemas.in.h:11
-msgid "The maximum number of applications that will be displayed in the New Applications category"
-msgstr "Det högsta antal program som kan visas i kategorin Nya program"
-
-#: ../application-browser/src/application-browser.c:85
-msgid "New Applications"
-msgstr "Nya program"
-
-#: ../application-browser/src/application-browser.c:90
-msgid "Filter"
-msgstr "Filter"
-
-#: ../application-browser/src/application-browser.c:90
-msgid "Groups"
-msgstr "Grupper"
-
-#: ../application-browser/src/application-browser.c:90
-msgid "Application Actions"
-msgstr "Programåtgärder"
-
 #. make start action
-#: ../libslab/application-tile.c:372
+#: ../libslab/application-tile.c:374
 #, c-format
-msgid "<b>Start %s</b>"
-msgstr "<b>Starta %s</b>"
+msgid "Start %s"
+msgstr "Starta %s"
 
-#: ../libslab/application-tile.c:391
-#: ../libslab/bookmark-agent.c:1059
-#: ../main-menu/src/main-menu-migration.c:93
-#: ../main-menu/src/main-menu-migration.c:217
+#: ../libslab/application-tile.c:395
 msgid "Help"
 msgstr "Hjälp"
 
-#: ../libslab/application-tile.c:438
+#: ../libslab/application-tile.c:442
 msgid "Upgrade"
 msgstr "Uppgradera"
 
-#: ../libslab/application-tile.c:453
+#: ../libslab/application-tile.c:457
 msgid "Uninstall"
 msgstr "Avinstallera"
 
-#: ../libslab/application-tile.c:780
-#: ../libslab/document-tile.c:756
-#: ../nautilus-main-menu/nautilus-main-menu.c:133
-#: ../nautilus-main-menu/nautilus-main-menu.c:138
+#: ../libslab/application-tile.c:784
+#: ../libslab/document-tile.c:721
 msgid "Remove from Favorites"
 msgstr "Ta bort från favoriter"
 
-#: ../libslab/application-tile.c:782
-#: ../libslab/document-tile.c:758
-#: ../nautilus-main-menu/nautilus-main-menu.c:123
-#: ../nautilus-main-menu/nautilus-main-menu.c:128
+#: ../libslab/application-tile.c:786
+#: ../libslab/document-tile.c:723
 msgid "Add to Favorites"
 msgstr "Lägg till i favoriter"
 
-#: ../libslab/application-tile.c:867
+#: ../libslab/application-tile.c:871
 msgid "Remove from Startup Programs"
 msgstr "Ta bort från startprogram"
 
-#: ../libslab/application-tile.c:869
+#: ../libslab/application-tile.c:873
 msgid "Add to Startup Programs"
 msgstr "Lägg till i startprogram"
 
-#: ../libslab/app-shell.c:750
+#: ../libslab/app-shell.c:754
 #, c-format
-msgid ""
-"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
-"\n"
-" Your filter \"<b>%s</b>\" does not match any items.</span>"
-msgstr ""
-"<span size=\"large\"><b>Inga matchningar hittades.</b> </span><span>\n"
-"\n"
-"  Filtret <b>%s</b> matchar inga objekt.</span>"
+msgid "Your filter \"%s\" does not match any items."
+msgstr "Ditt filter \"%s\" matchar inga objekt."
 
-#: ../libslab/app-shell.c:900
+#: ../libslab/app-shell.c:756
+msgid "No matches found."
+msgstr "Inga sökträffar hittades."
+
+#: ../libslab/app-shell.c:905
 msgid "Other"
 msgstr "Övriga"
 
-#: ../libslab/bookmark-agent.c:1061
-#: ../main-menu/src/main-menu-migration.c:159
-msgid "Lock Screen"
-msgstr "Lås skärmen"
-
-#: ../libslab/bookmark-agent.c:1063
-#: ../main-menu/src/main-menu-migration.c:97
-#: ../main-menu/src/main-menu-migration.c:219
-msgid "Logout"
-msgstr "Logga ut"
-
-#: ../libslab/bookmark-agent.c:1065
-#: ../main-menu/src/main-menu-migration.c:101
-#: ../main-menu/src/main-menu-migration.c:221
-msgid "Shutdown"
-msgstr "Stäng av"
-
-#: ../libslab/bookmark-agent.c:1090
+#: ../libslab/bookmark-agent.c:1077
 msgid "New Spreadsheet"
 msgstr "Nytt kalkylblad"
 
-#: ../libslab/bookmark-agent.c:1095
+#: ../libslab/bookmark-agent.c:1082
 msgid "New Document"
 msgstr "Nytt dokument"
 
-#: ../libslab/bookmark-agent.c:1146
+#: ../libslab/bookmark-agent.c:1135
 msgid "Home"
 msgstr "Hem"
 
-#: ../libslab/bookmark-agent.c:1151
-#: ../main-menu/src/slab-window.glade.h:3
+#: ../libslab/bookmark-agent.c:1140
 msgid "Documents"
 msgstr "Dokument"
 
-#: ../libslab/bookmark-agent.c:1157
+#: ../libslab/bookmark-agent.c:1146
 msgid "Desktop"
 msgstr "Skrivbord"
 
-#: ../libslab/bookmark-agent.c:1164
+#: ../libslab/bookmark-agent.c:1153
 msgid "File System"
 msgstr "Filsystem"
 
-#: ../libslab/bookmark-agent.c:1168
+#: ../libslab/bookmark-agent.c:1157
 msgid "Network Servers"
 msgstr "Nätverksservrar"
 
-#: ../libslab/bookmark-agent.c:1197
+#: ../libslab/bookmark-agent.c:1186
 msgid "Search"
 msgstr "Sök"
 
 #. make open with default action
-#: ../libslab/directory-tile.c:172
+#: ../libslab/directory-tile.c:171
 #, c-format
 msgid "<b>Open</b>"
 msgstr "<b>Öppna</b>"
 
 #. make rename action
-#: ../libslab/directory-tile.c:191
-#: ../libslab/document-tile.c:241
+#: ../libslab/directory-tile.c:190
+#: ../libslab/document-tile.c:234
 msgid "Rename..."
 msgstr "Byt namn..."
 
-#: ../libslab/directory-tile.c:205
-#: ../libslab/directory-tile.c:214
-#: ../libslab/document-tile.c:255
-#: ../libslab/document-tile.c:264
+#: ../libslab/directory-tile.c:204
+#: ../libslab/directory-tile.c:213
+#: ../libslab/document-tile.c:248
+#: ../libslab/document-tile.c:257
 msgid "Send To..."
 msgstr "Skicka till..."
 
 #. make move to trash action
-#: ../libslab/directory-tile.c:229
-#: ../libslab/document-tile.c:290
+#: ../libslab/directory-tile.c:228
+#: ../libslab/document-tile.c:283
 msgid "Move to Trash"
 msgstr "Flytta till papperskorgen"
 
-#: ../libslab/directory-tile.c:239
+#: ../libslab/directory-tile.c:238
 #: ../libslab/directory-tile.c:457
-#: ../libslab/document-tile.c:300
-#: ../libslab/document-tile.c:869
+#: ../libslab/document-tile.c:293
+#: ../libslab/document-tile.c:837
 msgid "Delete"
 msgstr "Ta bort"
 
-#: ../libslab/directory-tile.c:569
-#: ../libslab/document-tile.c:1041
+#: ../libslab/directory-tile.c:533
+#: ../libslab/document-tile.c:985
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Är du säker på att du vill ta bort \"%s\" permanent?"
 
-#: ../libslab/directory-tile.c:574
-#: ../libslab/document-tile.c:1045
+#: ../libslab/directory-tile.c:534
+#: ../libslab/document-tile.c:986
 msgid "If you delete an item, it is permanently lost."
 msgstr "Om du tar bort ett objekt kan du inte få tillbaka det."
 
-#: ../libslab/document-tile.c:202
+#: ../libslab/document-tile.c:193
 #, c-format
-msgid "<b>Open with \"%s\"</b>"
-msgstr "<b>Öppna med \"%s\"</b>"
+msgid "Open with \"%s\""
+msgstr "Öppna med \"%s\""
 
-#: ../libslab/document-tile.c:214
+#: ../libslab/document-tile.c:207
 msgid "Open with Default Application"
 msgstr "Öppna med standardprogrammet"
 
-#: ../libslab/document-tile.c:225
+#: ../libslab/document-tile.c:218
 msgid "Open in File Manager"
 msgstr "Öppna i filhanterare"
 
-#: ../libslab/document-tile.c:652
+#: ../libslab/document-tile.c:617
 msgid "?"
 msgstr "?"
 
-#: ../libslab/document-tile.c:659
+#: ../libslab/document-tile.c:624
 msgid "%l:%M %p"
 msgstr "%H.%M"
 
-#: ../libslab/document-tile.c:667
+#: ../libslab/document-tile.c:632
 msgid "Today %l:%M %p"
 msgstr "Idag %H.%M"
 
-#: ../libslab/document-tile.c:677
+#: ../libslab/document-tile.c:642
 msgid "Yesterday %l:%M %p"
 msgstr "Igår %H.%M"
 
-#: ../libslab/document-tile.c:689
+#: ../libslab/document-tile.c:654
 msgid "%a %l:%M %p"
 msgstr "%a %H.%M"
 
-#: ../libslab/document-tile.c:697
+#: ../libslab/document-tile.c:662
 msgid "%b %d %l:%M %p"
 msgstr "%d %b %H.%M"
 
-#: ../libslab/document-tile.c:699
+#: ../libslab/document-tile.c:664
 msgid "%b %d %Y"
 msgstr "%d %b %Y"
-
-#: ../libslab/libslab-bookmarkfile.c:700
-#: ../libslab/libslab-bookmarkfile.c:777
-#: ../libslab/libslab-bookmarkfile.c:856
-#: ../libslab/libslab-bookmarkfile.c:903
-#, c-format
-msgid "Unexpected attribute '%s' for element '%s'"
-msgstr "Attributet \"%s\" förväntades inte i elementet \"%s\""
-
-#: ../libslab/libslab-bookmarkfile.c:711
-#: ../libslab/libslab-bookmarkfile.c:788
-#: ../libslab/libslab-bookmarkfile.c:798
-#: ../libslab/libslab-bookmarkfile.c:914
-#, c-format
-msgid "Attribute '%s' of element '%s' not found"
-msgstr "Det gick inte att hitta attributet \"%s\" hos elementet \"%s\""
-
-#: ../libslab/libslab-bookmarkfile.c:1087
-#: ../libslab/libslab-bookmarkfile.c:1152
-#: ../libslab/libslab-bookmarkfile.c:1216
-#: ../libslab/libslab-bookmarkfile.c:1226
-#, c-format
-msgid "Unexpected tag '%s', tag '%s' expected"
-msgstr "Taggen \"%s\" förväntades inte, förväntad tagg var \"%s\""
-
-#: ../libslab/libslab-bookmarkfile.c:1112
-#: ../libslab/libslab-bookmarkfile.c:1126
-#: ../libslab/libslab-bookmarkfile.c:1194
-#: ../libslab/libslab-bookmarkfile.c:1246
-#, c-format
-msgid "Unexpected tag '%s' inside '%s'"
-msgstr "Taggen \"%s\" förväntades inte i \"%s\""
-
-#: ../libslab/libslab-bookmarkfile.c:1929
-#, c-format
-msgid "No valid bookmark file found in data dirs"
-msgstr "Ingen giltig bokmärkesfil kunde hittas i datakatalogerna"
-
-#: ../libslab/libslab-bookmarkfile.c:2130
-#, c-format
-msgid "A bookmark for URI '%s' already exists"
-msgstr "Det finns redan ett bokmärke för URI:n \"%s\""
-
-#: ../libslab/libslab-bookmarkfile.c:2176
-#: ../libslab/libslab-bookmarkfile.c:2333
-#: ../libslab/libslab-bookmarkfile.c:2418
-#: ../libslab/libslab-bookmarkfile.c:2499
-#: ../libslab/libslab-bookmarkfile.c:2584
-#: ../libslab/libslab-bookmarkfile.c:2667
-#: ../libslab/libslab-bookmarkfile.c:2745
-#: ../libslab/libslab-bookmarkfile.c:2824
-#: ../libslab/libslab-bookmarkfile.c:2866
-#: ../libslab/libslab-bookmarkfile.c:2963
-#: ../libslab/libslab-bookmarkfile.c:3089
-#: ../libslab/libslab-bookmarkfile.c:3279
-#: ../libslab/libslab-bookmarkfile.c:3355
-#: ../libslab/libslab-bookmarkfile.c:3508
-#: ../libslab/libslab-bookmarkfile.c:3573
-#: ../libslab/libslab-bookmarkfile.c:3663
-#: ../libslab/libslab-bookmarkfile.c:3790
-#, c-format
-msgid "No bookmark found for URI '%s'"
-msgstr "Det gick inte att hitta någon bokmärke för URI:n \"%s\""
-
-#: ../libslab/libslab-bookmarkfile.c:2508
-#, c-format
-msgid "No MIME type defined in the bookmark for URI '%s'"
-msgstr "Ingen MIME-typ är definierad i bokmärket för URI:n \"%s\""
-
-#: ../libslab/libslab-bookmarkfile.c:2593
-#, c-format
-msgid "No private flag has been defined in bookmark for URI '%s'"
-msgstr "Ingen privat flagga är definierad i bokmärket för URI:n \"%s\""
-
-#: ../libslab/libslab-bookmarkfile.c:2972
-#, c-format
-msgid "No groups set in bookmark for URI '%s'"
-msgstr "Inga grupper är angivna i bokmärket för URI:n \"%s\""
-
-#: ../libslab/libslab-bookmarkfile.c:3373
-#: ../libslab/libslab-bookmarkfile.c:3518
-#, c-format
-msgid "No application with name '%s' registered a bookmark for '%s'"
-msgstr "Inget program med namnet %s har registrerat något bokmärke för \"%s\""
 
 #: ../libslab/search-bar.c:255
 msgid "Find Now"
 msgstr "Sök nu"
 
-#: ../libslab/system-tile.c:128
+#: ../libslab/system-tile.c:127
 #, c-format
 msgid "<b>Open %s</b>"
 msgstr "<b>Öppna %s</b>"
 
-#: ../libslab/system-tile.c:141
+#: ../libslab/system-tile.c:140
 #, c-format
 msgid "Remove from System Items"
 msgstr "Ta bort från Systemobjekt"
 
-#: ../main-menu/etc/GNOME_MainMenu.server.in.in.h:1
-msgid "Default menu and application browser"
-msgstr "Standardbläddrare för menyer och program"
-
-#: ../main-menu/etc/GNOME_MainMenu.server.in.in.h:2
-#: ../main-menu/src/main-menu-ui.c:2405
-#: ../main-menu/src/slab-window.glade.h:7
-msgid "GNOME Main Menu"
-msgstr "GNOME-huvudmeny"
-
-#: ../main-menu/etc/GNOME_MainMenu.server.in.in.h:3
-msgid "GNOME Main Menu Factory"
-msgstr "Fabrik för GNOME-huvudmeny"
-
-#: ../main-menu/etc/GNOME_MainMenu.server.in.in.h:4
-msgid "Main Menu"
-msgstr "Huvudmeny"
-
-#: ../main-menu/etc/GNOME_MainMenu_ContextMenu.xml.h:1
-msgid "_About"
-msgstr "_Om"
-
-#: ../main-menu/etc/GNOME_MainMenu_ContextMenu.xml.h:2
-msgid "_Open Menu"
-msgstr "Öpp_na menyn"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:1
-msgid ".desktop file for the YaST2 network_devices utility"
-msgstr ".desktop-fil för verktyget YaST2 network_devices"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:2
-msgid ".desktop file for the file browser"
-msgstr ".desktop-fil för filbläddraren"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:3
-msgid ".desktop file for the gnome-system-monitor"
-msgstr ".desktop-fil för gnome-systemövervakaren"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:4
-msgid ".desktop file for the net config tool"
-msgstr ".desktop-fil för verktyget net config"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:5
-msgid ".desktop path for the application browser"
-msgstr ".desktop-sökväg för programbläddraren"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:6
-msgid "This is the command to execute when the \"Open in File Manager\" menu item is activated."
-msgstr "Det här är det kommando som ska köras när menyalternativet Öppna i Filhanteraren aktiveras."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:7
-msgid "This is the command to execute when the \"Open in File Manager\" menu item is activated. FILE_URI is replaced with a uri corresponding to the dirname of the activated file."
-msgstr "Det här är det kommando som ska köras när menyalternativet Öppna i Filhanteraren aktiveras. FILE_URI byts ut mot en URI som motsvarar dirname för den aktiverade filen."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:8
-msgid "This is the command to execute when the \"Send To...\" menu item is activated."
-msgstr "Det här är det kommando som ska köras när menyalternativet Skicka till aktiveras."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:9
-msgid "This is the command to execute when the \"Send To...\" menu item is activated. DIRNAME and BASENAME are replaced with the corresponding components of the activated tile."
-msgstr "Det här är det kommando som ska köras när menyalternativet Skicka till aktiveras. DIRNAME och BASENAME byts ut mot motsvarande komponenter i den aktiverade plattan."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:10
-msgid "This is the command to execute when the search entry is used."
-msgstr "Det här är det kommando som körs när sökposten används."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:11
-msgid "This is the command to execute when the search entry is used. SEARCH_STRING is replaced with the entered search text."
-msgstr "Det här är kommandot som körs när sökposten används. SEARCH_STRING byts ut mot den angivna söktexten."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:12
-msgid "command to uninstall packages"
-msgstr "kommando för avinstallation av paket"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:13
-msgid "command to uninstall packages, PACKAGE_NAME is replaced by the name of the package in the command"
-msgstr "kommando för avinstallation av paket, PACKAGE_NAME byts ut mot paketnamnet i kommandot"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:14
-msgid "command to upgrade packages"
-msgstr "kommando för uppgradering av paket"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:15
-msgid "command to upgrade packages, PACKAGE_NAME is replaced by the name of the package in the command"
-msgstr "kommando för uppgradering av paket, PACKAGE_NAME byts ut mot paketnamnet i kommandot"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:16
-msgid "contains the list (in no particular order) of allowable file tables to show in the file area. possible values: 0 - show the user-specified or \"Favorite\" applications table, 1 - show the recently used applications table, 2 - show the user-specified or \"Favorite\" documents table, 3 - show the recently used documents table, 4 - show the user-specified of \"Favorite\" directories or \"Places\" table, and 5 - show the recently used directories or \"Places\" table."
-msgstr "innehåller listan (ej sorterad) med tillåtna filtabeller som kan visas i filområdet. Möjliga värden är: 0 - visa de användarspecificerade programmen (favoritprogram), 1 - visa de senast använda programmen, 2 - visa användarspecificerade dokument (favoritdokument), 3 - visa de senast använda dokumenten, 4 - visa användarspecificerade kataloger (favoritkataloger) eller platser och 5 - visa de senast använda katalogerna eller platserna."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:17
-msgid "contains the list of files (including .desktop files) to be excluded from the \"Recently Used Applications\" and \"Recent Files\" lists"
-msgstr "innehåller listan med filer (inklusive .desktop-filer) som ska uteslutas från listorna Senast använda program och Senaste filer"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:18
-msgid "determines the limit of items in the file-area."
-msgstr "bestämmer begränsningen av objekt i filområdet."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:19
-msgid "determines the limit of items in the file-area. The number favorite items is not limited. This limit applies to the number of recent items, i.e. the number of recent items displayed is limited to max_total_items - the number of favorite items. If the number of favorite items exceeds max_total_items - min_recent_items than this limit is ignored."
-msgstr "bestämmer begränsning för objekt i filområdet. Antalet favoritobjekt påverkas inte. Begränsningen gäller för de senast använda objekten, vilket betyder att antalet nyligen använda objekt är begränsat till max_total_items - antalet favoritobjekt. Om antalet favoritobjekt överskrider max_total_items - min_recent_items ignoreras den här gränsen."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:20
-msgid "determines the minimum number of items in the \"recent\" section of the file-area."
-msgstr "bestämmer det minsta antalet objekt i Senaste-delen i filområdet."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:21
-msgid "determines which types of files to display in the file area"
-msgstr "bestämmer vilka filtyper som ska visas i filområdet"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:22
-msgid "if true, main menu is more anxious to close"
-msgstr "om sant är huvudmenyn mer angelägen att stängas"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:23
-msgid "if true, main menu will close under these additional conditions: tile is activated, search activated"
-msgstr "om sant stängs huvudmenyn under dessa ytterligare villkor: platta aktiveras, sökning aktiveras"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:24
-msgid "lock-down configuration of the file area"
-msgstr "låskonfiguration för filområdet"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:25
-msgid "lock-down status for the application browser link"
-msgstr "låsstatus för programbläddrarlänken"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:26
-msgid "lock-down status for the search area"
-msgstr "låsstatus för sökfältet"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:27
-msgid "lock-down status for the status area"
-msgstr "låsstatus för statusfältet"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:28
-msgid "lock-down status for the system area"
-msgstr "låsstatus för systemfältet"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:29
-msgid "lock-down status for the user-specified apps section"
-msgstr "låsstatus för det användardefinierade programområdet"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:30
-msgid "lock-down status for the user-specified dirs section"
-msgstr "låsstatus för det användardefinierade katalogområdet"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:31
-msgid "lock-down status for the user-specified docs section"
-msgstr "låsstatus för det användardefinierade dokumentområdet"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:32
-msgid "possible values = 0 [Applications], 1 [Documents], 2 [Places]"
-msgstr "möjliga värden = 0 [Program], 1 [Dokument], 2 [Platser]"
-
-#: ../main-menu/etc/slab.schemas.in.in.h:33
-msgid "set to true if the link to the application browser should be visible and active."
-msgstr "ställ in till sant om länken till programbläddraren ska vara synlig och aktiv."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:34
-msgid "set to true if the search area should be visible and active."
-msgstr "ställ in till sant om sökfältet ska vara synligt och aktivt."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:35
-msgid "set to true if the status area should be visible and active."
-msgstr "ställ in till sant om statusfältet ska vara synligt och aktivt."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:36
-msgid "set to true if the system area should be visible and active."
-msgstr "ställ in till sant om systemfältet ska vara synligt och aktivt."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:37
-msgid "set to true if the user is allowed to modify the list of system items."
-msgstr "ställ in till sant om användaren ska tillåtas att redigera listan över systemobjekt."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:38
-msgid "set to true if the user is allowed to modify the list of user-specified or \"Favorite\" applications."
-msgstr "ställ in till sant om användaren ska tillåtas att redigera listan över användardefinierade eller \"Favorit\"-program."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:39
-msgid "set to true if the user is allowed to modify the list of user-specified or \"Favorite\" directories or \"Places\"."
-msgstr "ställ in till sant om användaren ska tillåtas att redigera listan över användardefinierade eller \"Favorit\"-kataloger eller \"Platser\"."
-
-#: ../main-menu/etc/slab.schemas.in.in.h:40
-msgid "set to true if the user is allowed to modify the list of user-specified or \"Favorite\" documents."
-msgstr "ställ in till sant om användaren ska tillåtas att redigera listan över användardefinierade eller \"Favorit\"-dokument."
-
-#: ../main-menu/src/hard-drive-status-tile.c:102
-msgid "_System Monitor"
-msgstr "_Systemövervakare"
-
-#: ../main-menu/src/hard-drive-status-tile.c:212
-#, c-format
-msgid "%.1fG"
-msgstr "%.1fG"
-
-#: ../main-menu/src/hard-drive-status-tile.c:214
-#, c-format
-msgid "%.1fM"
-msgstr "%.1fM"
-
-#: ../main-menu/src/hard-drive-status-tile.c:216
-#, c-format
-msgid "%.1fK"
-msgstr "%.1fK"
-
-#: ../main-menu/src/hard-drive-status-tile.c:218
-#, c-format
-msgid "%.1fb"
-msgstr "%.1fb"
-
-#: ../main-menu/src/hard-drive-status-tile.c:239
-#, c-format
-msgid "Home: %s Free / %s"
-msgstr "Hem: %s ledigt / %s"
-
-#: ../main-menu/src/main-menu-migration.c:161
-msgid "gnome-lockscreen"
-msgstr "gnome-lockscreen"
-
-#: ../main-menu/src/main-menu-ui.c:2406
-msgid "The GNOME Main Menu"
-msgstr "Huvudmenyn i GNOME"
-
-#: ../main-menu/src/network-status-tile.c:91
-msgid "Network: None"
-msgstr "Nätverk: Inget"
-
-#: ../main-menu/src/network-status-tile.c:94
-#: ../main-menu/src/network-status-tile.c:199
-msgid "Click to configure network"
-msgstr "Klicka om du vill konfigurera nätverket"
-
-#: ../main-menu/src/network-status-tile.c:198
-msgid "Networ_k: None"
-msgstr "Nätver_k: Inget"
-
-#: ../main-menu/src/network-status-tile.c:207
-#: ../main-menu/src/network-status-tile.c:224
-#: ../main-menu/src/network-status-tile.c:232
-#, c-format
-msgid "Connected to: %s"
-msgstr "Ansluten till: %s"
-
-#: ../main-menu/src/network-status-tile.c:210
-msgid "Networ_k: Wireless"
-msgstr "Nätver_k: Trådlöst"
-
-#: ../main-menu/src/network-status-tile.c:215
-#, c-format
-msgid "Using ethernet (%s)"
-msgstr "Ethernet (%s) används"
-
-#: ../main-menu/src/network-status-tile.c:219
-msgid "Networ_k: Wired"
-msgstr "Nätver_k: Trådat"
-
-#: ../main-menu/src/network-status-tile.c:227
-msgid "Networ_k: GSM"
-msgstr "Nätver_k: GSM"
-
-#: ../main-menu/src/network-status-tile.c:235
-msgid "Networ_k: CDMA"
-msgstr "Nätver_k: CDMA"
-
-#: ../main-menu/src/network-status-tile.c:336
-#, c-format
-msgid "Wireless Ethernet (%s)"
-msgstr "Trådlöst Ethernet (%s)"
-
-#: ../main-menu/src/network-status-tile.c:341
-#, c-format
-msgid "Wired Ethernet (%s)"
-msgstr "Trådat Ethernet (%s)"
-
-#: ../main-menu/src/network-status-tile.c:346
-#: ../main-menu/src/network-status-tile.c:351
-#, c-format
-msgid "Mobile Ethernet (%s)"
-msgstr "Mobilt ethernet (%s)"
-
-#: ../main-menu/src/network-status-tile.c:355
-#: ../main-menu/src/network-status-tile.c:365
-#, c-format
-msgid "Unknown"
-msgstr "Okänd"
-
-#: ../main-menu/src/network-status-tile.c:363
-#, c-format
-msgid "%d Mb/s"
-msgstr "%d Mb/s"
-
-#: ../main-menu/src/slab-window.glade.h:1
-msgid "Applications"
-msgstr "Program"
-
-#: ../main-menu/src/slab-window.glade.h:2
-msgid "Computer"
-msgstr "Dator"
-
-#: ../main-menu/src/slab-window.glade.h:4
-msgid "Favorite Applications"
-msgstr "Favoritprogram"
-
-#: ../main-menu/src/slab-window.glade.h:5
-msgid "Favorite Documents"
-msgstr "Favoritdokument"
-
-#: ../main-menu/src/slab-window.glade.h:6
-msgid "Favorite Places"
-msgstr "Favoritplatser"
-
-#: ../main-menu/src/slab-window.glade.h:8
-msgid "More Applications..."
-msgstr "Fler program..."
-
-#: ../main-menu/src/slab-window.glade.h:9
-msgid "More Documents..."
-msgstr "Fler dokument..."
-
-#: ../main-menu/src/slab-window.glade.h:10
-msgid "More Places..."
-msgstr "Fler platser..."
-
-#: ../main-menu/src/slab-window.glade.h:11
-msgid "Places"
-msgstr "Platser"
-
-#: ../main-menu/src/slab-window.glade.h:12
-msgid "Recent Applications"
-msgstr "Senaste program"
-
-#: ../main-menu/src/slab-window.glade.h:13
-msgid "Recent Documents"
-msgstr "Senaste dokument"
-
-#: ../main-menu/src/slab-window.glade.h:14
-msgid "Search:"
-msgstr "Sökning:"
-
-#: ../main-menu/src/slab-window.glade.h:15
-msgid "Status"
-msgstr "Status"
-
-#: ../main-menu/src/slab-window.glade.h:16
-msgid "System"
-msgstr "System"
-
-#: ../nautilus-main-menu/nautilus-main-menu.c:124
-msgid "Add the current launcher to favorites"
-msgstr "Lägg till det aktuella programmet till favoriter"
-
-#: ../nautilus-main-menu/nautilus-main-menu.c:129
-msgid "Add the current document to favorites"
-msgstr "Lägg till det aktuella dokumentet till favoriter"
-
-#: ../nautilus-main-menu/nautilus-main-menu.c:134
-#: ../nautilus-main-menu/nautilus-main-menu.c:139
-msgid "Remove the current document from favorites"
-msgstr "Ta bort det aktuella dokumentet från favoriter"
-
+#~ msgid "Application Browser"
+#~ msgstr "Programbläddrare"
+#~ msgid "Exit shell on add or remove action performed"
+#~ msgstr "Avsluta skalet när tilläggs- eller borttagningsåtgärd utförs"
+#~ msgid "Exit shell on help action performed"
+#~ msgstr "Avsluta skalet när hjälpåtgärd utförs"
+#~ msgid "Exit shell on start action performed"
+#~ msgstr "Avsluta skalet när startåtgärd utförs"
+#~ msgid "Exit shell on upgrade or uninstall action performed"
+#~ msgstr ""
+#~ "Avsluta skalet när uppgraderings- eller avinstallationsåtgärd utförs"
+#~ msgid "Filename of existing .desktop files"
+#~ msgstr "Filnamn för befintliga .desktop-filer"
+#~ msgid "Indicates whether to close the shell when a help action is performed"
+#~ msgstr "Indikerar huruvida skalet ska avslutas när en hjälpåtgärd utförs"
+#~ msgid ""
+#~ "Indicates whether to close the shell when a start action is performed"
+#~ msgstr "Indikerar huruvida skalet ska avslutas när en startåtgärd utförs"
+#~ msgid ""
+#~ "Indicates whether to close the shell when an add or remove action is "
+#~ "performed"
+#~ msgstr ""
+#~ "Indikerar huruvida skalet ska avslutas när en tilläggs- eller "
+#~ "borttagningsåtgärd utförs"
+#~ msgid ""
+#~ "Indicates whether to close the shell when an upgrade or uninstall action "
+#~ "is performed"
+#~ msgstr ""
+#~ "Indikerar huruvida skalet ska avslutas när en uppgraderings- eller "
+#~ "avinstallationsåtgärd utförs"
+#~ msgid "Max number of New Applications"
+#~ msgstr "Högsta antalet nya program"
+#~ msgid ""
+#~ "The maximum number of applications that will be displayed in the New "
+#~ "Applications category"
+#~ msgstr "Det högsta antal program som kan visas i kategorin Nya program"
+#~ msgid "New Applications"
+#~ msgstr "Nya program"
+#~ msgid "Filter"
+#~ msgstr "Filter"
+#~ msgid "Groups"
+#~ msgstr "Grupper"
+#~ msgid "Application Actions"
+#~ msgstr "Programåtgärder"
+#~ msgid "<b>Start %s</b>"
+#~ msgstr "<b>Starta %s</b>"
+#~ msgid ""
+#~ "<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+#~ "\n"
+#~ " Your filter \"<b>%s</b>\" does not match any items.</span>"
+#~ msgstr ""
+#~ "<span size=\"large\"><b>Inga matchningar hittades.</b> </span><span>\n"
+#~ "\n"
+#~ "  Filtret <b>%s</b> matchar inga objekt.</span>"
+#~ msgid "Lock Screen"
+#~ msgstr "Lås skärmen"
+#~ msgid "Logout"
+#~ msgstr "Logga ut"
+#~ msgid "Shutdown"
+#~ msgstr "Stäng av"
+#~ msgid "Unexpected attribute '%s' for element '%s'"
+#~ msgstr "Attributet \"%s\" förväntades inte i elementet \"%s\""
+#~ msgid "Attribute '%s' of element '%s' not found"
+#~ msgstr "Det gick inte att hitta attributet \"%s\" hos elementet \"%s\""
+#~ msgid "Unexpected tag '%s', tag '%s' expected"
+#~ msgstr "Taggen \"%s\" förväntades inte, förväntad tagg var \"%s\""
+#~ msgid "Unexpected tag '%s' inside '%s'"
+#~ msgstr "Taggen \"%s\" förväntades inte i \"%s\""
+#~ msgid "No valid bookmark file found in data dirs"
+#~ msgstr "Ingen giltig bokmärkesfil kunde hittas i datakatalogerna"
+#~ msgid "A bookmark for URI '%s' already exists"
+#~ msgstr "Det finns redan ett bokmärke för URI:n \"%s\""
+#~ msgid "No bookmark found for URI '%s'"
+#~ msgstr "Det gick inte att hitta någon bokmärke för URI:n \"%s\""
+#~ msgid "No MIME type defined in the bookmark for URI '%s'"
+#~ msgstr "Ingen MIME-typ är definierad i bokmärket för URI:n \"%s\""
+#~ msgid "No private flag has been defined in bookmark for URI '%s'"
+#~ msgstr "Ingen privat flagga är definierad i bokmärket för URI:n \"%s\""
+#~ msgid "No groups set in bookmark for URI '%s'"
+#~ msgstr "Inga grupper är angivna i bokmärket för URI:n \"%s\""
+#~ msgid "No application with name '%s' registered a bookmark for '%s'"
+#~ msgstr ""
+#~ "Inget program med namnet %s har registrerat något bokmärke för \"%s\""
+#~ msgid "Default menu and application browser"
+#~ msgstr "Standardbläddrare för menyer och program"
+#~ msgid "GNOME Main Menu"
+#~ msgstr "GNOME-huvudmeny"
+#~ msgid "GNOME Main Menu Factory"
+#~ msgstr "Fabrik för GNOME-huvudmeny"
+#~ msgid "Main Menu"
+#~ msgstr "Huvudmeny"
+#~ msgid "_About"
+#~ msgstr "_Om"
+#~ msgid "_Open Menu"
+#~ msgstr "Öpp_na menyn"
+#~ msgid ".desktop file for the YaST2 network_devices utility"
+#~ msgstr ".desktop-fil för verktyget YaST2 network_devices"
+#~ msgid ".desktop file for the file browser"
+#~ msgstr ".desktop-fil för filbläddraren"
+#~ msgid ".desktop file for the gnome-system-monitor"
+#~ msgstr ".desktop-fil för gnome-systemövervakaren"
+#~ msgid ".desktop file for the net config tool"
+#~ msgstr ".desktop-fil för verktyget net config"
+#~ msgid ".desktop path for the application browser"
+#~ msgstr ".desktop-sökväg för programbläddraren"
+#~ msgid ""
+#~ "This is the command to execute when the \"Open in File Manager\" menu "
+#~ "item is activated."
+#~ msgstr ""
+#~ "Det här är det kommando som ska köras när menyalternativet Öppna i "
+#~ "Filhanteraren aktiveras."
+#~ msgid ""
+#~ "This is the command to execute when the \"Open in File Manager\" menu "
+#~ "item is activated. FILE_URI is replaced with a uri corresponding to the "
+#~ "dirname of the activated file."
+#~ msgstr ""
+#~ "Det här är det kommando som ska köras när menyalternativet Öppna i "
+#~ "Filhanteraren aktiveras. FILE_URI byts ut mot en URI som motsvarar "
+#~ "dirname för den aktiverade filen."
+#~ msgid ""
+#~ "This is the command to execute when the \"Send To...\" menu item is "
+#~ "activated."
+#~ msgstr ""
+#~ "Det här är det kommando som ska köras när menyalternativet Skicka till "
+#~ "aktiveras."
+#~ msgid ""
+#~ "This is the command to execute when the \"Send To...\" menu item is "
+#~ "activated. DIRNAME and BASENAME are replaced with the corresponding "
+#~ "components of the activated tile."
+#~ msgstr ""
+#~ "Det här är det kommando som ska köras när menyalternativet Skicka till "
+#~ "aktiveras. DIRNAME och BASENAME byts ut mot motsvarande komponenter i den "
+#~ "aktiverade plattan."
+#~ msgid "This is the command to execute when the search entry is used."
+#~ msgstr "Det här är det kommando som körs när sökposten används."
+#~ msgid ""
+#~ "This is the command to execute when the search entry is used. "
+#~ "SEARCH_STRING is replaced with the entered search text."
+#~ msgstr ""
+#~ "Det här är kommandot som körs när sökposten används. SEARCH_STRING byts "
+#~ "ut mot den angivna söktexten."
+#~ msgid "command to uninstall packages"
+#~ msgstr "kommando för avinstallation av paket"
+#~ msgid ""
+#~ "command to uninstall packages, PACKAGE_NAME is replaced by the name of "
+#~ "the package in the command"
+#~ msgstr ""
+#~ "kommando för avinstallation av paket, PACKAGE_NAME byts ut mot "
+#~ "paketnamnet i kommandot"
+#~ msgid "command to upgrade packages"
+#~ msgstr "kommando för uppgradering av paket"
+#~ msgid ""
+#~ "command to upgrade packages, PACKAGE_NAME is replaced by the name of the "
+#~ "package in the command"
+#~ msgstr ""
+#~ "kommando för uppgradering av paket, PACKAGE_NAME byts ut mot paketnamnet "
+#~ "i kommandot"
+#~ msgid ""
+#~ "contains the list (in no particular order) of allowable file tables to "
+#~ "show in the file area. possible values: 0 - show the user-specified or "
+#~ "\"Favorite\" applications table, 1 - show the recently used applications "
+#~ "table, 2 - show the user-specified or \"Favorite\" documents table, 3 - "
+#~ "show the recently used documents table, 4 - show the user-specified of "
+#~ "\"Favorite\" directories or \"Places\" table, and 5 - show the recently "
+#~ "used directories or \"Places\" table."
+#~ msgstr ""
+#~ "innehåller listan (ej sorterad) med tillåtna filtabeller som kan visas i "
+#~ "filområdet. Möjliga värden är: 0 - visa de användarspecificerade "
+#~ "programmen (favoritprogram), 1 - visa de senast använda programmen, 2 - "
+#~ "visa användarspecificerade dokument (favoritdokument), 3 - visa de senast "
+#~ "använda dokumenten, 4 - visa användarspecificerade kataloger "
+#~ "(favoritkataloger) eller platser och 5 - visa de senast använda "
+#~ "katalogerna eller platserna."
+#~ msgid ""
+#~ "contains the list of files (including .desktop files) to be excluded from "
+#~ "the \"Recently Used Applications\" and \"Recent Files\" lists"
+#~ msgstr ""
+#~ "innehåller listan med filer (inklusive .desktop-filer) som ska uteslutas "
+#~ "från listorna Senast använda program och Senaste filer"
+#~ msgid "determines the limit of items in the file-area."
+#~ msgstr "bestämmer begränsningen av objekt i filområdet."
+#~ msgid ""
+#~ "determines the limit of items in the file-area. The number favorite items "
+#~ "is not limited. This limit applies to the number of recent items, i.e. "
+#~ "the number of recent items displayed is limited to max_total_items - the "
+#~ "number of favorite items. If the number of favorite items exceeds "
+#~ "max_total_items - min_recent_items than this limit is ignored."
+#~ msgstr ""
+#~ "bestämmer begränsning för objekt i filområdet. Antalet favoritobjekt "
+#~ "påverkas inte. Begränsningen gäller för de senast använda objekten, "
+#~ "vilket betyder att antalet nyligen använda objekt är begränsat till "
+#~ "max_total_items - antalet favoritobjekt. Om antalet favoritobjekt "
+#~ "överskrider max_total_items - min_recent_items ignoreras den här gränsen."
+#~ msgid ""
+#~ "determines the minimum number of items in the \"recent\" section of the "
+#~ "file-area."
+#~ msgstr "bestämmer det minsta antalet objekt i Senaste-delen i filområdet."
+#~ msgid "determines which types of files to display in the file area"
+#~ msgstr "bestämmer vilka filtyper som ska visas i filområdet"
+#~ msgid "if true, main menu is more anxious to close"
+#~ msgstr "om sant är huvudmenyn mer angelägen att stängas"
+#~ msgid ""
+#~ "if true, main menu will close under these additional conditions: tile is "
+#~ "activated, search activated"
+#~ msgstr ""
+#~ "om sant stängs huvudmenyn under dessa ytterligare villkor: platta "
+#~ "aktiveras, sökning aktiveras"
+#~ msgid "lock-down configuration of the file area"
+#~ msgstr "låskonfiguration för filområdet"
+#~ msgid "lock-down status for the application browser link"
+#~ msgstr "låsstatus för programbläddrarlänken"
+#~ msgid "lock-down status for the search area"
+#~ msgstr "låsstatus för sökfältet"
+#~ msgid "lock-down status for the status area"
+#~ msgstr "låsstatus för statusfältet"
+#~ msgid "lock-down status for the system area"
+#~ msgstr "låsstatus för systemfältet"
+#~ msgid "lock-down status for the user-specified apps section"
+#~ msgstr "låsstatus för det användardefinierade programområdet"
+#~ msgid "lock-down status for the user-specified dirs section"
+#~ msgstr "låsstatus för det användardefinierade katalogområdet"
+#~ msgid "lock-down status for the user-specified docs section"
+#~ msgstr "låsstatus för det användardefinierade dokumentområdet"
+#~ msgid "possible values = 0 [Applications], 1 [Documents], 2 [Places]"
+#~ msgstr "möjliga värden = 0 [Program], 1 [Dokument], 2 [Platser]"
+#~ msgid ""
+#~ "set to true if the link to the application browser should be visible and "
+#~ "active."
+#~ msgstr ""
+#~ "ställ in till sant om länken till programbläddraren ska vara synlig och "
+#~ "aktiv."
+#~ msgid "set to true if the search area should be visible and active."
+#~ msgstr "ställ in till sant om sökfältet ska vara synligt och aktivt."
+#~ msgid "set to true if the status area should be visible and active."
+#~ msgstr "ställ in till sant om statusfältet ska vara synligt och aktivt."
+#~ msgid "set to true if the system area should be visible and active."
+#~ msgstr "ställ in till sant om systemfältet ska vara synligt och aktivt."
+#~ msgid ""
+#~ "set to true if the user is allowed to modify the list of system items."
+#~ msgstr ""
+#~ "ställ in till sant om användaren ska tillåtas att redigera listan över "
+#~ "systemobjekt."
+#~ msgid ""
+#~ "set to true if the user is allowed to modify the list of user-specified "
+#~ "or \"Favorite\" applications."
+#~ msgstr ""
+#~ "ställ in till sant om användaren ska tillåtas att redigera listan över "
+#~ "användardefinierade eller \"Favorit\"-program."
+#~ msgid ""
+#~ "set to true if the user is allowed to modify the list of user-specified "
+#~ "or \"Favorite\" directories or \"Places\"."
+#~ msgstr ""
+#~ "ställ in till sant om användaren ska tillåtas att redigera listan över "
+#~ "användardefinierade eller \"Favorit\"-kataloger eller \"Platser\"."
+#~ msgid ""
+#~ "set to true if the user is allowed to modify the list of user-specified "
+#~ "or \"Favorite\" documents."
+#~ msgstr ""
+#~ "ställ in till sant om användaren ska tillåtas att redigera listan över "
+#~ "användardefinierade eller \"Favorit\"-dokument."
+#~ msgid "_System Monitor"
+#~ msgstr "_Systemövervakare"
+#~ msgid "%.1fG"
+#~ msgstr "%.1fG"
+#~ msgid "%.1fM"
+#~ msgstr "%.1fM"
+#~ msgid "%.1fK"
+#~ msgstr "%.1fK"
+#~ msgid "%.1fb"
+#~ msgstr "%.1fb"
+#~ msgid "Home: %s Free / %s"
+#~ msgstr "Hem: %s ledigt / %s"
+#~ msgid "gnome-lockscreen"
+#~ msgstr "gnome-lockscreen"
+#~ msgid "The GNOME Main Menu"
+#~ msgstr "Huvudmenyn i GNOME"
+#~ msgid "Network: None"
+#~ msgstr "Nätverk: Inget"
+#~ msgid "Click to configure network"
+#~ msgstr "Klicka om du vill konfigurera nätverket"
+#~ msgid "Networ_k: None"
+#~ msgstr "Nätver_k: Inget"
+#~ msgid "Connected to: %s"
+#~ msgstr "Ansluten till: %s"
+#~ msgid "Networ_k: Wireless"
+#~ msgstr "Nätver_k: Trådlöst"
+#~ msgid "Using ethernet (%s)"
+#~ msgstr "Ethernet (%s) används"
+#~ msgid "Networ_k: Wired"
+#~ msgstr "Nätver_k: Trådat"
+#~ msgid "Networ_k: GSM"
+#~ msgstr "Nätver_k: GSM"
+#~ msgid "Networ_k: CDMA"
+#~ msgstr "Nätver_k: CDMA"
+#~ msgid "Wireless Ethernet (%s)"
+#~ msgstr "Trådlöst Ethernet (%s)"
+#~ msgid "Wired Ethernet (%s)"
+#~ msgstr "Trådat Ethernet (%s)"
+#~ msgid "Mobile Ethernet (%s)"
+#~ msgstr "Mobilt ethernet (%s)"
+#~ msgid "Unknown"
+#~ msgstr "Okänd"
+#~ msgid "%d Mb/s"
+#~ msgstr "%d Mb/s"
+#~ msgid "Applications"
+#~ msgstr "Program"
+#~ msgid "Computer"
+#~ msgstr "Dator"
+#~ msgid "Favorite Applications"
+#~ msgstr "Favoritprogram"
+#~ msgid "Favorite Documents"
+#~ msgstr "Favoritdokument"
+#~ msgid "Favorite Places"
+#~ msgstr "Favoritplatser"
+#~ msgid "More Applications..."
+#~ msgstr "Fler program..."
+#~ msgid "More Documents..."
+#~ msgstr "Fler dokument..."
+#~ msgid "More Places..."
+#~ msgstr "Fler platser..."
+#~ msgid "Places"
+#~ msgstr "Platser"
+#~ msgid "Recent Applications"
+#~ msgstr "Senaste program"
+#~ msgid "Recent Documents"
+#~ msgstr "Senaste dokument"
+#~ msgid "Search:"
+#~ msgstr "Sökning:"
+#~ msgid "System"
+#~ msgstr "System"
+#~ msgid "Add the current launcher to favorites"
+#~ msgstr "Lägg till det aktuella programmet till favoriter"
+#~ msgid "Add the current document to favorites"
+#~ msgstr "Lägg till det aktuella dokumentet till favoriter"
+#~ msgid "Remove the current document from favorites"
+#~ msgstr "Ta bort det aktuella dokumentet från favoriter"
 #~ msgid "Edited %m/%d/%Y"
 #~ msgstr "Redigerade %Y-%m-%d"
 #~ msgid "Hard _Drive"
