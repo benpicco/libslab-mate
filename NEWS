@@ -1,0 +1,19 @@
+===============
+Version 2.27.91
+===============
+
+  Fixes:
+
+	* Don't assume that libslab controls the main loop (Vincent Untz)
+
+	* Avoid markup in translatable strings (Gabor Kelemen)
+
+	* Libslab can now be made not to install headers, for internal use
+	  in other modules (Vincent Untz)
+
+  Translators:
+
+	* Mario Blättermann, Christian Kirbach (de)
+	* Jorge González (es)
+	* Gabor Kelemen (hu)
+	* Daniel Nylander (sv)
