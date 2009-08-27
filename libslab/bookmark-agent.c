@@ -220,7 +220,7 @@ bookmark_agent_move_item (BookmarkAgent *this, const gchar *uri, const gchar *ur
 }
 
 void
-bookmark_agent_remove_item (BookmarkAgent *this, const gchar *uri)
+bookmark_agent_purge_items (BookmarkAgent *this)
 {
 	BookmarkAgentPrivate *priv = PRIVATE (this);
 
@@ -229,11 +229,44 @@ bookmark_agent_remove_item (BookmarkAgent *this, const gchar *uri)
 	GError *error = NULL;
 
 	gchar **uris = NULL;
-	gint    rank_i;
+	gsize   uris_len;
 	gint    i;
-
-
 	g_return_if_fail (priv->user_modifiable);
+		
+	uris = g_bookmark_file_get_uris (priv->store, &uris_len);
+	if (TYPE_IS_RECENT (priv->type)) {
+		for (i = 0; i < uris_len; i++) {
+			gtk_recent_manager_remove_item (gtk_recent_manager_get_default (), uris [i], & error);
+
+			if (error)
+				libslab_handle_g_error (
+					& error, "%s: unable to remove [%s] from %s.",
+					G_STRFUNC, priv->store_path, uris [i]);
+		}
+	} else {
+		for (i = 0; i < uris_len; i++) {
+			g_bookmark_file_remove_item (priv->store, uris [i], NULL);
+		}
+		save_store (this);
+	}
+	g_strfreev (uris);
+}
+
+void
+bookmark_agent_remove_item (BookmarkAgent *this, const gchar *uri)
+{
+        BookmarkAgentPrivate *priv = PRIVATE (this);
+
+        gint rank;
+
+        GError *error = NULL;
+
+        gchar **uris = NULL;
+        gint    rank_i;
+        gint    i;
+
+
+        g_return_if_fail (priv->user_modifiable);
 
 	if (! bookmark_agent_has_item (this, uri))
 		return;
