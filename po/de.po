@@ -10,9 +10,9 @@ msgstr ""
 "Project-Id-Version: libslab\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "main-menu&component=libslab\n"
-"POT-Creation-Date: 2009-08-25 18:33+0000\n"
-"PO-Revision-Date: 2009-08-24 22:52+0200\n"
-"Last-Translator: Christian Kirbach <Christian.Kirbach@googlemail.com>\n"
+"POT-Creation-Date: 2009-08-28 00:04+0000\n"
+"PO-Revision-Date: 2009-09-04 20:55+0100\n"
+"Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,11 +41,11 @@ msgstr "Aufrüsten"
 msgid "Uninstall"
 msgstr "Deinstallieren"
 
-#: ../libslab/application-tile.c:784 ../libslab/document-tile.c:721
+#: ../libslab/application-tile.c:784 ../libslab/document-tile.c:738
 msgid "Remove from Favorites"
 msgstr "Aus Favoriten entfernen"
 
-#: ../libslab/application-tile.c:786 ../libslab/document-tile.c:723
+#: ../libslab/application-tile.c:786 ../libslab/document-tile.c:740
 msgid "Add to Favorites"
 msgstr "Zu Favoriten hinzufügen"
 
@@ -60,7 +60,7 @@ msgstr "Zu Startprogrammen hinzufügen"
 #: ../libslab/app-shell.c:754
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
-msgstr "Ihr Filter »%s« passt nicht zu irgendwelchen Objekten" 
+msgstr "Ihr Filter »%s« passt nicht zu irgendwelchen Objekten"
 
 #: ../libslab/app-shell.c:756
 msgid "No matches found."
@@ -71,35 +71,35 @@ msgid "Other"
 msgstr "Weitere"
 
 # 60704 AttribValues/label
-#: ../libslab/bookmark-agent.c:1077
+#: ../libslab/bookmark-agent.c:1110
 msgid "New Spreadsheet"
 msgstr "Neue Tabelle"
 
-#: ../libslab/bookmark-agent.c:1082
+#: ../libslab/bookmark-agent.c:1115
 msgid "New Document"
 msgstr "Neues Dokument"
 
-#: ../libslab/bookmark-agent.c:1135
+#: ../libslab/bookmark-agent.c:1168
 msgid "Home"
 msgstr "Persönlicher Ordner"
 
-#: ../libslab/bookmark-agent.c:1140
+#: ../libslab/bookmark-agent.c:1173
 msgid "Documents"
 msgstr "Dokumente"
 
-#: ../libslab/bookmark-agent.c:1146
+#: ../libslab/bookmark-agent.c:1179
 msgid "Desktop"
 msgstr "Desktop"
 
-#: ../libslab/bookmark-agent.c:1153
+#: ../libslab/bookmark-agent.c:1186
 msgid "File System"
 msgstr "Dateisystem"
 
-#: ../libslab/bookmark-agent.c:1157
+#: ../libslab/bookmark-agent.c:1190
 msgid "Network Servers"
 msgstr "Netzwerkserver"
 
-#: ../libslab/bookmark-agent.c:1186
+#: ../libslab/bookmark-agent.c:1219
 msgid "Search"
 msgstr "Suchen"
 
@@ -110,72 +110,83 @@ msgid "<b>Open</b>"
 msgstr "<b>Öffnen</b>"
 
 #. make rename action
-#: ../libslab/directory-tile.c:190 ../libslab/document-tile.c:234
+#: ../libslab/directory-tile.c:190 ../libslab/document-tile.c:236
 msgid "Rename..."
 msgstr "Umbenennen …"
 
 #: ../libslab/directory-tile.c:204 ../libslab/directory-tile.c:213
-#: ../libslab/document-tile.c:248 ../libslab/document-tile.c:257
+#: ../libslab/document-tile.c:250 ../libslab/document-tile.c:259
 msgid "Send To..."
 msgstr "Senden an …"
 
 #. make move to trash action
-#: ../libslab/directory-tile.c:228 ../libslab/document-tile.c:283
+#: ../libslab/directory-tile.c:228 ../libslab/document-tile.c:285
 msgid "Move to Trash"
 msgstr "In den Müll veschieben"
 
 #: ../libslab/directory-tile.c:238 ../libslab/directory-tile.c:457
-#: ../libslab/document-tile.c:293 ../libslab/document-tile.c:837
+#: ../libslab/document-tile.c:295 ../libslab/document-tile.c:854
 msgid "Delete"
 msgstr "Löschen"
 
-#: ../libslab/directory-tile.c:533 ../libslab/document-tile.c:985
+#: ../libslab/directory-tile.c:533 ../libslab/document-tile.c:1016
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Wollen Sie »%s« wirklich dauerhaft löschen?"
 
-#: ../libslab/directory-tile.c:534 ../libslab/document-tile.c:986
+#: ../libslab/directory-tile.c:534 ../libslab/document-tile.c:1017
 msgid "If you delete an item, it is permanently lost."
 msgstr "Wenn Sie einen Eintrag löschen, geht dieser unwiderruflich verloren."
 
-#: ../libslab/document-tile.c:193
+#: ../libslab/document-tile.c:195
 #, c-format
 msgid "Open with \"%s\""
 msgstr "Öffnen mit »%s«"
 
-#: ../libslab/document-tile.c:207
+#: ../libslab/document-tile.c:209
 msgid "Open with Default Application"
 msgstr "Mit Standardanwendung öffnen"
 
-#: ../libslab/document-tile.c:218
+#: ../libslab/document-tile.c:220
 msgid "Open in File Manager"
 msgstr "In Dateiverwaltungsprogramm öffnen"
 
-#: ../libslab/document-tile.c:617
+#. clean item from menu
+#: ../libslab/document-tile.c:304
+#| msgid "Remove from Favorites"
+msgid "Remove from recent menu"
+msgstr "Aus dem aktuellen Menü entfernen"
+
+#. clean all the items from menu
+#: ../libslab/document-tile.c:312
+msgid "Purge all the recent items"
+msgstr "Alle aktuellen Objekte säubern"
+
+#: ../libslab/document-tile.c:634
 msgid "?"
 msgstr "?"
 
-#: ../libslab/document-tile.c:624
+#: ../libslab/document-tile.c:641
 msgid "%l:%M %p"
 msgstr "%H:%M"
 
-#: ../libslab/document-tile.c:632
+#: ../libslab/document-tile.c:649
 msgid "Today %l:%M %p"
 msgstr "Heute %H:%M"
 
-#: ../libslab/document-tile.c:642
+#: ../libslab/document-tile.c:659
 msgid "Yesterday %l:%M %p"
 msgstr "Gestern %H:%M"
 
-#: ../libslab/document-tile.c:654
+#: ../libslab/document-tile.c:671
 msgid "%a %l:%M %p"
 msgstr "%a %H:%M"
 
-#: ../libslab/document-tile.c:662
+#: ../libslab/document-tile.c:679
 msgid "%b %d %l:%M %p"
 msgstr "%d.%b %H:%M"
 
-#: ../libslab/document-tile.c:664
+#: ../libslab/document-tile.c:681
 msgid "%b %d %Y"
 msgstr "%d.%b.%Y"
 
@@ -216,8 +227,7 @@ msgstr "Aus den Systemobjekten entfernen"
 #~ "Gibt an, ob die Shell geschlossen werden soll, wenn eine Hilfeaktion "
 #~ "durchgeführt wird"
 
-#~ msgid ""
-#~ "Indicates whether to close the shell when a start action is performed"
+#~ msgid "Indicates whether to close the shell when a start action is performed"
 #~ msgstr ""
 #~ "Gibt an, ob die Shell geschlossen werden soll, wenn eine Startaktion "
 #~ "durchgeführt wird"
@@ -272,10 +282,10 @@ msgstr "Aus den Systemobjekten entfernen"
 #~ "translated) followed by a \";\" separator then the filename of an "
 #~ "associated .desktop file to launch for that task."
 #~ msgstr ""
-#~ "Der Aufgabenname, der im control-center (Kontrollzentrum) angezeigt "
-#~ "werden soll (und folglich übersetzt werden muss), gefolgt von einem \";\"-"
-#~ "Trennzeichen und den Namen einer verknüpften .desktop-Datei, die für "
-#~ "diese Aufgabe gestartet werden soll."
+#~ "Der Aufgabenname, der im control-center (Kontrollzentrum) angezeigt werden "
+#~ "soll (und folglich übersetzt werden muss), gefolgt von einem \";\"-"
+#~ "Trennzeichen und den Namen einer verknüpften .desktop-Datei, die für diese "
+#~ "Aufgabe gestartet werden soll."
 
 #~ msgid ""
 #~ "[Change Desktop Background;background.desktop,Add Printer;gnome-cups-"
@@ -291,8 +301,8 @@ msgstr "Aus den Systemobjekten entfernen"
 #~ msgid ""
 #~ "if true, the control-center will close when a \"Common Task\" is activated"
 #~ msgstr ""
-#~ "bei 'true' wird das control-center (Kontrollzentrum) bei Aktivierung "
-#~ "einer \"Allgemeinen Aufgabe\" geschlossen"
+#~ "bei 'true' wird das control-center (Kontrollzentrum) bei Aktivierung einer "
+#~ "\"Allgemeinen Aufgabe\" geschlossen"
 
 #~ msgid "key not found [%s]\n"
 #~ msgstr "Schlüssel nicht gefunden [%s]\n"
@@ -311,8 +321,7 @@ msgstr "Aus den Systemobjekten entfernen"
 #~ "\n"
 #~ " Your filter \"<b>%s</b>\" does not match any items.</span>"
 #~ msgstr ""
-#~ "<span size=\"large\"><b>Keine Übereinstimmung gefunden.</b> </"
-#~ "span><span>\n"
+#~ "<span size=\"large\"><b>Keine Übereinstimmung gefunden.</b> </span><span>\n"
 #~ "\n"
 #~ " Ihr Filter \"<b>%s</b>\" stimmt mit keinen Elementen überein.</span>"
 
@@ -381,16 +390,16 @@ msgstr "Aus den Systemobjekten entfernen"
 #~ "Für gesamtes System gültiges Ablegeverzeichnis für Autostart-Programme"
 
 #~ msgid ""
-#~ "This is the command to execute when the \"Open in File Manager\" menu "
-#~ "item is activated."
+#~ "This is the command to execute when the \"Open in File Manager\" menu item "
+#~ "is activated."
 #~ msgstr ""
 #~ "Dies ist der Befehl, der ausgeführt werden soll, wenn die Menüoption \"In "
 #~ "Dateiverwaltungsprogramm öffnen\" aktiviert wird."
 
 #~ msgid ""
-#~ "This is the command to execute when the \"Open in File Manager\" menu "
-#~ "item is activated. FILE_URI is replaced with a uri corresponding to the "
-#~ "dirname of the activated file."
+#~ "This is the command to execute when the \"Open in File Manager\" menu item "
+#~ "is activated. FILE_URI is replaced with a uri corresponding to the dirname "
+#~ "of the activated file."
 #~ msgstr ""
 #~ "Dies ist der Befehl, der ausgeführt werden soll, wenn die Menüoption \"In "
 #~ "Dateiverwaltungsprogramm öffnen\" aktiviert wird. FILE_URI wird durch "
@@ -423,8 +432,7 @@ msgstr "Aus den Systemobjekten entfernen"
 #~ "SEARCH_STRING is replaced with the entered search text."
 #~ msgstr ""
 #~ "Dies ist der Befehl, der ausgeführt werden soll, wenn der Sucheintrag "
-#~ "verwendet wird. SEARCH_STRING wird durch den eingegebenen Suchtext "
-#~ "ersetzt."
+#~ "verwendet wird. SEARCH_STRING wird durch den eingegebenen Suchtext ersetzt."
 
 #~ msgid "User autostart program drop dir (within the home dir)"
 #~ msgstr ""
@@ -435,8 +443,8 @@ msgstr "Aus den Systemobjekten entfernen"
 #~ msgstr "Befehl zur Deinstallation von Paketen"
 
 #~ msgid ""
-#~ "command to uninstall packages, PACKAGE_NAME is replaced by the name of "
-#~ "the package in the command"
+#~ "command to uninstall packages, PACKAGE_NAME is replaced by the name of the "
+#~ "package in the command"
 #~ msgstr ""
 #~ "Befehl zur Deinstallation von Paketen, PACKAGE_NAME wird durch den Namen "
 #~ "des Pakets im Befehl ersetzt"
@@ -649,36 +657,35 @@ msgstr "Aus den Systemobjekten entfernen"
 
 #~ msgid ""
 #~ "The list of the items which will appear in the System area. Possible "
-#~ "values are HELP = 0, CONTROL_CENTER = 1, PACKAGE_MANAGER = 2, LOG_OUT = "
-#~ "3, LOCK_SCREEN = 4. HELP, CONTROL_CENTER and PACKAGE_MANAGER need to the "
-#~ "have the appropriate .desktop files defined in the, respectively, "
-#~ "\"help_item\", \"control_center_item\" and \"package_manager_item\" keys."
+#~ "values are HELP = 0, CONTROL_CENTER = 1, PACKAGE_MANAGER = 2, LOG_OUT = 3, "
+#~ "LOCK_SCREEN = 4. HELP, CONTROL_CENTER and PACKAGE_MANAGER need to the have "
+#~ "the appropriate .desktop files defined in the, respectively, \"help_item"
+#~ "\", \"control_center_item\" and \"package_manager_item\" keys."
 #~ msgstr ""
-#~ "Liste der Elemente, die im Systembereich angezeigt werden. Mögliche "
-#~ "Werte: HELP = 0, CONTROL_CENTER = 1, PACKAGE_MANAGER = 2, LOG_OUT = 3,  "
+#~ "Liste der Elemente, die im Systembereich angezeigt werden. Mögliche Werte: "
+#~ "HELP = 0, CONTROL_CENTER = 1, PACKAGE_MANAGER = 2, LOG_OUT = 3,  "
 #~ "LOCK_SCREEN = 4. HELP, CONTROL_CENTER und PACKAGE_MANAGER; hierfür müssen "
 #~ "die entsprechenden .desktop-Dateien jeweils im Schlüssel \"help_item\",  "
 #~ "\"control_center_item\" und \"package_manager_item\" definiert werden."
 
 #~ msgid ""
-#~ "contains the list (in no particular order) of allowable file types to "
-#~ "show in the file area. possible values (see also the note for /desktop/"
-#~ "gnome/applications/main-menu/file-area/file_class): 0 "
-#~ "[USER_SPECIFIED_APPS], 1 [RECENTLY_USED_APPS], 2 [RECENT_FILES]. "
-#~ "RECENTLY_USED_APPS is the list of recently used (instantiated with the "
-#~ "main-menu or the application-browser). USER_SPECIFIED_APPS is equivalent "
-#~ "to \"Favorite Applications\". RECENT_FILES is the list of files from ~/."
-#~ "recently-used."
+#~ "contains the list (in no particular order) of allowable file types to show "
+#~ "in the file area. possible values (see also the note for /desktop/gnome/"
+#~ "applications/main-menu/file-area/file_class): 0 [USER_SPECIFIED_APPS], 1 "
+#~ "[RECENTLY_USED_APPS], 2 [RECENT_FILES]. RECENTLY_USED_APPS is the list of "
+#~ "recently used (instantiated with the main-menu or the application-"
+#~ "browser). USER_SPECIFIED_APPS is equivalent to \"Favorite Applications\". "
+#~ "RECENT_FILES is the list of files from ~/.recently-used."
 #~ msgstr ""
-#~ "enthält die Liste der zulässigen Dateitypen (keine bestimmte "
-#~ "Reihenfolge), die im Dateibereich angezeigt werden sollen. Mögliche Werte "
-#~ "(beachten Sie auch den Hinweis zu /desktop/gnome/ applications/main-menu/"
-#~ "file-area/file_class): 0 [USER_SPECIFIED_APPS], 1  [RECENTLY_USED_APPS], "
-#~ "2 [RECENT_FILES]. RECENTLY_USED_APPS ist die Liste der zuletzt "
-#~ "verwendeten Anwendungen (Instanziierung mit main-menu (Hauptmenü) oder "
-#~ "application-browser (Application Browser)). USER_SPECIFIED_APPS ist das "
-#~ "Äquivalent zu \"Bevorzugte Anwendungen\". RECENT_FILES ist die Liste der "
-#~ "Dateien aus ~/.recently-used."
+#~ "enthält die Liste der zulässigen Dateitypen (keine bestimmte Reihenfolge), "
+#~ "die im Dateibereich angezeigt werden sollen. Mögliche Werte (beachten Sie "
+#~ "auch den Hinweis zu /desktop/gnome/ applications/main-menu/file-area/"
+#~ "file_class): 0 [USER_SPECIFIED_APPS], 1  [RECENTLY_USED_APPS], 2 "
+#~ "[RECENT_FILES]. RECENTLY_USED_APPS ist die Liste der zuletzt verwendeten "
+#~ "Anwendungen (Instanziierung mit main-menu (Hauptmenü) oder application-"
+#~ "browser (Application Browser)). USER_SPECIFIED_APPS ist das Äquivalent zu "
+#~ "\"Bevorzugte Anwendungen\". RECENT_FILES ist die Liste der Dateien aus ~/."
+#~ "recently-used."
 
 #~ msgid "control center item .desktop file"
 #~ msgstr ".desktop-Datei des Kontrollzentrumelements"
@@ -692,8 +699,8 @@ msgstr "Aus den Systemobjekten entfernen"
 #~ "die file-class (Dateiklasse) USER_SPECIFIED_* lautet."
 
 #~ msgid ""
-#~ "determines the reordering algorithm used when moving tiles around the "
-#~ "main-menu"
+#~ "determines the reordering algorithm used when moving tiles around the main-"
+#~ "menu"
 #~ msgstr ""
 #~ "bestimmt den Algorithmus zur Neuanordnung, wenn Teilbereiche im main-menu "
 #~ "(Hauptmenü) anders positioniert werden"
@@ -706,15 +713,15 @@ msgstr "Aus den Systemobjekten entfernen"
 
 #~ msgid ""
 #~ "possible values = 0 [SWAP], 1 [PUSH], 2 [PUSH_PULL]. SWAP indicates that "
-#~ "when a tile is dragged onto another tile they should simply swap "
-#~ "position. PUSH indicates that when a tile, A, is dragged onto another "
-#~ "tile, B, a vacant spot is created in tile A's place. tile B (and all "
-#~ "tiles after B) shift down until the new vacant space is filled. this "
-#~ "operation wraps around in the case that tile A appears before tile B "
-#~ "prior to the drag and drop operation. PUSH_PULL is similar to PUSH except "
-#~ "that when tiles are shifted they are either pushed into the vacant spaced "
-#~ "or pulled from the other direction, depending on which strategy affects "
-#~ "the least number of tiles."
+#~ "when a tile is dragged onto another tile they should simply swap position. "
+#~ "PUSH indicates that when a tile, A, is dragged onto another tile, B, a "
+#~ "vacant spot is created in tile A's place. tile B (and all tiles after B) "
+#~ "shift down until the new vacant space is filled. this operation wraps "
+#~ "around in the case that tile A appears before tile B prior to the drag and "
+#~ "drop operation. PUSH_PULL is similar to PUSH except that when tiles are "
+#~ "shifted they are either pushed into the vacant spaced or pulled from the "
+#~ "other direction, depending on which strategy affects the least number of "
+#~ "tiles."
 #~ msgstr ""
 #~ "Mögliche Werte = 0 [SWAP], 1 [PUSH], 2 [PUSH_PULL]. SWAP gibt an, dass in "
 #~ "dem Fall, in dem ein Teilbereich auf einen anderen Teilbereich gezogen "
@@ -725,8 +732,8 @@ msgstr "Aus den Systemobjekten entfernen"
 #~ "gefüllt ist. Bei diesem Vorgang kommt es zum Umbruch, wenn sich "
 #~ "Teilbereich vor dem Ziehen und Ablegen vor Teilbereich befand. PUSH_PULL "
 #~ "ist mit PUSH vergleichbar; der Unterschied besteht darin, dass beim "
-#~ "Verschieben von Teilbereichen diese entweder die Lücke füllen oder aus "
-#~ "der anderen Richtung gezogen werden, je nachdem, welche Strategie die "
+#~ "Verschieben von Teilbereichen diese entweder die Lücke füllen oder aus der "
+#~ "anderen Richtung gezogen werden, je nachdem, welche Strategie die "
 #~ "geringste Anzahl an Teilbereichen betrifft."
 
 #~ msgid ""
