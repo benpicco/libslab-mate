@@ -1165,7 +1165,7 @@ create_dir_item (BookmarkAgent *this, const gchar *uri)
 
 	if (! strcmp (uri, "HOME")) {
 		uri_new = g_filename_to_uri (g_get_home_dir (), NULL, NULL);
-		name    = _("Home");
+		name    = C_("Home folder", "Home");
 		icon    = "gnome-fs-home";
 	}
 	else if (! strcmp (uri, "DOCUMENTS")) {
