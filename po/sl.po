@@ -3,14 +3,14 @@
 # Copyright (C) 2001 SuSE GmbH.
 #
 # Janez Krek <janez.krek@euroteh.si>, 2001.
-# Matej Urbančič <mateju@svn.gnome.org>, 2009.
+# Matej Urbančič <mateju@svn.gnome.org>, 2009 - 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: YaST (@memory@)\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-main-menu&component=libslab\n"
-"POT-Creation-Date: 2009-08-28 00:04+0000\n"
-"PO-Revision-Date: 2009-11-25 09:15+0100\n"
+"POT-Creation-Date: 2010-01-04 09:13+0000\n"
+"PO-Revision-Date: 2010-01-05 09:50+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,6 @@ msgstr ""
 #. make start action
 #: ../libslab/application-tile.c:374
 #, c-format
-#| msgid "Status"
 msgid "Start %s"
 msgstr "Zaženi %s"
 
@@ -67,19 +66,20 @@ msgstr "Filter \"%s\" ne ustreza nobenemu predmetu."
 msgid "No matches found."
 msgstr "Ni zadetkov."
 
-#: ../libslab/app-shell.c:905
+#: ../libslab/app-shell.c:907
 msgid "Other"
 msgstr "Ostalo"
 
 #: ../libslab/bookmark-agent.c:1110
 msgid "New Spreadsheet"
-msgstr "Nova razpredelnica"
+msgstr "Nova preglednica"
 
 #: ../libslab/bookmark-agent.c:1115
 msgid "New Document"
 msgstr "Novi dokumenti"
 
 #: ../libslab/bookmark-agent.c:1168
+msgctxt "Home folder"
 msgid "Home"
 msgstr "Domov"
 
@@ -92,7 +92,6 @@ msgid "Desktop"
 msgstr "Namizje"
 
 #: ../libslab/bookmark-agent.c:1186
-#| msgid "System"
 msgid "File System"
 msgstr "Datotečni sistem"
 
@@ -212,3 +211,4 @@ msgstr "<b>Odpri %s</b>"
 #, c-format
 msgid "Remove from System Items"
 msgstr "Odstrani iz sistemskih predmetov"
+
