@@ -8,14 +8,14 @@
 # Javier Moreno <javier.moreno@alufis35.uv.es>, 2000.
 # Jordi Jaen Pallares <jordi@suse.de>, 1999, 2000, 2001.
 # Pablo Iranzo Gómez <Pablo.Iranzo@uv.es>, 2000.
-# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008, 2009.
+# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008, 200, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-main-menu.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "main-menu&component=libslab\n"
-"POT-Creation-Date: 2009-08-28 00:04+0000\n"
-"PO-Revision-Date: 2009-08-30 13:18+0200\n"
+"POT-Creation-Date: 2010-01-04 09:13+0000\n"
+"PO-Revision-Date: 2010-01-06 14:56+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "Su filtro «%s» no coincide con ningún elemento."
 msgid "No matches found."
 msgstr "No se encontró ninguna coincidencia."
 
-#: ../libslab/app-shell.c:905
+#: ../libslab/app-shell.c:907
 msgid "Other"
 msgstr "Otro"
 
@@ -82,8 +82,10 @@ msgid "New Document"
 msgstr "Documento nuevo"
 
 #: ../libslab/bookmark-agent.c:1168
+#| msgid "Home"
+msgctxt "Home folder"
 msgid "Home"
-msgstr "Inicio"
+msgstr "Carpeta personal"
 
 #: ../libslab/bookmark-agent.c:1173
 msgid "Documents"
@@ -156,7 +158,6 @@ msgstr "Abrir en el gestor de archivos"
 
 #. clean item from menu
 #: ../libslab/document-tile.c:304
-#| msgid "Remove from Favorites"
 msgid "Remove from recent menu"
 msgstr "Eliminar del menú recientes"
 
@@ -191,7 +192,7 @@ msgstr "%d %b %H:%M"
 
 #: ../libslab/document-tile.c:681
 msgid "%b %d %Y"
-msgstr "%d %b %Y"
+msgstr "%d de %b de %Y"
 
 # clients/inst_resize_ui.ycp:637
 # clients/inst_resize_ui.ycp:637
