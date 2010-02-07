@@ -1103,7 +1103,9 @@ create_doc_item (BookmarkAgent *this, const gchar *uri)
 
 
 	if (! (strcmp (uri, "BLANK_SPREADSHEET") && strcmp (uri, "BLANK_DOCUMENT"))) {
-		dir = g_build_filename (g_get_home_dir (), "Documents", NULL);
+		dir = g_strdup (g_get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS));
+		if (! dir)
+			dir = g_build_filename (g_get_home_dir (), "Documents", NULL);
 
 		if (! strcmp (uri, "BLANK_SPREADSHEET")) {
 			g_bookmark_file_set_title (priv->store, uri, "BLANK_SPREADSHEET");
@@ -1169,13 +1171,17 @@ create_dir_item (BookmarkAgent *this, const gchar *uri)
 		icon    = "user-home";
 	}
 	else if (! strcmp (uri, "DOCUMENTS")) {
-		path = g_build_filename (g_get_home_dir (), "Documents", NULL);
+		path = g_strdup (g_get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS));
+		if (! path)
+			path = g_build_filename (g_get_home_dir (), "Documents", NULL);
 		name = _("Documents");
 		uri_new = g_filename_to_uri (path, NULL, NULL);
 		g_free (path);
 	}
 	else if (! strcmp (uri, "DESKTOP")) {
-		path = g_build_filename (g_get_home_dir (), "Desktop", NULL);
+		path = g_strdup (g_get_user_special_dir (G_USER_DIRECTORY_DESKTOP));
+		if (! path)
+			path = g_build_filename (g_get_home_dir (), "Desktop", NULL);
 		name = _("Desktop");
 		uri_new = g_filename_to_uri (path, NULL, NULL);
 		icon = "user-desktop";
