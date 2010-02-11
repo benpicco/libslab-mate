@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libslab master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-main-menu&component=libslab\n"
 "POT-Creation-Date: 2010-01-04 09:13+0000\n"
-"PO-Revision-Date: 2010-01-22 01:46+0100\n"
+"PO-Revision-Date: 2010-02-11 14:44+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at fsf dot hu>\n"
 "MIME-Version: 1.0\n"
@@ -108,12 +108,12 @@ msgstr "<b>Megnyitás</b>"
 #. make rename action
 #: ../libslab/directory-tile.c:190 ../libslab/document-tile.c:236
 msgid "Rename..."
-msgstr "Átnevezés..."
+msgstr "Átnevezés…"
 
 #: ../libslab/directory-tile.c:204 ../libslab/directory-tile.c:213
 #: ../libslab/document-tile.c:250 ../libslab/document-tile.c:259
 msgid "Send To..."
-msgstr "Küldés..."
+msgstr "Küldés…"
 
 #. make move to trash action
 #: ../libslab/directory-tile.c:228 ../libslab/document-tile.c:285
@@ -164,27 +164,27 @@ msgstr "?"
 
 #: ../libslab/document-tile.c:641
 msgid "%l:%M %p"
-msgstr "%l.%M %p"
+msgstr "%p %l.%M"
 
 #: ../libslab/document-tile.c:649
 msgid "Today %l:%M %p"
-msgstr "Ma %l.%M %P"
+msgstr "Ma %p %l.%M"
 
 #: ../libslab/document-tile.c:659
 msgid "Yesterday %l:%M %p"
-msgstr "Tegnap %l.%M %P"
+msgstr "Tegnap %p %l.%M"
 
 #: ../libslab/document-tile.c:671
 msgid "%a %l:%M %p"
-msgstr "%a., %k.%M"
+msgstr "%a %p, %l.%M"
 
 #: ../libslab/document-tile.c:679
 msgid "%b %d %l:%M %p"
-msgstr "%b. %e., %k.%M"
+msgstr "%b %e. %p, %l.%M"
 
 #: ../libslab/document-tile.c:681
 msgid "%b %d %Y"
-msgstr "%Y %b. %d"
+msgstr "%Y %b. %e"
 
 #: ../libslab/search-bar.c:255
 msgid "Find Now"
