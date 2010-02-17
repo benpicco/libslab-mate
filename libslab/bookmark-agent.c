@@ -1166,7 +1166,7 @@ create_dir_item (BookmarkAgent *this, const gchar *uri)
 	if (! strcmp (uri, "HOME")) {
 		uri_new = g_filename_to_uri (g_get_home_dir (), NULL, NULL);
 		name    = C_("Home folder", "Home");
-		icon    = "gnome-fs-home";
+		icon    = "user-home";
 	}
 	else if (! strcmp (uri, "DOCUMENTS")) {
 		path = g_build_filename (g_get_home_dir (), "Documents", NULL);
@@ -1178,7 +1178,7 @@ create_dir_item (BookmarkAgent *this, const gchar *uri)
 		path = g_build_filename (g_get_home_dir (), "Desktop", NULL);
 		name = _("Desktop");
 		uri_new = g_filename_to_uri (path, NULL, NULL);
-		icon = "gnome-fs-desktop";
+		icon = "user-desktop";
 		g_free (path);
 	}
 	else if (! strcmp (uri, "file:///")) {

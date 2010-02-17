@@ -442,7 +442,7 @@ load_image (DocumentTile *tile)
 		if (priv->force_icon_name)
 			icon_id = priv->force_icon_name;
 		else
-			icon_id = "gnome-fs-regular";
+			icon_id = "text-x-preview";
 		free_icon_id = FALSE;
 
 		goto exit;
