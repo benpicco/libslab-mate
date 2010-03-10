@@ -871,6 +871,8 @@ generate_categories (AppShellData * app_data)
 	root_dir = gmenu_tree_get_root_directory (app_data->tree);
 	if (root_dir)
 		contents = gmenu_tree_directory_get_contents (root_dir);
+	else
+		contents = NULL;
 	if (!root_dir || !contents)
 	{
 		GtkWidget *dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_DESTROY_WITH_PARENT,

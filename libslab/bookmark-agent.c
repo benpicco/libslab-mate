@@ -224,8 +224,6 @@ bookmark_agent_purge_items (BookmarkAgent *this)
 {
 	BookmarkAgentPrivate *priv = PRIVATE (this);
 
-	gint rank;
-
 	GError *error = NULL;
 
 	gchar **uris = NULL;
@@ -1167,7 +1165,7 @@ create_dir_item (BookmarkAgent *this, const gchar *uri)
 
 	if (! strcmp (uri, "HOME")) {
 		uri_new = g_filename_to_uri (g_get_home_dir (), NULL, NULL);
-		name    = C_("Home folder", "Home");
+		name    = g_strdup (C_("Home folder", "Home"));
 		icon    = "user-home";
 	}
 	else if (! strcmp (uri, "DOCUMENTS")) {
