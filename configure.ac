@@ -7,6 +7,9 @@ AM_MAINTAINER_MODE
 
 AC_CONFIG_HEADERS([config.h])
 
+# Enable silent build when available (Automake 1.11)
+m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
+
 # Before making a release, the LT_VERSION string should be modified.
 # The string is of the form C:R:A.
 # - If interfaces have been changed or added, but binary compatibility has

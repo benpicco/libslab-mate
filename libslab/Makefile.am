@@ -67,7 +67,7 @@ endif
 libslab_la_LIBADD = $(LIBSLAB_LIBS)
 
 search-entry-watermark.h: search-entry-watermark.svg
-	echo '#define SEARCH_ENTRY_WATERMARK_SVG "\' > $@; \
+	$(AM_V_GEN) echo '#define SEARCH_ENTRY_WATERMARK_SVG "\' > $@; \
 	sed -e 's/"/\\"/g' -e 's/$$/\\/' -e 's/#000000/#%s/g' $< >> $@; \
 	echo '"' >> $@
 
@@ -75,12 +75,12 @@ search-entry-watermark.h: search-entry-watermark.svg
 MARSHAL_GENERATED = nld-marshal.c nld-marshal.h
 
 nld-marshal.h: nld-marshal.list
-	( @GLIB_GENMARSHAL@ --prefix=nld_marshal $(srcdir)/nld-marshal.list --header > nld-marshal.tmp \
+	$(AM_V_GEN) ( @GLIB_GENMARSHAL@ --prefix=nld_marshal $(srcdir)/nld-marshal.list --header > nld-marshal.tmp \
 	&& mv nld-marshal.tmp nld-marshal.h ) \
 	|| ( rm -f nld-marshal.tmp && exit 1 )
 
 nld-marshal.c: nld-marshal.h
-	( (echo '#include "nld-marshal.h"'; @GLIB_GENMARSHAL@ --prefix=nld_marshal $(srcdir)/nld-marshal.list --body) > nld-marshal.tmp \
+	$(AM_V_GEN) ( (echo '#include "nld-marshal.h"'; @GLIB_GENMARSHAL@ --prefix=nld_marshal $(srcdir)/nld-marshal.list --body) > nld-marshal.tmp \
 	&& mv nld-marshal.tmp nld-marshal.c ) \
 	|| ( rm -f nld-marshal.tmp && exit 1 )
 
