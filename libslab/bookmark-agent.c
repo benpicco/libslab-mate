@@ -1155,8 +1155,8 @@ create_dir_item (BookmarkAgent *this, const gchar *uri)
 
 	gchar *uri_new = NULL;
 	gchar *path;
-	gchar *name = NULL;
-	gchar *icon = NULL;
+	const gchar *name = NULL;
+	const gchar *icon = NULL;
 
 	gchar *buf;
 	gchar *tag_open_ptr  = NULL;
@@ -1165,7 +1165,7 @@ create_dir_item (BookmarkAgent *this, const gchar *uri)
 
 	if (! strcmp (uri, "HOME")) {
 		uri_new = g_filename_to_uri (g_get_home_dir (), NULL, NULL);
-		name    = g_strdup (C_("Home folder", "Home"));
+		name    = C_("Home folder", "Home");
 		icon    = "user-home";
 	}
 	else if (! strcmp (uri, "DOCUMENTS")) {
@@ -1235,6 +1235,9 @@ create_dir_item (BookmarkAgent *this, const gchar *uri)
 		g_bookmark_file_move_item (priv->store, uri, uri_new, NULL);
 
 	g_free (uri_new);
+
+	if (search_string)
+		g_free (search_string);
 }
 
 static void
