@@ -1053,7 +1053,7 @@ user_docs_trigger (Tile *tile, TileEvent *event, TileAction *action)
 
 
 	if (priv->is_bookmarked)
-		bookmark_agent_remove_item (priv->agent, tile->uri);
+                bookmark_agent_remove_item (bookmark_agent_get_instance (BOOKMARK_STORE_USER_DOCS), tile->uri);
 	else {
 		item = g_new0 (BookmarkItem, 1);
 		item->uri       = tile->uri;
@@ -1064,7 +1064,7 @@ user_docs_trigger (Tile *tile, TileEvent *event, TileAction *action)
 			item->app_exec  = (gchar *) g_app_info_get_executable (priv->default_app);
 		}
 
-		bookmark_agent_add_item (priv->agent, item);
+                bookmark_agent_add_item (bookmark_agent_get_instance (BOOKMARK_STORE_USER_DOCS), item);
 		g_free (item);
 	}
 
