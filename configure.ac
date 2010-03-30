@@ -1,4 +1,4 @@
-AC_INIT([libslab], [2.29.0],
+AC_INIT([libslab], [2.30.0],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=FIXME])
 AC_CONFIG_SRCDIR([libslab])
 
@@ -18,7 +18,7 @@ m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 #   change to C+1:0:0
 # - If the interface is the same as the previous version, change to C:R+1:A
 
-LT_VERSION=1:2:1
+LT_VERSION=2:0:2
 AC_SUBST(LT_VERSION)
 
 dnl make sure we keep ACLOCAL_FLAGS around for maintainer builds to work

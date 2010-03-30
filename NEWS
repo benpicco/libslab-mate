@@ -1,3 +1,43 @@
+==============
+Version 2.30.0
+==============
+
+  Features:
+
+	* Let one clear the recent-documents list (David Liang)
+
+  Fixes:
+
+	* Fix displayed strings to not leak markup to the user (Jens Granseuer)
+	* Translate 'Home' with context macro (Claude Paroz)
+	* Use standard icon names (Matthias Clasen)
+	* Use XDG user directories instead of hardcoding $HOME/Documents,
+	  Desktop (Julian Andres Klode)
+	* Use setpgid() instead of setpgrp() for portability (Alexis Ballier)
+	* Wrap long header labels in ApplicationTile (Denis Washington)
+	* Fix build warnings (Bastien Nocera, Vincent)
+	* Fix redraw issue after starting applications (Ming Xi Wu)
+
+  Misc
+
+	* Use non-verbose build by default (Bastien Nocera)
+
+  Translators:
+
+	* Francoise Lermen (br)
+	* Marek Černocký (cs)
+	* Joe Hansen (da)
+	* Mario Blättermann (de)
+	* Jorge González (es)
+	* Iñaki Larrañaga Murgoitio (eu)
+	* Claude Paroz (fr)
+	* Gabor Kelemen (hu)
+	* Tomasz Dominikowski (pl)
+	* Carlos Manuel (pt)
+	* Matej Urbančič (sl)
+	* Daniel Nylander (sv)
+	* YunQiang Su (zh_CN)
+
 ===============
 Version 2.27.91
 ===============
