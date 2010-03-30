@@ -321,6 +321,7 @@ tile_clicked (GtkButton * widget)
 
 	gtk_button_released (widget);
 	g_free (tile_event);
+        gtk_button_leave (widget);
 }
 
 static gboolean
@@ -352,6 +353,9 @@ tile_expose (GtkWidget * widget, GdkEventExpose * event)
 
 	if ((has_focus = GTK_WIDGET_HAS_FOCUS (widget)))
 		GTK_WIDGET_UNSET_FLAGS (widget, GTK_HAS_FOCUS);
+
+        if (TILE (widget)->entered == FALSE)
+                gtk_widget_set_state (widget, GTK_STATE_NORMAL);
 
 	retval = (*GTK_WIDGET_CLASS (tile_parent_class)->expose_event) (widget, event);
 
