@@ -12,10 +12,14 @@
       <foaf:name>Federico Mena Quintero</foaf:name>
       <gnome:userid>federico</gnome:userid>
     </foaf:Person>
+  </maintainer>
+  <maintainer>
     <foaf:Person>
       <foaf:name>Scott Reeves</foaf:name>
       <gnome:userid>sreeves</gnome:userid>
     </foaf:Person>
+  </maintainer>
+  <maintainer>
     <foaf:Person>
       <foaf:name>Magnus Boman</foaf:name>
       <gnome:userid>mboman</gnome:userid>
