@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: YaST (@memory@)\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-main-menu&component=libslab\n"
 "POT-Creation-Date: 2010-01-04 09:13+0000\n"
-"PO-Revision-Date: 2010-01-05 09:50+0100\n"
+"PO-Revision-Date: 2010-04-29 19:26+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: ../libslab/application-tile.c:374
 #, c-format
 msgid "Start %s"
-msgstr "Zaženi %s"
+msgstr "Začni %s"
 
 #: ../libslab/application-tile.c:395
 msgid "Help"
@@ -180,11 +180,11 @@ msgstr "%H:%M"
 
 #: ../libslab/document-tile.c:649
 msgid "Today %l:%M %p"
-msgstr "Danes %H:%M"
+msgstr "Danes, %H:%M"
 
 #: ../libslab/document-tile.c:659
 msgid "Yesterday %l:%M %p"
-msgstr "Včeraj %H:%M"
+msgstr "Včeraj, %H:%M"
 
 #: ../libslab/document-tile.c:671
 msgid "%a %l:%M %p"
@@ -200,7 +200,7 @@ msgstr "%d. %b %Y"
 
 #: ../libslab/search-bar.c:255
 msgid "Find Now"
-msgstr "Poišči takoj"
+msgstr "Najdi takoj"
 
 #: ../libslab/system-tile.c:127
 #, c-format
