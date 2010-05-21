@@ -300,7 +300,7 @@ tile_enter (GtkButton * widget)
 static void
 tile_leave (GtkButton * widget)
 {
-	if (GTK_WIDGET_HAS_FOCUS (widget))
+	if (gtk_widget_has_focus (GTK_WIDGET (widget)))
 		gtk_widget_set_state (GTK_WIDGET (widget), TILE_STATE_FOCUSED);
 	else
 		gtk_widget_set_state (GTK_WIDGET (widget), GTK_STATE_NORMAL);
@@ -351,7 +351,8 @@ tile_expose (GtkWidget * widget, GdkEventExpose * event)
 	gboolean has_focus;
 	gboolean retval;
 
-	if ((has_focus = GTK_WIDGET_HAS_FOCUS (widget)))
+	has_focus = gtk_widget_has_focus (widget);
+	if (has_focus)
 		GTK_WIDGET_UNSET_FLAGS (widget, GTK_HAS_FOCUS);
 
         if (TILE (widget)->entered == FALSE)
@@ -440,7 +441,7 @@ tile_popup_menu_position (GtkMenu * menu, gint * x, gint * y, gboolean * push_in
 	GtkRequisition req;
 	GtkWidget *top;
 
-	if (!GTK_WIDGET_REALIZED (tile))
+	if (!gtk_widget_get_realized (GTK_WIDGET (tile)))
 		return;
 
 	gtk_widget_size_request (GTK_WIDGET (menu), &req);

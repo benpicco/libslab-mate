@@ -25,6 +25,7 @@ dnl make sure we keep ACLOCAL_FLAGS around for maintainer builds to work
 AC_SUBST(ACLOCAL_AMFLAGS, "\${ACLOCAL_FLAGS}")
 
 GNOME_COMPILE_WARNINGS
+GNOME_MAINTAINER_MODE_DEFINES
 
 AC_ISC_POSIX
 AC_PROG_CC
@@ -47,7 +48,7 @@ dnl Check that we meet the dependencies
 dnl ==============================================
 
 GLIB_REQUIRED=2.18.0
-GTK_REQUIRED=2.14.0
+GTK_REQUIRED=2.20.0
 
 AM_PATH_GLIB_2_0($GLIB_REQUIRED,,,gobject)
 

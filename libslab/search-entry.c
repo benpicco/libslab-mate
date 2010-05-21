@@ -96,7 +96,7 @@ nld_search_entry_realize (GtkWidget * widget)
 		return;
 	priv->height = height - 2;
 
-	gdkcolor = &widget->style->fg[GTK_WIDGET_STATE (widget)];
+	gdkcolor = &widget->style->fg[gtk_widget_get_state (widget)];
 	snprintf (color, 6, "%02x%02x%02x", gdkcolor->red >> 8, gdkcolor->green >> 8,
 		gdkcolor->blue >> 8);
 	svg = g_strdup_printf (SEARCH_ENTRY_WATERMARK_SVG, color, color);
@@ -130,7 +130,7 @@ nld_search_entry_expose_event (GtkWidget * widget, GdkEventExpose * event)
 		}
 		else
 			x = 1;
-		gdk_draw_pixbuf (event->window, widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
+		gdk_draw_pixbuf (event->window, widget->style->fg_gc[gtk_widget_get_state (widget)],
 			priv->watermark, 0, 0, x, 1, priv->width, priv->height,
 			GDK_RGB_DITHER_NORMAL, 0, 0);
 	}

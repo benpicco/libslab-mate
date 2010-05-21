@@ -1,7 +1,8 @@
 INCLUDES =					\
 	-I$(top_srcdir)				\
 	$(LIBSLAB_CFLAGS)			\
-	$(WARN_CFLAGS)
+	$(WARN_CFLAGS)				\
+	$(DISABLE_DEPRECATED)
 
 
 HEADER_FILES=					\
