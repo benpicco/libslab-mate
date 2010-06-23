@@ -262,6 +262,8 @@ nameplate_tile_drag_begin (GtkWidget * widget, GdkDragContext * context)
 {
 	NameplateTile *this = NAMEPLATE_TILE (widget);
 	GtkImage *image;
+	GtkImageType storage_type;
+	GdkPixbuf *pixbuf;
 
 	(*GTK_WIDGET_CLASS (nameplate_tile_parent_class)->drag_begin) (widget, context);
 
@@ -269,12 +271,14 @@ nameplate_tile_drag_begin (GtkWidget * widget, GdkDragContext * context)
 		return;
 
 	image = GTK_IMAGE (this->image);
+	storage_type = gtk_image_get_storage_type (image);
 
-	switch (image->storage_type)
+	switch (storage_type)
 	{
 	case GTK_IMAGE_PIXBUF:
-		if (image->data.pixbuf.pixbuf)
-			gtk_drag_set_icon_pixbuf (context, image->data.pixbuf.pixbuf, 0, 0);
+		pixbuf = gtk_image_get_pixbuf (image);
+		if (pixbuf)
+			gtk_drag_set_icon_pixbuf (context, pixbuf, 0, 0);
 
 		break;
 

@@ -87,6 +87,7 @@ static void
 shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisition,
 	AppShellData * app_data)
 {
+	GtkRequisition child_requisition;
 	gint height;
 
 	/*
@@ -98,15 +99,14 @@ shell_window_handle_size_request (GtkWidget * widget, GtkRequisition * requisiti
 	printf("right side width:%d\n", GTK_WIDGET(APP_RESIZER(app_data->category_layout)->child)->requisition.width);
 	*/
 
-	requisition->width +=
-		GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child)->requisition.width;
+	gtk_widget_get_requisition (GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child),
+	                            &child_requisition);
+	requisition->width += child_requisition.width;
 
 	/* use the left side as a minimum height, if the right side is taller,
 	   use it up to SIZING_HEIGHT_PERCENT of the screen height
 	*/
-	height =
-		GTK_WIDGET (APP_RESIZER (app_data->category_layout)->child)->requisition.height +
-		10;
+	height = child_requisition.height + 10;
 	if (height > requisition->height)
 	{
 		requisition->height =
@@ -134,14 +134,20 @@ gboolean
 shell_window_paint_window (GtkWidget * widget, GdkEventExpose * event, gpointer data)
 {
 	GtkWidget *left_pane, *right_pane;
+	GtkAllocation allocation;
 
 	left_pane = SHELL_WINDOW (widget)->_left_pane;
 	right_pane = SHELL_WINDOW (widget)->_right_pane;
 
+	gtk_widget_get_allocation (left_pane, &allocation);
+
 	/* draw left pane background */
-	gtk_paint_flat_box (widget->style, widget->window, widget->state, GTK_SHADOW_NONE, NULL, widget, "",
-		left_pane->allocation.x, left_pane->allocation.y, left_pane->allocation.width,
-		left_pane->allocation.height);
+	gtk_paint_flat_box (gtk_widget_get_style (widget),
+	                    gtk_widget_get_window (widget),
+	                    gtk_widget_get_state (widget),
+	                    GTK_SHADOW_NONE, NULL, widget, "",
+	                    allocation.x, allocation.y,
+	                    allocation.width, allocation.height);
 
 	return FALSE;
 }

@@ -48,19 +48,23 @@ slab_section_finalize (GObject * obj)
 static void
 slab_section_set_title_color (GtkWidget * widget)
 {
+	GtkStyle *style;
+
+	style = gtk_widget_get_style (widget);
+
 	switch (SLAB_SECTION (widget)->style)
 	{
 	case Style1:
 		gtk_widget_modify_fg (SLAB_SECTION (widget)->title, GTK_STATE_NORMAL,
-			&widget->style->bg[GTK_STATE_SELECTED]);
+		                      &style->bg[GTK_STATE_SELECTED]);
 		break;
 	case Style2:
 		if (SLAB_SECTION (widget)->selected)
 			gtk_widget_modify_fg (SLAB_SECTION (widget)->title, GTK_STATE_NORMAL,
-				&widget->style->dark[GTK_STATE_SELECTED]);
+			                      &style->dark[GTK_STATE_SELECTED]);
 		else
 			gtk_widget_modify_fg (SLAB_SECTION (widget)->title, GTK_STATE_NORMAL,
-				&widget->style->text[GTK_STATE_INSENSITIVE]);
+			                      &style->text[GTK_STATE_INSENSITIVE]);
 		break;
 	default:
 		g_assert_not_reached ();

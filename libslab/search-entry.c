@@ -90,13 +90,14 @@ nld_search_entry_realize (GtkWidget * widget)
 
 	GTK_WIDGET_CLASS (nld_search_entry_parent_class)->realize (widget);
 
-	gdk_window_get_geometry (GTK_ENTRY (widget)->text_area, NULL, NULL, NULL, &height, NULL);
+	gdk_window_get_geometry (gtk_entry_get_text_window (GTK_ENTRY (widget)),
+	                         NULL, NULL, NULL, &height, NULL);
 
 	if (height - 2 == priv->height)
 		return;
 	priv->height = height - 2;
 
-	gdkcolor = &widget->style->fg[gtk_widget_get_state (widget)];
+	gdkcolor = &gtk_widget_get_style (widget)->fg[gtk_widget_get_state (widget)];
 	snprintf (color, 6, "%02x%02x%02x", gdkcolor->red >> 8, gdkcolor->green >> 8,
 		gdkcolor->blue >> 8);
 	svg = g_strdup_printf (SEARCH_ENTRY_WATERMARK_SVG, color, color);
@@ -119,7 +120,7 @@ nld_search_entry_expose_event (GtkWidget * widget, GdkEventExpose * event)
 	NldSearchEntryPrivate *priv = NLD_SEARCH_ENTRY_GET_PRIVATE (widget);
 	GTK_WIDGET_CLASS (nld_search_entry_parent_class)->expose_event (widget, event);
 
-	if (event->window == GTK_ENTRY (widget)->text_area)
+	if (event->window == gtk_entry_get_text_window (GTK_ENTRY (widget)))
 	{
 		int width, height, x;
 
@@ -130,7 +131,7 @@ nld_search_entry_expose_event (GtkWidget * widget, GdkEventExpose * event)
 		}
 		else
 			x = 1;
-		gdk_draw_pixbuf (event->window, widget->style->fg_gc[gtk_widget_get_state (widget)],
+		gdk_draw_pixbuf (event->window, gtk_widget_get_style (widget)->fg_gc[gtk_widget_get_state (widget)],
 			priv->watermark, 0, 0, x, 1, priv->width, priv->height,
 			GDK_RGB_DITHER_NORMAL, 0, 0);
 	}

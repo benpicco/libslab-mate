@@ -713,7 +713,7 @@ create_subheader (const gchar *desc)
 	gtk_label_set_ellipsize (GTK_LABEL (subheader), PANGO_ELLIPSIZE_END);
 	gtk_misc_set_alignment (GTK_MISC (subheader), 0.0, 0.5);
 	gtk_widget_modify_fg (subheader, GTK_STATE_NORMAL,
-		&subheader->style->fg[GTK_STATE_INSENSITIVE]);
+		&gtk_widget_get_style (subheader)->fg[GTK_STATE_INSENSITIVE]);
 
 	return subheader;
 }

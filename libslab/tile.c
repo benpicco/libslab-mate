@@ -440,6 +440,7 @@ tile_popup_menu_position (GtkMenu * menu, gint * x, gint * y, gboolean * push_in
 
 	GtkRequisition req;
 	GtkWidget *top;
+	GtkAllocation allocation;
 
 	if (!gtk_widget_get_realized (GTK_WIDGET (tile)))
 		return;
@@ -448,10 +449,11 @@ tile_popup_menu_position (GtkMenu * menu, gint * x, gint * y, gboolean * push_in
 
 	top = gtk_widget_get_toplevel (GTK_WIDGET (tile));
 
-	gdk_window_get_origin (top->window, x, y);
+	gdk_window_get_origin (gtk_widget_get_window (top), x, y);
 
-	*x += (top->allocation.width / 2) - (req.width / 2);
-	*y += (top->allocation.height / 2) - (req.height / 2);
+	gtk_widget_get_allocation (top, &allocation);
+	*x += (allocation.width / 2) - (req.width / 2);
+	*y += (allocation.height / 2) - (req.height / 2);
 
 	*push_in = FALSE;
 }
