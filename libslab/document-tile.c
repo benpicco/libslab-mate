@@ -78,7 +78,6 @@ typedef struct
 
 	GtkBin *header_bin;
 
-	gboolean image_is_broken;
 	gchar * force_icon_name;  //show an icon instead of a thumbnail
 
 	gboolean delete_enabled;
@@ -379,7 +378,6 @@ document_tile_init (DocumentTile *tile)
 
 	priv->header_bin       = NULL;
 
-	priv->image_is_broken  = TRUE;
 	priv->force_icon_name  = NULL;
 
 	priv->delete_enabled   = FALSE;
@@ -461,8 +459,7 @@ load_image (DocumentTile *tile)
 
 exit:
 
-	priv->image_is_broken = slab_load_image (
-		GTK_IMAGE (NAMEPLATE_TILE (tile)->image), GTK_ICON_SIZE_DND, icon_id);
+	slab_load_image (GTK_IMAGE (NAMEPLATE_TILE (tile)->image), GTK_ICON_SIZE_DND, icon_id);
 
 	if (free_icon_id && icon_id)
 		g_free (icon_id);

@@ -77,7 +77,6 @@ typedef struct {
 	GnomeDesktopItem *desktop_item;
 
 	gchar       *image_id;
-	gboolean     image_is_broken;
 	GtkIconSize  image_size;
 
 	gboolean show_generic_name;
@@ -183,7 +182,6 @@ application_tile_init (ApplicationTile *tile)
 
 	priv->desktop_item    = NULL;
 	priv->image_id        = NULL;
-	priv->image_is_broken = TRUE;
 
 	priv->agent            = NULL;
 	priv->agent_status     = BOOKMARK_STORE_ABSENT;

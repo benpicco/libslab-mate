@@ -51,7 +51,6 @@ typedef struct {
 	gulong               notify_signal_id;
 	
 	gchar    *image_id;
-	gboolean  image_is_broken;
 } SystemTilePrivate;
 
 #define PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), SYSTEM_TILE_TYPE, SystemTilePrivate))
@@ -190,7 +189,6 @@ system_tile_init (SystemTile *this)
 
 	priv->desktop_item    = NULL;
 	priv->image_id        = NULL;
-	priv->image_is_broken = TRUE;
 
 	priv->agent            = NULL;
 	priv->agent_status     = BOOKMARK_STORE_ABSENT;
@@ -227,7 +225,7 @@ load_image (SystemTile *this)
 
 	g_object_set (G_OBJECT (image), "icon-size", GTK_ICON_SIZE_MENU, NULL);
 
-	priv->image_is_broken = libslab_gtk_image_set_by_id (image, priv->image_id);
+	libslab_gtk_image_set_by_id (image, priv->image_id);
 }
 
 static GtkWidget *

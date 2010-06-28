@@ -69,8 +69,6 @@ typedef struct
 	GtkBin *header_bin;
 	GAppInfo *default_app;
 	
-	gboolean image_is_broken;
-	
 	gboolean delete_enabled;
 	guint gconf_conn_id;
 } DirectoryTilePrivate;
@@ -288,7 +286,6 @@ directory_tile_init (DirectoryTile *tile)
 	priv->header_bin = NULL;
 	priv->icon_name = NULL;
 	priv->mime_type = NULL;
-	priv->image_is_broken = TRUE;
 	priv->delete_enabled = FALSE;
 	priv->gconf_conn_id = 0;
 }
@@ -334,8 +331,7 @@ load_image (DirectoryTile *tile)
 	else
 		icon_name = "folder";
 
-	priv->image_is_broken = slab_load_image (
-		GTK_IMAGE (NAMEPLATE_TILE (tile)->image), GTK_ICON_SIZE_DND, icon_name);
+	slab_load_image (GTK_IMAGE (NAMEPLATE_TILE (tile)->image), GTK_ICON_SIZE_DND, icon_name);
 }
 
 static GtkWidget *
