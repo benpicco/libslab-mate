@@ -87,7 +87,7 @@ nld_search_bar_init (NldSearchBar * search_bar)
 	GtkWidget *alignment;
 	GtkWidget *entry;
 
-	GTK_WIDGET_SET_FLAGS (search_bar, GTK_CAN_FOCUS);
+	gtk_widget_set_can_focus (GTK_WIDGET (search_bar), TRUE);
 
 	priv->hbox = gtk_hbox_new (FALSE, 3);
 	gtk_box_pack_start (GTK_BOX (search_bar), priv->hbox, TRUE, FALSE, 0);
