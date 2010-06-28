@@ -432,7 +432,7 @@ load_image (DocumentTile *tile)
 	gchar *icon_id = NULL;
 	gboolean free_icon_id = TRUE;
 	GnomeDesktopThumbnailFactory *thumbnail_factory;
-	GIcon *icon;
+	GIcon *icon = NULL;
 
 	libslab_checkpoint ("document-tile.c: load_image(): start for %s", TILE (tile)->uri);
 
@@ -453,16 +453,19 @@ load_image (DocumentTile *tile)
 	if (! icon_id) {
 		icon = g_content_type_get_icon (priv->mime_type);
 		g_object_get (icon, "name", &icon_id, NULL);
-
-		g_object_unref (icon);
 	}	
 
 exit:
 
-	slab_load_image (GTK_IMAGE (NAMEPLATE_TILE (tile)->image), GTK_ICON_SIZE_DND, icon_id);
+	if (icon_id)
+		slab_load_image (GTK_IMAGE (NAMEPLATE_TILE (tile)->image), GTK_ICON_SIZE_DND, icon_id);
+	else if (icon)
+		gtk_image_set_from_gicon (GTK_IMAGE (NAMEPLATE_TILE (tile)->image), icon, GTK_ICON_SIZE_DND);
 
 	if (free_icon_id && icon_id)
 		g_free (icon_id);
+	if (icon)
+		g_object_unref (icon);
 
 	libslab_checkpoint ("document-tile.c: load_image(): end");
 }
