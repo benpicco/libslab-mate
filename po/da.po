@@ -1,9 +1,6 @@
 # Danish translation for libslab.
-# Copyright (C) 2005 SUSE Linux Products GmbH.
-# Copyright (C) 2002 SuSE Linux AG.
-# Copyright (C) 2001 SuSE GmbH.
+# Copyright (C) 2010 libslab & nedenstående oversættere.
 # This file is distributed under the same license as the libslab package.
-#
 # H. Merethe Eriksen <djinni@mail1.stofanet.dk>, 2001.
 # Ib Larsen <i.la@tele2adsl.dk>, 2006.
 # Martin Schlander <suse@linuxin.dk>, 2006.
@@ -15,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libslab\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-16 17:28+0100\n"
-"PO-Revision-Date: 2010-01-14 08:49+0200\n"
+"POT-Creation-Date: 2010-10-05 17:46+0200\n"
+"PO-Revision-Date: 2010-10-02 08:49+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -25,49 +22,49 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. make start action
-#: ../libslab/application-tile.c:374
+#: ../libslab/application-tile.c:372
 #, c-format
 msgid "Start %s"
 msgstr "Start %s"
 
-#: ../libslab/application-tile.c:395
+#: ../libslab/application-tile.c:393
 msgid "Help"
 msgstr "Hjælp"
 
-#: ../libslab/application-tile.c:442
+#: ../libslab/application-tile.c:440
 msgid "Upgrade"
 msgstr "Opgradér"
 
-#: ../libslab/application-tile.c:457
+#: ../libslab/application-tile.c:455
 msgid "Uninstall"
 msgstr "Afinstallér"
 
-#: ../libslab/application-tile.c:784 ../libslab/document-tile.c:738
+#: ../libslab/application-tile.c:782 ../libslab/document-tile.c:738
 msgid "Remove from Favorites"
 msgstr "Fjern fra favoritter"
 
-#: ../libslab/application-tile.c:786 ../libslab/document-tile.c:740
+#: ../libslab/application-tile.c:784 ../libslab/document-tile.c:740
 msgid "Add to Favorites"
 msgstr "Tilføj til favoritter"
 
-#: ../libslab/application-tile.c:871
+#: ../libslab/application-tile.c:869
 msgid "Remove from Startup Programs"
 msgstr "Fjern fra opstartsprogrammer"
 
-#: ../libslab/application-tile.c:873
+#: ../libslab/application-tile.c:871
 msgid "Add to Startup Programs"
 msgstr "Tilføj til opstartsprogrammer"
 
-#: ../libslab/app-shell.c:754
+#: ../libslab/app-shell.c:756
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
 msgstr "Dit filter \"%s\" svarer ikke overens med nogen elementer."
 
-#: ../libslab/app-shell.c:756
+#: ../libslab/app-shell.c:758
 msgid "No matches found."
 msgstr "Ingen resultater."
 
-#: ../libslab/app-shell.c:907
+#: ../libslab/app-shell.c:911
 msgid "Other"
 msgstr "Andre"
 
@@ -80,87 +77,86 @@ msgid "New Document"
 msgstr "Nyt dokument"
 
 #: ../libslab/bookmark-agent.c:1168
-#, fuzzy
 msgctxt "Home folder"
 msgid "Home"
 msgstr "Hjem"
 
-#: ../libslab/bookmark-agent.c:1173
+#: ../libslab/bookmark-agent.c:1175
 msgid "Documents"
 msgstr "Dokumenter"
 
-#: ../libslab/bookmark-agent.c:1179
+#: ../libslab/bookmark-agent.c:1183
 msgid "Desktop"
 msgstr "Skrivebord"
 
-#: ../libslab/bookmark-agent.c:1186
+#: ../libslab/bookmark-agent.c:1190
 msgid "File System"
 msgstr "Filsystem"
 
-#: ../libslab/bookmark-agent.c:1190
+#: ../libslab/bookmark-agent.c:1194
 msgid "Network Servers"
 msgstr "Netværksservere"
 
-#: ../libslab/bookmark-agent.c:1219
+#: ../libslab/bookmark-agent.c:1223
 msgid "Search"
 msgstr "Søg"
 
 #. make open with default action
-#: ../libslab/directory-tile.c:171
+#: ../libslab/directory-tile.c:169
 #, c-format
 msgid "<b>Open</b>"
 msgstr "<b>Åbn</b>"
 
 #
 #. make rename action
-#: ../libslab/directory-tile.c:190 ../libslab/document-tile.c:236
+#: ../libslab/directory-tile.c:188 ../libslab/document-tile.c:235
 msgid "Rename..."
 msgstr "Omdøb..."
 
-#: ../libslab/directory-tile.c:204 ../libslab/directory-tile.c:213
-#: ../libslab/document-tile.c:250 ../libslab/document-tile.c:259
+#: ../libslab/directory-tile.c:202 ../libslab/directory-tile.c:211
+#: ../libslab/document-tile.c:249 ../libslab/document-tile.c:258
 msgid "Send To..."
 msgstr "Send til..."
 
 #. make move to trash action
-#: ../libslab/directory-tile.c:228 ../libslab/document-tile.c:285
+#: ../libslab/directory-tile.c:226 ../libslab/document-tile.c:284
 msgid "Move to Trash"
 msgstr "Flyt til affald"
 
-#: ../libslab/directory-tile.c:238 ../libslab/directory-tile.c:457
-#: ../libslab/document-tile.c:295 ../libslab/document-tile.c:854
+#: ../libslab/directory-tile.c:236 ../libslab/directory-tile.c:453
+#: ../libslab/document-tile.c:294 ../libslab/document-tile.c:854
 msgid "Delete"
 msgstr "Slet"
 
-#: ../libslab/directory-tile.c:533 ../libslab/document-tile.c:1016
+#: ../libslab/directory-tile.c:529 ../libslab/document-tile.c:1016
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Er du sikker på, at du permanent ønsker at slette \"%s\"?"
 
-#: ../libslab/directory-tile.c:534 ../libslab/document-tile.c:1017
+#: ../libslab/directory-tile.c:530 ../libslab/document-tile.c:1017
 msgid "If you delete an item, it is permanently lost."
 msgstr "Hvis du sletter et element, er det tabt for evigt."
 
-#: ../libslab/document-tile.c:195
+#: ../libslab/document-tile.c:194
 #, c-format
 msgid "Open with \"%s\""
 msgstr "Åbn med \"%s\""
 
-#: ../libslab/document-tile.c:209
+#: ../libslab/document-tile.c:208
 msgid "Open with Default Application"
 msgstr "Åbn med standardprogram"
 
-#: ../libslab/document-tile.c:220
+#: ../libslab/document-tile.c:219
 msgid "Open in File Manager"
 msgstr "Åbn i filhåndtering"
 
 #. clean item from menu
-#: ../libslab/document-tile.c:304
+#: ../libslab/document-tile.c:303
 msgid "Remove from recent menu"
 msgstr "Fjern fra menuen Seneste"
 
 #. clean all the items from menu
-#: ../libslab/document-tile.c:312
+#: ../libslab/document-tile.c:311
 msgid "Purge all the recent items"
 msgstr "Fjern alle seneste elementer"
 
@@ -211,12 +207,12 @@ msgstr "%d. %b %Y"
 msgid "Find Now"
 msgstr "Find nu"
 
-#: ../libslab/system-tile.c:127
+#: ../libslab/system-tile.c:126
 #, c-format
 msgid "<b>Open %s</b>"
 msgstr "<b>Åbn %s</b>"
 
-#: ../libslab/system-tile.c:140
+#: ../libslab/system-tile.c:139
 #, c-format
 msgid "Remove from System Items"
 msgstr "Fjern fra systemelementer"
