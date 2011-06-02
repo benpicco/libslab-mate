@@ -1,5 +1,6 @@
 INCLUDES =					\
 	-I$(top_srcdir)				\
+	-DLOCALE_DIR=\""$(localedir)"\"		\
 	$(LIBSLAB_CFLAGS)			\
 	$(WARN_CFLAGS)				\
 	$(DISABLE_DEPRECATED)

@@ -137,5 +137,7 @@ void hide_shell (AppShellData * app_data);
 
 void show_shell (AppShellData * app_data);
 
+void initialize_i18n (void);
+
 G_END_DECLS
 #endif /* __APP_SHELL_H__ */

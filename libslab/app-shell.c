@@ -847,6 +847,8 @@ AppShellData *
 appshelldata_new (const gchar * menu_name, NewAppConfig * new_apps, const gchar * gconf_keys_prefix,
 	GtkIconSize icon_size, gboolean show_tile_generic_name, gboolean exit_on_close)
 {
+	initialize_i18n ();
+
 	AppShellData *app_data = g_new0 (AppShellData, 1);
 	app_data->gconf_prefix = gconf_keys_prefix;
 	app_data->new_apps = new_apps;
@@ -1412,4 +1414,17 @@ handle_menu_action_performed (Tile * launcher, TileEvent * event, TileAction * a
 	}
 	else
 		g_warning ("Unknown Action");
+}
+
+void
+initialize_i18n (void)
+{
+	static gboolean initialized = FALSE;
+
+	if (!initialized)
+	{
+		bindtextdomain (GETTEXT_PACKAGE, LOCALE_DIR);
+		bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+		initialized = TRUE;
+	}
 }
