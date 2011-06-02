@@ -353,7 +353,7 @@ tile_expose (GtkWidget * widget, GdkEventExpose * event)
 
 	has_focus = gtk_widget_has_focus (widget);
 	if (has_focus)
-		GTK_WIDGET_UNSET_FLAGS (widget, GTK_HAS_FOCUS);
+		gtk_widget_set_can_focus (widget, FALSE);
 
         if (TILE (widget)->entered == FALSE)
                 gtk_widget_set_state (widget, GTK_STATE_NORMAL);
@@ -361,7 +361,7 @@ tile_expose (GtkWidget * widget, GdkEventExpose * event)
 	retval = (*GTK_WIDGET_CLASS (tile_parent_class)->expose_event) (widget, event);
 
 	if (has_focus)
-		GTK_WIDGET_SET_FLAGS (widget, GTK_HAS_FOCUS);
+		gtk_widget_set_can_focus (widget, TRUE);
 
 	return retval;
 }
