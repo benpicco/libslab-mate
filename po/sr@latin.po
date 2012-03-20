@@ -3,7 +3,7 @@
 # Copyright (C) 2004 SuSE Linux AG.
 # Rade Radenkovic <rrade@tesla.rcub.bg.ac.yu>, 2004
 # Bojan Jovanovic <bojov@fon.bg.ac.yu>, 2004
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012.
+# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: YaST2 (@memory@)\n"
@@ -11,7 +11,7 @@ msgstr ""
 "main-menu&component=libslab\n"
 "POT-Creation-Date: 2010-01-04 09:13+0000\n"
 "PO-Revision-Date: 2012-03-20 02:24+0200\n"
-"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
@@ -27,145 +27,145 @@ msgstr ""
 #, c-format
 #| msgid "Status"
 msgid "Start %s"
-msgstr "Покрени %s"
+msgstr "Pokreni %s"
 
 #  popup heading
 #: ../libslab/application-tile.c:395
 msgid "Help"
-msgstr "Помоћ"
+msgstr "Pomoć"
 
 #  Proposal for installation mode
 #: ../libslab/application-tile.c:442
 msgid "Upgrade"
-msgstr "Надогради"
+msgstr "Nadogradi"
 
 #: ../libslab/application-tile.c:457
 msgid "Uninstall"
-msgstr "Уклони"
+msgstr "Ukloni"
 
 #  translators: command line help text for remove action
 #: ../libslab/application-tile.c:784 ../libslab/document-tile.c:738
 msgid "Remove from Favorites"
-msgstr "Уклоните из омиљених"
+msgstr "Uklonite iz omiljenih"
 
 #: ../libslab/application-tile.c:786 ../libslab/document-tile.c:740
 msgid "Add to Favorites"
-msgstr "Додај у омиљене"
+msgstr "Dodaj u omiljene"
 
 #: ../libslab/application-tile.c:871
 msgid "Remove from Startup Programs"
-msgstr "Уклони из почетних програма"
+msgstr "Ukloni iz početnih programa"
 
 #: ../libslab/application-tile.c:873
 msgid "Add to Startup Programs"
-msgstr "Додај у почетне програме"
+msgstr "Dodaj u početne programe"
 
 #: ../libslab/app-shell.c:754
 #, c-format
 msgid "Your filter \"%s\" does not match any items."
-msgstr "Ваш филтер „%s“ не поклапа ни једну ставку."
+msgstr "Vaš filter „%s“ ne poklapa ni jednu stavku."
 
 #: ../libslab/app-shell.c:756
 msgid "No matches found."
-msgstr "Нема поклапања."
+msgstr "Nema poklapanja."
 
 #: ../libslab/app-shell.c:907
 msgid "Other"
-msgstr "Друго"
+msgstr "Drugo"
 
 #: ../libslab/bookmark-agent.c:1110
 msgid "New Spreadsheet"
-msgstr "Нова таблица"
+msgstr "Nova tablica"
 
 #: ../libslab/bookmark-agent.c:1115
 msgid "New Document"
-msgstr "Нови документ"
+msgstr "Novi dokument"
 
 #: ../libslab/bookmark-agent.c:1168
 msgctxt "Home folder"
 msgid "Home"
-msgstr "Личнo"
+msgstr "Lično"
 
 #: ../libslab/bookmark-agent.c:1173
 msgid "Documents"
-msgstr "Документи"
+msgstr "Dokumenti"
 
 #: ../libslab/bookmark-agent.c:1179
 msgid "Desktop"
-msgstr "Радна површ"
+msgstr "Radna površ"
 
 #: ../libslab/bookmark-agent.c:1186
 #| msgid "System"
 msgid "File System"
-msgstr "Систем датотека"
+msgstr "Sistem datoteka"
 
 #  table header
 #: ../libslab/bookmark-agent.c:1190
 msgid "Network Servers"
-msgstr "Мрежни сервери"
+msgstr "Mrežni serveri"
 
 #: ../libslab/bookmark-agent.c:1219
 msgid "Search"
-msgstr "Потражи"
+msgstr "Potraži"
 
 #. make open with default action
 #: ../libslab/directory-tile.c:171
 #, c-format
 msgid "<b>Open</b>"
-msgstr "<b>Отвори</b>"
+msgstr "<b>Otvori</b>"
 
 #. make rename action
 #: ../libslab/directory-tile.c:190 ../libslab/document-tile.c:236
 msgid "Rename..."
-msgstr "Преименуј..."
+msgstr "Preimenuj..."
 
 #: ../libslab/directory-tile.c:204 ../libslab/directory-tile.c:213
 #: ../libslab/document-tile.c:250 ../libslab/document-tile.c:259
 msgid "Send To..."
-msgstr "Пошаљи..."
+msgstr "Pošalji..."
 
 #. make move to trash action
 #: ../libslab/directory-tile.c:228 ../libslab/document-tile.c:285
 msgid "Move to Trash"
-msgstr "Премести у смеће"
+msgstr "Premesti u smeće"
 
 #: ../libslab/directory-tile.c:238 ../libslab/directory-tile.c:457
 #: ../libslab/document-tile.c:295 ../libslab/document-tile.c:854
 msgid "Delete"
-msgstr "Обриши"
+msgstr "Obriši"
 
 #: ../libslab/directory-tile.c:533 ../libslab/document-tile.c:1016
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "Сигурно желите да трајно уклоните „%s“?"
+msgstr "Sigurno želite da trajno uklonite „%s“?"
 
 #: ../libslab/directory-tile.c:534 ../libslab/document-tile.c:1017
 msgid "If you delete an item, it is permanently lost."
-msgstr "Уколико обришете неку ставку, биће заувек изгубљена."
+msgstr "Ukoliko obrišete neku stavku, biće zauvek izgubljena."
 
 #: ../libslab/document-tile.c:195
 #, c-format
 msgid "Open with \"%s\""
-msgstr "Отвори програмом „%s“"
+msgstr "Otvori programom „%s“"
 
 #: ../libslab/document-tile.c:209
 msgid "Open with Default Application"
-msgstr "Отвори основним програмом"
+msgstr "Otvori osnovnim programom"
 
 #: ../libslab/document-tile.c:220
 msgid "Open in File Manager"
-msgstr "Отвори у управнику датотека"
+msgstr "Otvori u upravniku datoteka"
 
 #  translators: command line help text for remove action
 #. clean item from menu
 #: ../libslab/document-tile.c:304
 msgid "Remove from recent menu"
-msgstr "Уклања из скорашњег изборника"
+msgstr "Uklanja iz skorašnjeg izbornika"
 
 #. clean all the items from menu
 #: ../libslab/document-tile.c:312
 msgid "Purge all the recent items"
-msgstr "Избацује све скорашње ставке"
+msgstr "Izbacuje sve skorašnje stavke"
 
 #: ../libslab/document-tile.c:634
 msgid "?"
@@ -177,11 +177,11 @@ msgstr "%l:%M %p"
 
 #: ../libslab/document-tile.c:649
 msgid "Today %l:%M %p"
-msgstr "Данас у %l:%M %p"
+msgstr "Danas u %l:%M %p"
 
 #: ../libslab/document-tile.c:659
 msgid "Yesterday %l:%M %p"
-msgstr "Јуче у %l:%M %p"
+msgstr "Juče u %l:%M %p"
 
 #: ../libslab/document-tile.c:671
 msgid "%a %l:%M %p"
@@ -199,18 +199,18 @@ msgstr "%d %b %Y"
 #  Shortcut must not conflict with Finish and Next (#29960)
 #: ../libslab/search-bar.c:255
 msgid "Find Now"
-msgstr "Пронађи сада"
+msgstr "Pronađi sada"
 
 #: ../libslab/system-tile.c:127
 #, c-format
 msgid "<b>Open %s</b>"
-msgstr "<b>Отвори %s</b>"
+msgstr "<b>Otvori %s</b>"
 
 #  translators: command line help text for remove action
 #: ../libslab/system-tile.c:140
 #, c-format
 msgid "Remove from System Items"
-msgstr "Уклони из системских ставки"
+msgstr "Ukloni iz sistemskih stavki"
 
 #, fuzzy
 #~ msgid "Application Browser"
@@ -253,7 +253,7 @@ msgstr "Уклони из системских ставки"
 #~ msgstr "Redosled"
 
 #~ msgid "_About"
-#~ msgstr "_О програму"
+#~ msgstr "_O programu"
 
 #  entry of bootloader menu - only a-z, A-Z, 0-9, _ and blank space
 #  are allowed, otherwise translartion won't be used
@@ -303,7 +303,7 @@ msgstr "Уклони из системских ставки"
 
 #, fuzzy
 #~ msgid "Applications"
-#~ msgstr "Програм:"
+#~ msgstr "Program:"
 
 #, fuzzy
 #~ msgid "Computer"
