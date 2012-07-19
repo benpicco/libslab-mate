@@ -24,8 +24,8 @@ AC_SUBST(LT_VERSION)
 dnl make sure we keep ACLOCAL_FLAGS around for maintainer builds to work
 AC_SUBST(ACLOCAL_AMFLAGS, "\${ACLOCAL_FLAGS}")
 
-GNOME_COMPILE_WARNINGS
-GNOME_MAINTAINER_MODE_DEFINES
+MATE_COMPILE_WARNINGS
+MATE_MAINTAINER_MODE_DEFINES
 
 AC_ISC_POSIX
 AC_PROG_CC
@@ -57,10 +57,10 @@ MODULES="glib-2.0 >= $GLIB_REQUIRED	\
 	 gobject-2.0			\
 	 gtk+-2.0 >= $GTK_REQUIRED	\
 	 gdk-2.0     			\
-	 gnome-desktop-2.0		\
+	 mate-desktop-2.0		\
 	 librsvg-2.0			\
-	 gconf-2.0			\
-	 libgnome-menu"
+	 mateconf-2.0			\
+	 libmate-menu"
 
 PKG_CHECK_MODULES(LIBSLAB, [ $MODULES ])
 

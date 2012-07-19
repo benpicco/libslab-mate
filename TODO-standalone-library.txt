@@ -1,6 +1,6 @@
 This is a TO-DO file for turning libslab into a standalone library.
-It used to be that libslab was a subdirectory of the gnome-main-menu
-module, and other users like gnome-control-center would simply include
+It used to be that libslab was a subdirectory of the mate-main-menu
+module, and other users like mate-control-center would simply include
 it as an svn:external.
 
 However, with the move from Subversion to Git, and because libslab is
@@ -11,5 +11,5 @@ code that gets magically included in other projects.
 
 === Users of libslab ===
 
-+ Remove the assumption in gnome-control-center that libslab is an
++ Remove the assumption in mate-control-center that libslab is an
   svn:external, and make it use libslab as a stand-alone library.

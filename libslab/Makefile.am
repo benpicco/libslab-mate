@@ -15,14 +15,14 @@ HEADER_FILES=					\
 	directory-tile.h			\
 	document-tile.h				\
 	double-click-detector.h			\
-	gnome-utils.h				\
+	mate-utils.h				\
 	libslab-utils.h				\
 	nameplate-tile.h			\
 	search-bar.h				\
 	search-context-picker.h			\
 	search-entry.h				\
 	shell-window.h				\
-	slab-gnome-util.h			\
+	slab-mate-util.h			\
 	slab-section.h				\
 	slab.h					\
 	system-tile.h				\
@@ -43,7 +43,7 @@ libslab_la_SOURCES =				\
 	directory-tile.c			\
 	document-tile.c				\
 	double-click-detector.c			\
-	gnome-utils.c				\
+	mate-utils.c				\
 	libslab-utils.c				\
 	nameplate-tile.c			\
 	search-bar.c				\
@@ -51,7 +51,7 @@ libslab_la_SOURCES =				\
 	search-entry-watermark.h		\
 	search-entry.c				\
 	shell-window.c				\
-	slab-gnome-util.c			\
+	slab-mate-util.c			\
 	slab-section.c				\
 	system-tile.c				\
 	themed-icon.c				\

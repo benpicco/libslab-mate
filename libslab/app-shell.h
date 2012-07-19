@@ -23,9 +23,9 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
-#define GMENU_I_KNOW_THIS_IS_UNSTABLE
-#include <gmenu-tree.h>
-#include <libgnome/gnome-desktop-item.h>
+#define MATEMENU_I_KNOW_THIS_IS_UNSTABLE
+#include <matemenu-tree.h>
+#include <libmate/mate-desktop-item.h>
 
 #include <libslab/slab-section.h>
 #include <libslab/tile.h>
@@ -80,10 +80,10 @@ typedef struct _AppShellData
 	Tile *last_clicked_launcher;
 	SlabSection *selected_group;
 	GtkIconSize icon_size;
-	const gchar *gconf_prefix;
+	const gchar *mateconf_prefix;
 	const gchar *menu_name;
 	NewAppConfig *new_apps;
-	GMenuTree *tree;
+	MateMenuTree *tree;
 	GHashTable *hash;
 
 	guint filter_changed_timeout;
@@ -110,20 +110,20 @@ typedef struct
 typedef struct
 {
 	const gchar *name;
-	GnomeDesktopItem *item;
+	MateDesktopItem *item;
 } AppAction;
 
 typedef struct
 {
 	long time;
-	GnomeDesktopItem *item;
+	MateDesktopItem *item;
 } NewAppData;
 
 void generate_categories (AppShellData * app_data);
 
 /* If new_apps is NULL then the new applications category is not created */
 AppShellData *appshelldata_new (const gchar * menu_name, NewAppConfig * new_apps,
-	const gchar * gconf_keys_prefix, GtkIconSize icon_size,
+	const gchar * mateconf_keys_prefix, GtkIconSize icon_size,
 	gboolean show_tile_generic_name, gboolean exit_on_close);
 
 void layout_shell (AppShellData * app_data, const gchar * filter_title, const gchar * groups_title,

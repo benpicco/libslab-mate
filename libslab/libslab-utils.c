@@ -11,7 +11,7 @@
 #include <sys/stat.h>
 #include <sys/resource.h>
 #include <sys/time.h>
-#include <gconf/gconf-value.h>
+#include <mateconf/mateconf-value.h>
 #include <gtk/gtk.h>
 
 #define DESKTOP_ITEM_TERMINAL_EMULATOR_FLAG "TerminalEmulator"
@@ -88,10 +88,10 @@ libslab_gtk_image_set_by_id (GtkImage *image, const gchar *id)
 	return found;
 }
 
-GnomeDesktopItem *
-libslab_gnome_desktop_item_new_from_unknown_id (const gchar *id)
+MateDesktopItem *
+libslab_mate_desktop_item_new_from_unknown_id (const gchar *id)
 {
-	GnomeDesktopItem *item;
+	MateDesktopItem *item;
 	gchar            *basename;
 
 	GError *error = NULL;
@@ -100,7 +100,7 @@ libslab_gnome_desktop_item_new_from_unknown_id (const gchar *id)
 	if (! id)
 		return NULL;
 
-	item = gnome_desktop_item_new_from_uri (id, 0, & error);
+	item = mate_desktop_item_new_from_uri (id, 0, & error);
 
 	if (! error)
 		return item;
@@ -109,7 +109,7 @@ libslab_gnome_desktop_item_new_from_unknown_id (const gchar *id)
 		error = NULL;
 	}
 
-	item = gnome_desktop_item_new_from_file (id, 0, & error);
+	item = mate_desktop_item_new_from_file (id, 0, & error);
 
 	if (! error)
 		return item;
@@ -118,7 +118,7 @@ libslab_gnome_desktop_item_new_from_unknown_id (const gchar *id)
 		error = NULL;
 	}
 
-	item = gnome_desktop_item_new_from_basename (id, 0, & error);
+	item = mate_desktop_item_new_from_basename (id, 0, & error);
 
 	if (! error)
 		return item;
@@ -132,7 +132,7 @@ libslab_gnome_desktop_item_new_from_unknown_id (const gchar *id)
 	if (basename) {
 		basename++;
 
-		item = gnome_desktop_item_new_from_basename (basename, 0, &error);
+		item = mate_desktop_item_new_from_basename (basename, 0, &error);
 
 		if (! error)
 			return item;
@@ -146,18 +146,18 @@ libslab_gnome_desktop_item_new_from_unknown_id (const gchar *id)
 }
 
 gboolean
-libslab_gnome_desktop_item_launch_default (GnomeDesktopItem *item)
+libslab_mate_desktop_item_launch_default (MateDesktopItem *item)
 {
 	GError *error = NULL;
 
 	if (! item)
 		return FALSE;
 
-	gnome_desktop_item_launch (item, NULL, GNOME_DESKTOP_ITEM_LAUNCH_ONLY_ONE, & error);
+	mate_desktop_item_launch (item, NULL, MATE_DESKTOP_ITEM_LAUNCH_ONLY_ONE, & error);
 
 	if (error) {
 		g_warning ("error launching %s [%s]\n",
-			gnome_desktop_item_get_location (item), error->message);
+			mate_desktop_item_get_location (item), error->message);
 
 		g_error_free (error);
 
@@ -168,14 +168,14 @@ libslab_gnome_desktop_item_launch_default (GnomeDesktopItem *item)
 }
 
 gchar *
-libslab_gnome_desktop_item_get_docpath (GnomeDesktopItem *item)
+libslab_mate_desktop_item_get_docpath (MateDesktopItem *item)
 {
 	gchar *path;
 
-	path = g_strdup (gnome_desktop_item_get_localestring (item, GNOME_DESKTOP_ITEM_DOC_PATH));
+	path = g_strdup (mate_desktop_item_get_localestring (item, MATE_DESKTOP_ITEM_DOC_PATH));
 
 	if (! path)
-		path = g_strdup (gnome_desktop_item_get_localestring (item, ALTERNATE_DOCPATH_KEY));
+		path = g_strdup (mate_desktop_item_get_localestring (item, ALTERNATE_DOCPATH_KEY));
 
 	return path;
 }
@@ -204,7 +204,7 @@ libslab_get_current_screen (void)
 }
 
 gboolean
-libslab_gnome_desktop_item_open_help (GnomeDesktopItem *item)
+libslab_mate_desktop_item_open_help (MateDesktopItem *item)
 {
 	gchar *doc_path;
 	gchar *help_uri;
@@ -217,7 +217,7 @@ libslab_gnome_desktop_item_open_help (GnomeDesktopItem *item)
 	if (! item)
 		return retval;
 
-	doc_path = libslab_gnome_desktop_item_get_docpath (item);
+	doc_path = libslab_mate_desktop_item_get_docpath (item);
 
 	if (doc_path) {
 		help_uri = g_strdup_printf ("ghelp:%s", doc_path);
@@ -274,10 +274,10 @@ libslab_strlen (const gchar *a)
 }
 
 gpointer
-libslab_get_gconf_value (const gchar *key)
+libslab_get_mateconf_value (const gchar *key)
 {
-	GConfClient *client;
-	GConfValue  *value;
+	MateConfClient *client;
+	MateConfValue  *value;
 	GError      *error = NULL;
 
 	gpointer retval = NULL;
@@ -285,44 +285,44 @@ libslab_get_gconf_value (const gchar *key)
 	GList  *list;
 	GSList *slist;
 
-	GConfValue *value_i;
+	MateConfValue *value_i;
 	GSList     *node;
 
 
-	client = gconf_client_get_default ();
-	value  = gconf_client_get (client, key, & error);
+	client = mateconf_client_get_default ();
+	value  = mateconf_client_get (client, key, & error);
 
 	if (error || ! value)
 		libslab_handle_g_error (& error, "%s: error getting %s", G_STRFUNC, key);
 	else {
 		switch (value->type) {
-			case GCONF_VALUE_STRING:
-				retval = (gpointer) g_strdup (gconf_value_get_string (value));
+			case MATECONF_VALUE_STRING:
+				retval = (gpointer) g_strdup (mateconf_value_get_string (value));
 				break;
 
-			case GCONF_VALUE_INT:
-				retval = GINT_TO_POINTER (gconf_value_get_int (value));
+			case MATECONF_VALUE_INT:
+				retval = GINT_TO_POINTER (mateconf_value_get_int (value));
 				break;
 
-			case GCONF_VALUE_BOOL:
-				retval = GINT_TO_POINTER (gconf_value_get_bool (value));
+			case MATECONF_VALUE_BOOL:
+				retval = GINT_TO_POINTER (mateconf_value_get_bool (value));
 				break;
 
-			case GCONF_VALUE_LIST:
+			case MATECONF_VALUE_LIST:
 				list = NULL;
-				slist = gconf_value_get_list (value);
+				slist = mateconf_value_get_list (value);
 
 				for (node = slist; node; node = node->next) {
-					value_i = (GConfValue *) node->data;
+					value_i = (MateConfValue *) node->data;
 
-					if (value_i->type == GCONF_VALUE_STRING)
+					if (value_i->type == MATECONF_VALUE_STRING)
 						list = g_list_append (
 							list, g_strdup (
-								gconf_value_get_string (value_i)));
-					else if (value_i->type == GCONF_VALUE_INT)
+								mateconf_value_get_string (value_i)));
+					else if (value_i->type == MATECONF_VALUE_INT)
 						list = g_list_append (
 							list, GINT_TO_POINTER (
-								gconf_value_get_int (value_i)));
+								mateconf_value_get_int (value_i)));
 					else
 						;
 				}
@@ -339,30 +339,30 @@ libslab_get_gconf_value (const gchar *key)
 	g_object_unref (client);
 
 	if (value)
-		gconf_value_free (value);
+		mateconf_value_free (value);
 
 	return retval;
 }
 
 void
-libslab_set_gconf_value (const gchar *key, gconstpointer data)
+libslab_set_mateconf_value (const gchar *key, gconstpointer data)
 {
-	GConfClient *client;
-	GConfValue  *value;
+	MateConfClient *client;
+	MateConfValue  *value;
 
-	GConfValueType type;
-	GConfValueType list_type;
+	MateConfValueType type;
+	MateConfValueType list_type;
 
 	GSList *slist = NULL;
 
 	GError *error = NULL;
 
-	GConfValue *value_i;
+	MateConfValue *value_i;
 	GList      *node;
 
 
-	client = gconf_client_get_default ();
-	value  = gconf_client_get (client, key, & error);
+	client = mateconf_client_get_default ();
+	value  = mateconf_client_get (client, key, & error);
 
 	if (error) {
 		libslab_handle_g_error (&error, "%s: error getting %s", G_STRFUNC, key);
@@ -371,43 +371,43 @@ libslab_set_gconf_value (const gchar *key, gconstpointer data)
 	}
 
 	type = value->type;
-	list_type = ((type == GCONF_VALUE_LIST) ?
-		gconf_value_get_list_type (value) : GCONF_VALUE_INVALID);
+	list_type = ((type == MATECONF_VALUE_LIST) ?
+		mateconf_value_get_list_type (value) : MATECONF_VALUE_INVALID);
 
-	gconf_value_free (value);
-	value = gconf_value_new (type);
+	mateconf_value_free (value);
+	value = mateconf_value_new (type);
 
-	if (type == GCONF_VALUE_LIST)
-		gconf_value_set_list_type (value, list_type);
+	if (type == MATECONF_VALUE_LIST)
+		mateconf_value_set_list_type (value, list_type);
 
 	switch (type) {
-		case GCONF_VALUE_STRING:
-			gconf_value_set_string (value, g_strdup ((gchar *) data));
+		case MATECONF_VALUE_STRING:
+			mateconf_value_set_string (value, g_strdup ((gchar *) data));
 			break;
 
-		case GCONF_VALUE_INT:
-			gconf_value_set_int (value, GPOINTER_TO_INT (data));
+		case MATECONF_VALUE_INT:
+			mateconf_value_set_int (value, GPOINTER_TO_INT (data));
 			break;
 
-		case GCONF_VALUE_BOOL:
-			gconf_value_set_bool (value, GPOINTER_TO_INT (data));
+		case MATECONF_VALUE_BOOL:
+			mateconf_value_set_bool (value, GPOINTER_TO_INT (data));
 			break;
 
-		case GCONF_VALUE_LIST:
+		case MATECONF_VALUE_LIST:
 			for (node = (GList *) data; node; node = node->next) {
-				value_i = gconf_value_new (list_type);
+				value_i = mateconf_value_new (list_type);
 
-				if (list_type == GCONF_VALUE_STRING)
-					gconf_value_set_string (value_i, (const gchar *) node->data);
-				else if (list_type == GCONF_VALUE_INT)
-					gconf_value_set_int (value_i, GPOINTER_TO_INT (node->data));
+				if (list_type == MATECONF_VALUE_STRING)
+					mateconf_value_set_string (value_i, (const gchar *) node->data);
+				else if (list_type == MATECONF_VALUE_INT)
+					mateconf_value_set_int (value_i, GPOINTER_TO_INT (node->data));
 				else
 					g_assert_not_reached ();
 
 				slist = g_slist_append (slist, value_i);
 			}
 
-			gconf_value_set_list_nocopy (value, slist);
+			mateconf_value_set_list_nocopy (value, slist);
 
 			break;
 
@@ -415,32 +415,32 @@ libslab_set_gconf_value (const gchar *key, gconstpointer data)
 			break;
 	}
 
-	gconf_client_set (client, key, value, & error);
+	mateconf_client_set (client, key, value, & error);
 
 	if (error)
 		libslab_handle_g_error (&error, "%s: error setting %s", G_STRFUNC, key);
 
 exit:
 
-	gconf_value_free (value);
+	mateconf_value_free (value);
 	g_object_unref (client);
 }
 
 guint
-libslab_gconf_notify_add (const gchar *key, GConfClientNotifyFunc callback, gpointer user_data)
+libslab_mateconf_notify_add (const gchar *key, MateConfClientNotifyFunc callback, gpointer user_data)
 {
-	GConfClient *client;
+	MateConfClient *client;
 	guint        conn_id;
 
 	GError *error = NULL;
 
 
-	client  = gconf_client_get_default ();
-	conn_id = gconf_client_notify_add (client, key, callback, user_data, NULL, & error);
+	client  = mateconf_client_get_default ();
+	conn_id = mateconf_client_notify_add (client, key, callback, user_data, NULL, & error);
 
 	if (error)
 		libslab_handle_g_error (
-			& error, "%s: error adding gconf notify for (%s)", G_STRFUNC, key);
+			& error, "%s: error adding mateconf notify for (%s)", G_STRFUNC, key);
 
 	g_object_unref (client);
 
@@ -448,9 +448,9 @@ libslab_gconf_notify_add (const gchar *key, GConfClientNotifyFunc callback, gpoi
 }
 
 void
-libslab_gconf_notify_remove (guint conn_id)
+libslab_mateconf_notify_remove (guint conn_id)
 {
-	GConfClient *client;
+	MateConfClient *client;
 
 	GError *error = NULL;
 
@@ -458,12 +458,12 @@ libslab_gconf_notify_remove (guint conn_id)
 	if (conn_id == 0)
 		return;
 
-	client = gconf_client_get_default ();
-	gconf_client_notify_remove (client, conn_id);
+	client = mateconf_client_get_default ();
+	mateconf_client_notify_remove (client, conn_id);
 
 	if (error)
 		libslab_handle_g_error (
-			& error, "%s: error removing gconf notify", G_STRFUNC);
+			& error, "%s: error removing mateconf notify", G_STRFUNC);
 
 	g_object_unref (client);
 }
@@ -497,22 +497,22 @@ libslab_handle_g_error (GError **error, const gchar *msg_format, ...)
 gboolean
 libslab_desktop_item_is_a_terminal (const gchar *uri)
 {
-	GnomeDesktopItem *d_item;
+	MateDesktopItem *d_item;
 	const gchar      *categories;
 
 	gboolean is_terminal = FALSE;
 
 
-	d_item = libslab_gnome_desktop_item_new_from_unknown_id (uri);
+	d_item = libslab_mate_desktop_item_new_from_unknown_id (uri);
 
 	if (! d_item)
 		return FALSE;
 
-	categories = gnome_desktop_item_get_string (d_item, GNOME_DESKTOP_ITEM_CATEGORIES);
+	categories = mate_desktop_item_get_string (d_item, MATE_DESKTOP_ITEM_CATEGORIES);
 
 	is_terminal = (categories && strstr (categories, DESKTOP_ITEM_TERMINAL_EMULATOR_FLAG));
 
-	gnome_desktop_item_unref (d_item);
+	mate_desktop_item_unref (d_item);
 
 	return is_terminal;
 }
@@ -520,18 +520,18 @@ libslab_desktop_item_is_a_terminal (const gchar *uri)
 gboolean
 libslab_desktop_item_is_logout (const gchar *uri)
 {
-	GnomeDesktopItem *d_item;
+	MateDesktopItem *d_item;
 	gboolean is_logout = FALSE;
 
 
-	d_item = libslab_gnome_desktop_item_new_from_unknown_id (uri);
+	d_item = libslab_mate_desktop_item_new_from_unknown_id (uri);
 
 	if (! d_item)
 		return FALSE;
 
-	is_logout = strstr ("Logout", gnome_desktop_item_get_string (d_item, GNOME_DESKTOP_ITEM_NAME)) != NULL;
+	is_logout = strstr ("Logout", mate_desktop_item_get_string (d_item, MATE_DESKTOP_ITEM_NAME)) != NULL;
 
-	gnome_desktop_item_unref (d_item);
+	mate_desktop_item_unref (d_item);
 
 	return is_logout;
 }
@@ -539,18 +539,18 @@ libslab_desktop_item_is_logout (const gchar *uri)
 gboolean
 libslab_desktop_item_is_lockscreen (const gchar *uri)
 {
-	GnomeDesktopItem *d_item;
+	MateDesktopItem *d_item;
 	gboolean is_logout = FALSE;
 
 
-	d_item = libslab_gnome_desktop_item_new_from_unknown_id (uri);
+	d_item = libslab_mate_desktop_item_new_from_unknown_id (uri);
 
 	if (! d_item)
 		return FALSE;
 
-	is_logout = strstr ("Lock Screen", gnome_desktop_item_get_string (d_item, GNOME_DESKTOP_ITEM_NAME)) != NULL;
+	is_logout = strstr ("Lock Screen", mate_desktop_item_get_string (d_item, MATE_DESKTOP_ITEM_NAME)) != NULL;
 
-	gnome_desktop_item_unref (d_item);
+	mate_desktop_item_unref (d_item);
 
 	return is_logout;
 }
@@ -593,7 +593,7 @@ libslab_spawn_command (const gchar *cmd)
 }
 
 static guint thumbnail_factory_idle_id;
-static GnomeDesktopThumbnailFactory *thumbnail_factory;
+static MateDesktopThumbnailFactory *thumbnail_factory;
 
 static void
 create_thumbnail_factory (void)
@@ -606,7 +606,7 @@ create_thumbnail_factory (void)
 
 	libslab_checkpoint ("create_thumbnail_factory(): start");
 
-	thumbnail_factory = gnome_desktop_thumbnail_factory_new (GNOME_DESKTOP_THUMBNAIL_SIZE_NORMAL);
+	thumbnail_factory = mate_desktop_thumbnail_factory_new (MATE_DESKTOP_THUMBNAIL_SIZE_NORMAL);
 
 	libslab_checkpoint ("create_thumbnail_factory(): end");
 }
@@ -625,7 +625,7 @@ libslab_thumbnail_factory_preinit (void)
 	thumbnail_factory_idle_id = g_idle_add (init_thumbnail_factory_idle_cb, NULL);
 }
 
-GnomeDesktopThumbnailFactory *
+MateDesktopThumbnailFactory *
 libslab_thumbnail_factory_get (void)
 {
 	if (thumbnail_factory_idle_id != 0) {

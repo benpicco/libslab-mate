@@ -1,4 +1,4 @@
-#include "gnome-utils.h"
+#include "mate-utils.h"
 
 #include <string.h>
 
@@ -70,13 +70,13 @@ load_image_by_id (GtkImage * image, GtkIconSize size, const gchar * image_id)
 	return icon_exists;
 }
 
-GnomeDesktopItem *
+MateDesktopItem *
 load_desktop_item_by_unknown_id (const gchar * id)
 {
-	GnomeDesktopItem *item;
+	MateDesktopItem *item;
 	GError *error = NULL;
 
-	item = gnome_desktop_item_new_from_uri (id, 0, &error);
+	item = mate_desktop_item_new_from_uri (id, 0, &error);
 
 	if (!error)
 		return item;
@@ -86,7 +86,7 @@ load_desktop_item_by_unknown_id (const gchar * id)
 		error = NULL;
 	}
 
-	item = gnome_desktop_item_new_from_file (id, 0, &error);
+	item = mate_desktop_item_new_from_file (id, 0, &error);
 
 	if (!error)
 		return item;
@@ -96,7 +96,7 @@ load_desktop_item_by_unknown_id (const gchar * id)
 		error = NULL;
 	}
 
-	item = gnome_desktop_item_new_from_basename (id, 0, &error);
+	item = mate_desktop_item_new_from_basename (id, 0, &error);
 
 	if (!error)
 		return item;
@@ -110,10 +110,10 @@ load_desktop_item_by_unknown_id (const gchar * id)
 }
 
 gpointer
-get_gconf_value (const gchar * key)
+get_mateconf_value (const gchar * key)
 {
-	GConfClient *client;
-	GConfValue *value;
+	MateConfClient *client;
+	MateConfValue *value;
 	GError *error = NULL;
 
 	gpointer retval = NULL;
@@ -121,11 +121,11 @@ get_gconf_value (const gchar * key)
 	GList *list;
 	GSList *slist;
 
-	GConfValue *value_i;
+	MateConfValue *value_i;
 	GSList *node;
 
-	client = gconf_client_get_default ();
-	value = gconf_client_get (client, key, &error);
+	client = mateconf_client_get_default ();
+	value = mateconf_client_get (client, key, &error);
 
 	if (error || ! value)
 	{
@@ -136,32 +136,32 @@ get_gconf_value (const gchar * key)
 
 	switch (value->type)
 	{
-	case GCONF_VALUE_STRING:
-		retval = (gpointer) g_strdup (gconf_value_get_string (value));
+	case MATECONF_VALUE_STRING:
+		retval = (gpointer) g_strdup (mateconf_value_get_string (value));
 		break;
 
-	case GCONF_VALUE_INT:
-		retval = GINT_TO_POINTER (gconf_value_get_int (value));
+	case MATECONF_VALUE_INT:
+		retval = GINT_TO_POINTER (mateconf_value_get_int (value));
 		break;
 
-	case GCONF_VALUE_BOOL:
-		retval = GINT_TO_POINTER (gconf_value_get_bool (value));
+	case MATECONF_VALUE_BOOL:
+		retval = GINT_TO_POINTER (mateconf_value_get_bool (value));
 		break;
 
-	case GCONF_VALUE_LIST:
+	case MATECONF_VALUE_LIST:
 		list = NULL;
-		slist = gconf_value_get_list (value);
+		slist = mateconf_value_get_list (value);
 
 		for (node = slist; node; node = node->next)
 		{
-			value_i = (GConfValue *) node->data;
+			value_i = (MateConfValue *) node->data;
 
-			if (value_i->type == GCONF_VALUE_STRING)
+			if (value_i->type == MATECONF_VALUE_STRING)
 				list = g_list_append (list,
-					g_strdup (gconf_value_get_string (value_i)));
-			else if (value_i->type == GCONF_VALUE_INT)
+					g_strdup (mateconf_value_get_string (value_i)));
+			else if (value_i->type == MATECONF_VALUE_INT)
 				list = g_list_append (list,
-					GINT_TO_POINTER (gconf_value_get_int (value_i)));
+					GINT_TO_POINTER (mateconf_value_get_int (value_i)));
 			else
 				g_assert_not_reached ();
 		}
@@ -179,29 +179,29 @@ get_gconf_value (const gchar * key)
 
 	g_object_unref (client);
 	if(value)
-		gconf_value_free (value);
+		mateconf_value_free (value);
 
 	return retval;
 }
 
 void
-set_gconf_value (const gchar * key, gconstpointer data)
+set_mateconf_value (const gchar * key, gconstpointer data)
 {
-	GConfClient *client;
-	GConfValue *value;
+	MateConfClient *client;
+	MateConfValue *value;
 
-	GConfValueType type;
-	GConfValueType list_type;
+	MateConfValueType type;
+	MateConfValueType list_type;
 
 	GSList *slist = NULL;
 
 	GError *error = NULL;
 
-	GConfValue *value_i;
+	MateConfValue *value_i;
 	GList *node;
 
-	client = gconf_client_get_default ();
-	value = gconf_client_get (client, key, &error);
+	client = mateconf_client_get_default ();
+	value = mateconf_client_get (client, key, &error);
 
 	if (error)
 	{
@@ -213,44 +213,44 @@ set_gconf_value (const gchar * key, gconstpointer data)
 	type = value->type;
 	list_type =
 		(type ==
-		GCONF_VALUE_LIST ? gconf_value_get_list_type (value) : GCONF_VALUE_INVALID);
+		MATECONF_VALUE_LIST ? mateconf_value_get_list_type (value) : MATECONF_VALUE_INVALID);
 
-	gconf_value_free (value);
-	value = gconf_value_new (type);
+	mateconf_value_free (value);
+	value = mateconf_value_new (type);
 
-	if (type == GCONF_VALUE_LIST)
-		gconf_value_set_list_type (value, list_type);
+	if (type == MATECONF_VALUE_LIST)
+		mateconf_value_set_list_type (value, list_type);
 
 	switch (type)
 	{
-	case GCONF_VALUE_STRING:
-		gconf_value_set_string (value, g_strdup ((gchar *) data));
+	case MATECONF_VALUE_STRING:
+		mateconf_value_set_string (value, g_strdup ((gchar *) data));
 		break;
 
-	case GCONF_VALUE_INT:
-		gconf_value_set_int (value, GPOINTER_TO_INT (data));
+	case MATECONF_VALUE_INT:
+		mateconf_value_set_int (value, GPOINTER_TO_INT (data));
 		break;
 
-	case GCONF_VALUE_BOOL:
-		gconf_value_set_bool (value, GPOINTER_TO_INT (data));
+	case MATECONF_VALUE_BOOL:
+		mateconf_value_set_bool (value, GPOINTER_TO_INT (data));
 		break;
 
-	case GCONF_VALUE_LIST:
+	case MATECONF_VALUE_LIST:
 		for (node = (GList *) data; node; node = node->next)
 		{
-			value_i = gconf_value_new (list_type);
+			value_i = mateconf_value_new (list_type);
 
-			if (list_type == GCONF_VALUE_STRING)
-				gconf_value_set_string (value_i, (const gchar *) node->data);
-			else if (list_type == GCONF_VALUE_INT)
-				gconf_value_set_int (value_i, GPOINTER_TO_INT (node->data));
+			if (list_type == MATECONF_VALUE_STRING)
+				mateconf_value_set_string (value_i, (const gchar *) node->data);
+			else if (list_type == MATECONF_VALUE_INT)
+				mateconf_value_set_int (value_i, GPOINTER_TO_INT (node->data));
 			else
 				g_assert_not_reached ();
 
 			slist = g_slist_append (slist, value_i);
 		}
 
-		gconf_value_set_list_nocopy (value, slist);
+		mateconf_value_set_list_nocopy (value, slist);
 
 		break;
 
@@ -259,27 +259,27 @@ set_gconf_value (const gchar * key, gconstpointer data)
 		break;
 	}
 
-	gconf_client_set (client, key, value, &error);
+	mateconf_client_set (client, key, value, &error);
 
 	if (error)
 		handle_g_error (&error, "%s: error setting %s", G_STRFUNC, key);
 
       exit:
 
-	gconf_value_free (value);
+	mateconf_value_free (value);
 	g_object_unref (client);
 }
 
 guint
-connect_gconf_notify (const gchar * key, GConfClientNotifyFunc cb, gpointer user_data)
+connect_mateconf_notify (const gchar * key, MateConfClientNotifyFunc cb, gpointer user_data)
 {
-	GConfClient *client;
+	MateConfClient *client;
 	guint conn_id;
 
 	GError *error = NULL;
 
-	client = gconf_client_get_default ();
-	conn_id = gconf_client_notify_add (client, key, cb, user_data, NULL, &error);
+	client = mateconf_client_get_default ();
+	conn_id = mateconf_client_notify_add (client, key, cb, user_data, NULL, &error);
 
 	if (error)
 		handle_g_error (&error, "%s: error adding notify for (%s)", G_STRFUNC, key);
@@ -324,7 +324,7 @@ get_main_menu_section_header (const gchar * markup)
 
 	label = gtk_label_new (text);
 	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
-	gtk_widget_set_name (label, "gnome-main-menu-section-header");
+	gtk_widget_set_name (label, "mate-main-menu-section-header");
 
 	g_signal_connect (G_OBJECT (label), "style-set", G_CALLBACK (section_header_style_set),
 		NULL);

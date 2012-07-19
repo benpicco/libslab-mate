@@ -25,10 +25,10 @@
 #include <glib.h>
 #include <glib/gi18n-lib.h>
 #include <glib/gstdio.h>
-#include <gconf/gconf-client.h>
+#include <mateconf/mateconf-client.h>
 #include <unistd.h>
 
-#include "slab-gnome-util.h"
+#include "slab-mate-util.h"
 #include "libslab-utils.h"
 #include "bookmark-agent.h"
 #include "themed-icon.h"
@@ -70,11 +70,11 @@ static void run_package_management_command (ApplicationTile *, gchar *);
 static void update_user_list_menu_item (ApplicationTile *);
 static void agent_notify_cb (GObject *, GParamSpec *, gpointer);
 
-static StartupStatus get_desktop_item_startup_status (GnomeDesktopItem *);
+static StartupStatus get_desktop_item_startup_status (MateDesktopItem *);
 static void          update_startup_menu_item (ApplicationTile *);
 
 typedef struct {
-	GnomeDesktopItem *desktop_item;
+	MateDesktopItem *desktop_item;
 
 	gchar       *image_id;
 	GtkIconSize  image_size;
@@ -94,7 +94,7 @@ enum {
 	PROP_0,
 	PROP_APPLICATION_NAME,
 	PROP_APPLICATION_DESCRIPTION,
-	PROP_APPLICATION_GCONF_PREFIX
+	PROP_APPLICATION_MATECONF_PREFIX
 };
 
 static void
@@ -123,9 +123,9 @@ application_tile_class_init (ApplicationTileClass *app_tile_class)
 			G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
 
 	g_object_class_install_property (
-		g_obj_class, PROP_APPLICATION_GCONF_PREFIX,
+		g_obj_class, PROP_APPLICATION_MATECONF_PREFIX,
 		g_param_spec_string (
-			"gconf-prefix", "gconf-prefix",
+			"mateconf-prefix", "mateconf-prefix",
 			"configuration prefix", NULL,
 			G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
 }
@@ -138,27 +138,27 @@ application_tile_new (const gchar *desktop_item_id)
 
 GtkWidget *
 application_tile_new_full (const gchar *desktop_item_id,
-	GtkIconSize image_size, gboolean show_generic_name, const gchar *gconf_prefix)
+	GtkIconSize image_size, gboolean show_generic_name, const gchar *mateconf_prefix)
 {
 	ApplicationTile        *this;
 	ApplicationTilePrivate *priv;
 
 	const gchar *uri = NULL;
 
-	GnomeDesktopItem *desktop_item;
+	MateDesktopItem *desktop_item;
 
 
 	desktop_item = load_desktop_item_from_unknown (desktop_item_id);
 
 	if (
 		desktop_item &&
-		gnome_desktop_item_get_entry_type (desktop_item) == GNOME_DESKTOP_ITEM_TYPE_APPLICATION
+		mate_desktop_item_get_entry_type (desktop_item) == MATE_DESKTOP_ITEM_TYPE_APPLICATION
 	)
-		uri = gnome_desktop_item_get_location (desktop_item);
+		uri = mate_desktop_item_get_location (desktop_item);
 
 	if (! uri) {
 		if (desktop_item)
-			gnome_desktop_item_unref (desktop_item);
+			mate_desktop_item_unref (desktop_item);
 
 		return NULL;
 	}
@@ -170,7 +170,7 @@ application_tile_new_full (const gchar *desktop_item_id,
 	priv->desktop_item = desktop_item;
 	priv->show_generic_name = show_generic_name;
 
-	application_tile_setup (this, gconf_prefix);
+	application_tile_setup (this, mateconf_prefix);
 
 	return GTK_WIDGET (this);
 }
@@ -188,7 +188,7 @@ application_tile_init (ApplicationTile *tile)
 	priv->is_bookmarked    = FALSE;
 	priv->notify_signal_id = 0;
 
-	tile->name = tile->description = tile->gconf_prefix = NULL;
+	tile->name = tile->description = tile->mateconf_prefix = NULL;
 }
 
 static void
@@ -205,13 +205,13 @@ application_tile_finalize (GObject *g_object)
 		g_free (tile->description);
 		tile->description = NULL;
 	}
-	if (tile->gconf_prefix) {
-		g_free (tile->gconf_prefix);
-		tile->gconf_prefix = NULL;
+	if (tile->mateconf_prefix) {
+		g_free (tile->mateconf_prefix);
+		tile->mateconf_prefix = NULL;
 	}
 
 	if (priv->desktop_item) {
-		gnome_desktop_item_unref (priv->desktop_item);
+		mate_desktop_item_unref (priv->desktop_item);
 		priv->desktop_item = NULL;
 	}
 	if (priv->image_id) {
@@ -241,8 +241,8 @@ application_tile_get_property (GObject *g_obj, guint prop_id, GValue *value, GPa
 		g_value_set_string (value, tile->description);
 		break;
 
-	case PROP_APPLICATION_GCONF_PREFIX:
-		g_value_set_string (value, tile->gconf_prefix);
+	case PROP_APPLICATION_MATECONF_PREFIX:
+		g_value_set_string (value, tile->mateconf_prefix);
 		break;
 
 	default:
@@ -268,10 +268,10 @@ application_tile_set_property (GObject *g_obj, guint prop_id, const GValue *valu
 		tile->description = g_strdup (g_value_get_string (value));
 		break;
 
-	case PROP_APPLICATION_GCONF_PREFIX:
-		if (tile->gconf_prefix)
-			g_free (tile->gconf_prefix);
-		tile->gconf_prefix = g_strdup (g_value_get_string (value));
+	case PROP_APPLICATION_MATECONF_PREFIX:
+		if (tile->mateconf_prefix)
+			g_free (tile->mateconf_prefix);
+		tile->mateconf_prefix = g_strdup (g_value_get_string (value));
 		break;
 
 	default:
@@ -280,7 +280,7 @@ application_tile_set_property (GObject *g_obj, guint prop_id, const GValue *valu
 }
 
 static void
-application_tile_setup (ApplicationTile *this, const gchar *gconf_prefix)
+application_tile_setup (ApplicationTile *this, const gchar *mateconf_prefix)
 {
 	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (this);
 
@@ -304,7 +304,7 @@ application_tile_setup (ApplicationTile *this, const gchar *gconf_prefix)
 	gchar *markup;
 	gchar *str;
 
-	/*Fixme - need to address the entire gconf key location issue */
+	/*Fixme - need to address the entire mateconf key location issue */
 	/*Fixme - this is just a temporary stop gap                   */
 	gboolean use_new_prefix;
 
@@ -316,12 +316,12 @@ application_tile_setup (ApplicationTile *this, const gchar *gconf_prefix)
 			return;
 	}
 
-	priv->image_id = g_strdup (gnome_desktop_item_get_localestring (priv->desktop_item, "Icon"));
+	priv->image_id = g_strdup (mate_desktop_item_get_localestring (priv->desktop_item, "Icon"));
 	image = themed_icon_new (priv->image_id, priv->image_size);
 
-	name = gnome_desktop_item_get_localestring (priv->desktop_item, "Name");
-	desc = gnome_desktop_item_get_localestring (priv->desktop_item, "GenericName");
-	comment = gnome_desktop_item_get_localestring (priv->desktop_item, "Comment");	
+	name = mate_desktop_item_get_localestring (priv->desktop_item, "Name");
+	desc = mate_desktop_item_get_localestring (priv->desktop_item, "GenericName");
+	comment = mate_desktop_item_get_localestring (priv->desktop_item, "Comment");	
 
 	accessible = gtk_widget_get_accessible (GTK_WIDGET (this));
 	if (name)
@@ -348,7 +348,7 @@ application_tile_setup (ApplicationTile *this, const gchar *gconf_prefix)
 		"context-menu",            context_menu,
 		"application-name",        name,
 		"application-description", desc,
-		"gconf-prefix",            gconf_prefix,
+		"mateconf-prefix",            mateconf_prefix,
 		NULL);
 	gtk_widget_set_tooltip_text (GTK_WIDGET (this), comment);
 
@@ -388,7 +388,7 @@ application_tile_setup (ApplicationTile *this, const gchar *gconf_prefix)
 
 /* make help action */
 
-	if (gnome_desktop_item_get_string (priv->desktop_item, "DocPath")) {
+	if (mate_desktop_item_get_string (priv->desktop_item, "DocPath")) {
 		action = tile_action_new (
 			TILE (this), help_trigger, _("Help"),
 			TILE_ACTION_OPENS_NEW_WINDOW | TILE_ACTION_OPENS_HELP);
@@ -426,7 +426,7 @@ application_tile_setup (ApplicationTile *this, const gchar *gconf_prefix)
 
 /* make upgrade action */
 
-	if (this->gconf_prefix && ! g_str_has_prefix (this->gconf_prefix, "/desktop/"))
+	if (this->mateconf_prefix && ! g_str_has_prefix (this->mateconf_prefix, "/desktop/"))
 		use_new_prefix = TRUE;
 	else
 		use_new_prefix = FALSE;
@@ -565,7 +565,7 @@ uninstall_trigger (Tile *tile, TileEvent *event, TileAction *action)
 }
 
 static gboolean
-verify_package_management_command (const gchar *gconf_key)
+verify_package_management_command (const gchar *mateconf_key)
 {
 	gchar *cmd;
 	gchar *path;
@@ -573,7 +573,7 @@ verify_package_management_command (const gchar *gconf_key)
 
 	gboolean retval;
 
-	cmd = get_slab_gconf_string (gconf_key);
+	cmd = get_slab_mateconf_string (mateconf_key);
 	if (!cmd)
 		return FALSE;
 
@@ -593,7 +593,7 @@ verify_package_management_command (const gchar *gconf_key)
 }
 
 static void
-run_package_management_command (ApplicationTile *tile, gchar *gconf_key)
+run_package_management_command (ApplicationTile *tile, gchar *mateconf_key)
 {
 	ApplicationTilePrivate *priv = APPLICATION_TILE_GET_PRIVATE (tile);
 
@@ -611,7 +611,7 @@ run_package_management_command (ApplicationTile *tile, gchar *gconf_key)
 	if (!package_name)
 		return;
 
-	cmd_precis = get_slab_gconf_string (gconf_key);
+	cmd_precis = get_slab_mateconf_string (mateconf_key);
 
 	g_assert (cmd_precis);
 
@@ -675,7 +675,7 @@ add_to_startup_list (ApplicationTile *this)
 	gchar *dst_uri;
 
 	desktop_item_filename =
-		g_filename_from_uri (gnome_desktop_item_get_location (priv->desktop_item), NULL,
+		g_filename_from_uri (mate_desktop_item_get_location (priv->desktop_item), NULL,
 		NULL);
 
 	g_return_if_fail (desktop_item_filename != NULL);
@@ -689,7 +689,7 @@ add_to_startup_list (ApplicationTile *this)
 
 	dst_filename = g_build_filename (startup_dir, desktop_item_basename, NULL);
 
-	src_uri = gnome_desktop_item_get_location (priv->desktop_item);
+	src_uri = mate_desktop_item_get_location (priv->desktop_item);
 	dst_uri = g_filename_to_uri (dst_filename, NULL, NULL);
 
 	copy_file (src_uri, dst_uri);
@@ -712,7 +712,7 @@ remove_from_startup_list (ApplicationTile *this)
 	gchar *src_filename;
 
 	ditem_filename =
-		g_filename_from_uri (gnome_desktop_item_get_location (priv->desktop_item), NULL,
+		g_filename_from_uri (mate_desktop_item_get_location (priv->desktop_item), NULL,
 		NULL);
 
 	g_return_if_fail (ditem_filename != NULL);
@@ -734,7 +734,7 @@ remove_from_startup_list (ApplicationTile *this)
 	g_free (src_filename);
 }
 
-GnomeDesktopItem *
+MateDesktopItem *
 application_tile_get_desktop_item (ApplicationTile *tile)
 {
 	return APPLICATION_TILE_GET_PRIVATE (tile)->desktop_item;
@@ -794,7 +794,7 @@ update_user_list_menu_item (ApplicationTile *this)
 }
 
 static StartupStatus
-get_desktop_item_startup_status (GnomeDesktopItem *desktop_item)
+get_desktop_item_startup_status (MateDesktopItem *desktop_item)
 {
 	gchar *filename;
 	gchar *basename;
@@ -806,7 +806,7 @@ get_desktop_item_startup_status (GnomeDesktopItem *desktop_item)
 	StartupStatus retval;
 	gint x;
 	
-	filename = g_filename_from_uri (gnome_desktop_item_get_location (desktop_item), NULL, NULL);
+	filename = g_filename_from_uri (mate_desktop_item_get_location (desktop_item), NULL, NULL);
 	if (!filename)
 		return APP_NOT_ELIGIBLE;
 	basename = g_path_get_basename (filename);
@@ -825,13 +825,13 @@ get_desktop_item_startup_status (GnomeDesktopItem *desktop_item)
 		g_free (global_target);
 	}
 
-	/* gnome-session currently checks these dirs also. see startup-programs.c */
+	/* mate-session currently checks these dirs also. see startup-programs.c */
 	if (retval != APP_NOT_ELIGIBLE)
 	{
 		global_dirs = g_get_system_data_dirs();
 		for(x=0; global_dirs[x]; x++)
 		{
-			global_target = g_build_filename (global_dirs[x], "gnome", "autostart", basename, NULL);
+			global_target = g_build_filename (global_dirs[x], "mate", "autostart", basename, NULL);
 			if (g_file_test (global_target, G_FILE_TEST_EXISTS))
 			{
 				retval = APP_NOT_ELIGIBLE;

@@ -29,14 +29,14 @@
 #include <libslab/directory-tile.h>
 #include <libslab/document-tile.h>
 #include <libslab/double-click-detector.h>
-#include <libslab/gnome-utils.h>
+#include <libslab/mate-utils.h>
 #include <libslab/libslab-utils.h>
 #include <libslab/nameplate-tile.h>
 #include <libslab/search-bar.h>
 #include <libslab/search-context-picker.h>
 #include <libslab/search-entry.h>
 #include <libslab/shell-window.h>
-#include <libslab/slab-gnome-util.h>
+#include <libslab/slab-mate-util.h>
 #include <libslab/slab-section.h>
 #include <libslab/system-tile.h>
 #include <libslab/tile.h>

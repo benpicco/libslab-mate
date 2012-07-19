@@ -19,7 +19,7 @@
  */
 
 #include <gtk/gtk.h>
-#include <libgnome/gnome-desktop-item.h>
+#include <libmate/mate-desktop-item.h>
 
 #include "app-shell.h"
 #include "app-resizer.h"

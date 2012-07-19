@@ -1,6 +1,6 @@
-# translation of gnome-main-menu.HEAD3.po to Latvian
-# translation of gnome-main-menu.HEAD3.po to
-# translation of gnome-main-menu.HEAD2.po to
+# translation of mate-main-menu.HEAD3.po to Latvian
+# translation of mate-main-menu.HEAD3.po to
+# translation of mate-main-menu.HEAD2.po to
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
@@ -8,9 +8,9 @@
 # Rūdofls Mazurs <rudolfs.mazurs@gmail.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-main-menu.HEAD3\n"
+"Project-Id-Version: mate-main-menu.HEAD3\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
-"cgi?product=gnome-main-menu&component=libslab\n"
+"cgi?product=mate-main-menu&component=libslab\n"
 "POT-Creation-Date: 2010-01-04 09:13+0000\n"
 "PO-Revision-Date: 2011-04-19 00:05+0300\n"
 "Last-Translator: Rūdofls Mazurs <rudolfs.mazurs@gmail.com>\n"
@@ -321,11 +321,11 @@ msgstr "Izņemt no sistēmas ierakstiem"
 #~ msgid "Default menu and application browser"
 #~ msgstr "Noklusētā izvēlne un aplikāciju pārlūks"
 
-#~ msgid "GNOME Main Menu"
-#~ msgstr "GNOME galvenā izvēlne"
+#~ msgid "MATE Main Menu"
+#~ msgstr "MATE galvenā izvēlne"
 
-#~ msgid "GNOME Main Menu Factory"
-#~ msgstr "GNOME galvenās izvēlnes ražotne"
+#~ msgid "MATE Main Menu Factory"
+#~ msgstr "MATE galvenās izvēlnes ražotne"
 
 #~ msgid "Main Menu"
 #~ msgstr "Galvenā izvēlne"
@@ -342,8 +342,8 @@ msgstr "Izņemt no sistēmas ierakstiem"
 #~ msgid ".desktop file for the file browser"
 #~ msgstr ".desktop datne datņu pārlūkam"
 
-#~ msgid ".desktop file for the gnome-system-monitor"
-#~ msgstr ".desktop datne priekš gnome-system-monitor"
+#~ msgid ".desktop file for the mate-system-monitor"
+#~ msgstr ".desktop datne priekš mate-system-monitor"
 
 #~ msgid ".desktop file for the net config tool"
 #~ msgstr ".desktop datne net config rīkam"
@@ -575,11 +575,11 @@ msgstr "Izņemt no sistēmas ierakstiem"
 #~ msgid "Lock Screen"
 #~ msgstr "Bloķēt ekrānu"
 
-#~ msgid "gnome-lockscreen"
-#~ msgstr "gnome-lockscreen"
+#~ msgid "mate-lockscreen"
+#~ msgstr "mate-lockscreen"
 
-#~ msgid "The GNOME Main Menu"
-#~ msgstr "GNOME galvenā izvēlne"
+#~ msgid "The MATE Main Menu"
+#~ msgstr "MATE galvenā izvēlne"
 
 #~ msgid "Network: None"
 #~ msgstr "Tīkls: Nekas"
@@ -681,14 +681,14 @@ msgstr "Izņemt no sistēmas ierakstiem"
 #~ "to uzdevumu."
 
 #~ msgid ""
-#~ "[Change Desktop Background;background.desktop,Add Printer;gnome-cups-"
-#~ "manager.desktop,Configure Network;YaST2/lan.desktop,Change Password;gnome-"
+#~ "[Change Desktop Background;background.desktop,Add Printer;mate-cups-"
+#~ "manager.desktop,Configure Network;YaST2/lan.desktop,Change Password;mate-"
 #~ "passwd.desktop,Add User;YaST2/users.desktop,Open Administrator Settings;"
 #~ "YaST.desktop]"
 #~ msgstr ""
-#~ "[Mainīt darbvirsmas fonu;background.desktop, Pievienot printeri;gnome-"
+#~ "[Mainīt darbvirsmas fonu;background.desktop, Pievienot printeri;mate-"
 #~ "cups-manager.desktop, Konfigurēt tīklu;YaST2/lan.desktop, Mainīt paroli;"
-#~ "gnome-passwd.desktop, Pievienot lietotāju;YaST2/user.desktop, Atvērt "
+#~ "mate-passwd.desktop, Pievienot lietotāju;YaST2/user.desktop, Atvērt "
 #~ "pārvaldnieka uzstādījumus;YaST.]"
 
 #~ msgid ""

@@ -23,10 +23,10 @@
 
 #include <string.h>
 #include <glib/gi18n-lib.h>
-#include <gconf/gconf-client.h>
+#include <mateconf/mateconf-client.h>
 
 #include "bookmark-agent.h"
-#include "slab-gnome-util.h"
+#include "slab-mate-util.h"
 #include "libslab-utils.h"
 
 G_DEFINE_TYPE (SystemTile, system_tile, NAMEPLATE_TILE_TYPE)
@@ -44,7 +44,7 @@ static void update_user_list_menu_item (SystemTile *);
 static void agent_notify_cb (GObject *, GParamSpec *, gpointer);
 
 typedef struct {
-	GnomeDesktopItem *desktop_item;
+	MateDesktopItem *desktop_item;
 
 	BookmarkAgent       *agent;
 	BookmarkStoreStatus  agent_status;
@@ -71,7 +71,7 @@ system_tile_new (const gchar *desktop_item_id, const gchar *title)
 	GtkWidget    *menu_item;
 	GtkContainer *menu_ctnr;
 
-	GnomeDesktopItem *desktop_item = NULL;
+	MateDesktopItem *desktop_item = NULL;
 	gchar            *image_id     = NULL;
 	gchar            *header_txt   = NULL;
 
@@ -80,17 +80,17 @@ system_tile_new (const gchar *desktop_item_id, const gchar *title)
 	AtkObject *accessible = NULL;
 
 
-	desktop_item = libslab_gnome_desktop_item_new_from_unknown_id (desktop_item_id);
+	desktop_item = libslab_mate_desktop_item_new_from_unknown_id (desktop_item_id);
 
 	if (desktop_item) {
-		image_id = g_strdup (gnome_desktop_item_get_localestring (desktop_item, "Icon"));
-		uri      = g_strdup (gnome_desktop_item_get_location (desktop_item));
+		image_id = g_strdup (mate_desktop_item_get_localestring (desktop_item, "Icon"));
+		uri      = g_strdup (mate_desktop_item_get_location (desktop_item));
 
 		if (title)
 			header_txt = g_strdup (title);
 		else
 			header_txt = g_strdup (
-				gnome_desktop_item_get_localestring (desktop_item, "Name"));
+				mate_desktop_item_get_localestring (desktop_item, "Name"));
 	}
 
 	if (! uri)
@@ -201,7 +201,7 @@ system_tile_finalize (GObject *g_obj)
         SystemTilePrivate *priv = PRIVATE (g_obj);
 
 	g_free (priv->image_id);
-	gnome_desktop_item_unref (priv->desktop_item);
+	mate_desktop_item_unref (priv->desktop_item);
 
 	if (priv->notify_signal_id)
 		g_signal_handler_disconnect (priv->agent, priv->notify_signal_id);

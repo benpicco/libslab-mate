@@ -306,8 +306,8 @@ msgstr "הסרה מפריטי המערכת"
 #~ msgid ".desktop file for the file browser"
 #~ msgstr ".desktop file for the file browser"
 
-#~ msgid ".desktop file for the gnome-system-monitor"
-#~ msgstr ".desktop file for the gnome-system-monitor"
+#~ msgid ".desktop file for the mate-system-monitor"
+#~ msgstr ".desktop file for the mate-system-monitor"
 
 #~ msgid ".desktop file for the net config tool"
 #~ msgstr ".desktop file for the net config tool"
@@ -512,11 +512,11 @@ msgstr "הסרה מפריטי המערכת"
 #~ msgid "Home: %s Free / %s"
 #~ msgstr "תיקיית הבית: %s פנוי / %s"
 
-#~ msgid "gnome-lockscreen"
-#~ msgstr "gnome-lockscreen"
+#~ msgid "mate-lockscreen"
+#~ msgstr "mate-lockscreen"
 
-#~ msgid "The GNOME Main Menu"
-#~ msgstr "התפריט הראשי של GNOME"
+#~ msgid "The MATE Main Menu"
+#~ msgstr "התפריט הראשי של MATE"
 
 #~ msgid "Network: None"
 #~ msgstr "רשת: ללא"

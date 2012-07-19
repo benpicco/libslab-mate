@@ -20,7 +20,7 @@
 
 #include "themed-icon.h"
 
-#include "gnome-utils.h"
+#include "mate-utils.h"
 
 static void themed_icon_class_init (ThemedIconClass *);
 static void themed_icon_init (ThemedIcon *);

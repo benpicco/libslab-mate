@@ -23,7 +23,7 @@
 
 #include <libslab/nameplate-tile.h>
 
-#include <libgnome/gnome-desktop-item.h>
+#include <libmate/mate-desktop-item.h>
 
 G_BEGIN_DECLS
 
@@ -46,7 +46,7 @@ typedef struct
 
 	gchar *name;
 	gchar *description;
-	gchar *gconf_prefix;
+	gchar *mateconf_prefix;
 } ApplicationTile;
 
 typedef struct
@@ -58,9 +58,9 @@ GType application_tile_get_type (void);
 
 GtkWidget *application_tile_new (const gchar * desktop_item_id);
 GtkWidget *application_tile_new_full (const gchar * desktop_item_id,
-	GtkIconSize icon_size, gboolean show_generic_name, const gchar *gconf_prefix);
+	GtkIconSize icon_size, gboolean show_generic_name, const gchar *mateconf_prefix);
 
-GnomeDesktopItem *application_tile_get_desktop_item (ApplicationTile * tile);
+MateDesktopItem *application_tile_get_desktop_item (ApplicationTile * tile);
 
 G_END_DECLS
 #endif

@@ -18,23 +18,23 @@
  * Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __GNOME_UTILS_H__
-#define __GNOME_UTILS_H__
+#ifndef __MATE_UTILS_H__
+#define __MATE_UTILS_H__
 
 #include <gtk/gtk.h>
-#include <gconf/gconf-client.h>
-#include <libgnome/gnome-desktop-item.h>
+#include <mateconf/mateconf-client.h>
+#include <libmate/mate-desktop-item.h>
 
 G_BEGIN_DECLS
 
 gboolean load_image_by_id (GtkImage * image, GtkIconSize size,
 	const gchar * image_id);
-GnomeDesktopItem *load_desktop_item_by_unknown_id (const gchar * id);
-gpointer get_gconf_value (const gchar * key);
-void set_gconf_value (const gchar * key, gconstpointer data);
-guint connect_gconf_notify (const gchar * key, GConfClientNotifyFunc cb, gpointer user_data);
+MateDesktopItem *load_desktop_item_by_unknown_id (const gchar * id);
+gpointer get_mateconf_value (const gchar * key);
+void set_mateconf_value (const gchar * key, gconstpointer data);
+guint connect_mateconf_notify (const gchar * key, MateConfClientNotifyFunc cb, gpointer user_data);
 void handle_g_error (GError ** error, const gchar * user_format, ...);
 GtkWidget *get_main_menu_section_header (const gchar * markup);
 
 G_END_DECLS
-#endif /* __GNOME_UTILS_H__ */
+#endif /* __MATE_UTILS_H__ */

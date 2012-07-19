@@ -27,14 +27,14 @@
 #include <gdk/gdk.h>
 #include <unistd.h>
 
-#include "slab-gnome-util.h"
-#include "gnome-utils.h"
+#include "slab-mate-util.h"
+#include "mate-utils.h"
 #include "libslab-utils.h"
 
-#define GCONF_SEND_TO_CMD_KEY       "/desktop/gnome/applications/main-menu/file-area/file_send_to_cmd"
-#define GCONF_ENABLE_DELETE_KEY_DIR "/apps/nautilus/preferences"
-#define GCONF_ENABLE_DELETE_KEY     GCONF_ENABLE_DELETE_KEY_DIR "/enable_delete"
-#define GCONF_CONFIRM_DELETE_KEY    GCONF_ENABLE_DELETE_KEY_DIR "/confirm_trash"
+#define MATECONF_SEND_TO_CMD_KEY       "/desktop/mate/applications/main-menu/file-area/file_send_to_cmd"
+#define MATECONF_ENABLE_DELETE_KEY_DIR "/apps/caja/preferences"
+#define MATECONF_ENABLE_DELETE_KEY     MATECONF_ENABLE_DELETE_KEY_DIR "/enable_delete"
+#define MATECONF_CONFIRM_DELETE_KEY    MATECONF_ENABLE_DELETE_KEY_DIR "/confirm_trash"
 
 G_DEFINE_TYPE (DirectoryTile, directory_tile, NAMEPLATE_TILE_TYPE)
 
@@ -56,7 +56,7 @@ static void send_to_trigger (Tile *, TileEvent *, TileAction *);
 
 static void rename_entry_activate_cb (GtkEntry *, gpointer);
 static gboolean rename_entry_key_release_cb (GtkWidget *, GdkEventKey *, gpointer);
-static void gconf_enable_delete_cb (GConfClient *, guint, GConfEntry *, gpointer);
+static void mateconf_enable_delete_cb (MateConfClient *, guint, MateConfEntry *, gpointer);
 
 static void disown_spawned_child (gpointer);
 
@@ -70,7 +70,7 @@ typedef struct
 	GAppInfo *default_app;
 	
 	gboolean delete_enabled;
-	guint gconf_conn_id;
+	guint mateconf_conn_id;
 } DirectoryTilePrivate;
 
 #define DIRECTORY_TILE_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), DIRECTORY_TILE_TYPE, DirectoryTilePrivate))
@@ -194,7 +194,7 @@ directory_tile_new (const gchar *in_uri, const gchar *title, const gchar *icon_n
 	/* make send to action */
 
 	/* Only allow Send To for local files, ideally this would use something
-	 * equivalent to gnome_vfs_uri_is_local, but that method will stat the file and
+	 * equivalent to mate_vfs_uri_is_local, but that method will stat the file and
 	 * that can hang in some conditions. */
 
 	if (!strncmp (TILE (this)->uri, "file://", 7))
@@ -257,7 +257,7 @@ static void
 directory_tile_private_setup (DirectoryTile *tile)
 {
 	DirectoryTilePrivate *priv = DIRECTORY_TILE_GET_PRIVATE (tile);
-	GConfClient *client;
+	MateConfClient *client;
 
 	if (priv->mime_type)
 		priv->default_app = g_app_info_get_default_for_type (priv->mime_type, TRUE);
@@ -265,13 +265,13 @@ directory_tile_private_setup (DirectoryTile *tile)
 		priv->default_app = NULL;
 
 	priv->delete_enabled =
-		(gboolean) GPOINTER_TO_INT (get_gconf_value (GCONF_ENABLE_DELETE_KEY));
+		(gboolean) GPOINTER_TO_INT (get_mateconf_value (MATECONF_ENABLE_DELETE_KEY));
 
-	client = gconf_client_get_default ();
+	client = mateconf_client_get_default ();
 
-	gconf_client_add_dir (client, GCONF_ENABLE_DELETE_KEY_DIR, GCONF_CLIENT_PRELOAD_NONE, NULL);
-	priv->gconf_conn_id =
-		connect_gconf_notify (GCONF_ENABLE_DELETE_KEY, gconf_enable_delete_cb, tile);
+	mateconf_client_add_dir (client, MATECONF_ENABLE_DELETE_KEY_DIR, MATECONF_CLIENT_PRELOAD_NONE, NULL);
+	priv->mateconf_conn_id =
+		connect_mateconf_notify (MATECONF_ENABLE_DELETE_KEY, mateconf_enable_delete_cb, tile);
 
 	g_object_unref (client);
 }
@@ -287,7 +287,7 @@ directory_tile_init (DirectoryTile *tile)
 	priv->icon_name = NULL;
 	priv->mime_type = NULL;
 	priv->delete_enabled = FALSE;
-	priv->gconf_conn_id = 0;
+	priv->mateconf_conn_id = 0;
 }
 
 static void
@@ -295,7 +295,7 @@ directory_tile_finalize (GObject *g_object)
 {
 	DirectoryTilePrivate *priv = DIRECTORY_TILE_GET_PRIVATE (g_object);
 
-	GConfClient *client;
+	MateConfClient *client;
 
 	g_free (priv->basename);
 	g_free (priv->icon_name);
@@ -304,10 +304,10 @@ directory_tile_finalize (GObject *g_object)
 	if (priv->default_app)
 		g_object_unref (priv->default_app);
     
-	client = gconf_client_get_default ();
+	client = mateconf_client_get_default ();
 
-	gconf_client_notify_remove (client, priv->gconf_conn_id);
-	gconf_client_remove_dir (client, GCONF_ENABLE_DELETE_KEY_DIR, NULL);
+	mateconf_client_notify_remove (client, priv->mateconf_conn_id);
+	mateconf_client_remove_dir (client, MATECONF_ENABLE_DELETE_KEY_DIR, NULL);
 
 	g_object_unref (client);
 
@@ -428,7 +428,7 @@ rename_entry_key_release_cb (GtkWidget *widget, GdkEventKey *event, gpointer use
 }
 
 static void
-gconf_enable_delete_cb (GConfClient *client, guint conn_id, GConfEntry *entry, gpointer user_data)
+mateconf_enable_delete_cb (MateConfClient *client, guint conn_id, MateConfEntry *entry, gpointer user_data)
 {
 	Tile *tile = TILE (user_data);
 	DirectoryTilePrivate *priv = DIRECTORY_TILE_GET_PRIVATE (user_data);
@@ -441,7 +441,7 @@ gconf_enable_delete_cb (GConfClient *client, guint conn_id, GConfEntry *entry, g
 
 	menu = GTK_MENU_SHELL (tile->context_menu);
 
-	delete_enabled = gconf_value_get_bool (entry->value);
+	delete_enabled = mateconf_value_get_bool (entry->value);
 
 	if (delete_enabled == priv->delete_enabled)
 		return;
@@ -524,7 +524,7 @@ delete_trigger (Tile *tile, TileEvent *event, TileAction *action)
 	gboolean res;
 	GError *error = NULL;
 
-	if (GPOINTER_TO_INT (libslab_get_gconf_value (GCONF_CONFIRM_DELETE_KEY))) {
+	if (GPOINTER_TO_INT (libslab_get_mateconf_value (MATECONF_CONFIRM_DELETE_KEY))) {
 		confirm_dialog = GTK_DIALOG(gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_WARNING, 
 				GTK_BUTTONS_NONE, _("Are you sure you want to permanently delete \"%s\"?"), DIRECTORY_TILE_GET_PRIVATE (tile)->basename));
 		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG(confirm_dialog), _("If you delete an item, it is permanently lost."));
@@ -571,7 +571,7 @@ send_to_trigger (Tile *tile, TileEvent *event, TileAction *action)
 	gint i;
 
 
-	cmd = (gchar *) get_gconf_value (GCONF_SEND_TO_CMD_KEY);
+	cmd = (gchar *) get_mateconf_value (MATECONF_SEND_TO_CMD_KEY);
 
 	if (! g_shell_parse_argv (cmd, & argc, & argv_parsed, NULL))
 		goto exit;
@@ -658,7 +658,7 @@ open_with_default_trigger (Tile *tile, TileEvent *event, TileAction *action)
 	} else {
 		gchar *cmd;
 		cmd = string_replace_once (
-			get_slab_gconf_string (SLAB_FILE_MANAGER_OPEN_CMD), "FILE_URI", tile->uri);
+			get_slab_mateconf_string (SLAB_FILE_MANAGER_OPEN_CMD), "FILE_URI", tile->uri);
 		spawn_process (cmd);
 		g_free (cmd);
 	}

@@ -1,4 +1,4 @@
-# translation of gnome-main-menu.HEAD.po to Arabic
+# translation of mate-main-menu.HEAD.po to Arabic
 # Arabic translations for PACKAGE package.
 # Copyright (C) 2006 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
@@ -7,7 +7,7 @@
 # Abdulaziz AlSharif <a.a-a.s@hotmail.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-main-menu.HEAD\n"
+"Project-Id-Version: mate-main-menu.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-07-31 11:07+0100\n"
 "PO-Revision-Date: 2007-10-14 06:16+0300\n"
@@ -123,14 +123,14 @@ msgid "Uninstall"
 msgstr "إلغاء التثبيت"
 
 #: ../libslab/application-tile.c:780 ../libslab/document-tile.c:728
-#: ../nautilus-main-menu/nautilus-main-menu.c:133
-#: ../nautilus-main-menu/nautilus-main-menu.c:138
+#: ../caja-main-menu/caja-main-menu.c:133
+#: ../caja-main-menu/caja-main-menu.c:138
 msgid "Remove from Favorites"
 msgstr "أزل من المفضلات"
 
 #: ../libslab/application-tile.c:782 ../libslab/document-tile.c:730
-#: ../nautilus-main-menu/nautilus-main-menu.c:123
-#: ../nautilus-main-menu/nautilus-main-menu.c:128
+#: ../caja-main-menu/caja-main-menu.c:123
+#: ../caja-main-menu/caja-main-menu.c:128
 msgid "Add to Favorites"
 msgstr "أضف إلى المفضلات"
 
@@ -373,28 +373,28 @@ msgstr "<b>افتح %s</b>"
 msgid "Remove from System Items"
 msgstr "أزل من عناصر النظام"
 
-#: ../main-menu/etc/GNOME_MainMenu.server.in.in.h:1
+#: ../main-menu/etc/MATE_MainMenu.server.in.in.h:1
 msgid "Default menu and application browser"
 msgstr "القائمة الافتراضية ومتصفح التطبيقات"
 
-#: ../main-menu/etc/GNOME_MainMenu.server.in.in.h:2
+#: ../main-menu/etc/MATE_MainMenu.server.in.in.h:2
 #: ../main-menu/src/main-menu-ui.c:2405 ../main-menu/src/slab-window.glade.h:7
-msgid "GNOME Main Menu"
+msgid "MATE Main Menu"
 msgstr "قائمة جنوم الرئيسية"
 
-#: ../main-menu/etc/GNOME_MainMenu.server.in.in.h:3
-msgid "GNOME Main Menu Factory"
+#: ../main-menu/etc/MATE_MainMenu.server.in.in.h:3
+msgid "MATE Main Menu Factory"
 msgstr "مصنع قائمة جنوم الرئيسية"
 
-#: ../main-menu/etc/GNOME_MainMenu.server.in.in.h:4
+#: ../main-menu/etc/MATE_MainMenu.server.in.in.h:4
 msgid "Main Menu"
 msgstr "القائمة الرئيسية"
 
-#: ../main-menu/etc/GNOME_MainMenu_ContextMenu.xml.h:1
+#: ../main-menu/etc/MATE_MainMenu_ContextMenu.xml.h:1
 msgid "_About"
 msgstr "ح_ول"
 
-#: ../main-menu/etc/GNOME_MainMenu_ContextMenu.xml.h:2
+#: ../main-menu/etc/MATE_MainMenu_ContextMenu.xml.h:2
 msgid "_Open Menu"
 msgstr "اف_تح قائمة"
 
@@ -410,7 +410,7 @@ msgstr "نمط التصفية لمتصفح الملفات "
 
 #: ../main-menu/etc/slab.schemas.in.in.h:3
 #, fuzzy
-msgid ".desktop file for the gnome-system-monitor"
+msgid ".desktop file for the mate-system-monitor"
 msgstr ". مكتبي الملف تمثال لرصد النظم"
 
 #: ../main-menu/etc/slab.schemas.in.in.h:4
@@ -663,11 +663,11 @@ msgid "Home: %s Free / %s"
 msgstr "%s حر / %s المجموع"
 
 #: ../main-menu/src/main-menu-migration.c:161
-msgid "gnome-lockscreen"
+msgid "mate-lockscreen"
 msgstr "مقفل شاشة جنوم"
 
 #: ../main-menu/src/main-menu-ui.c:2406
-msgid "The GNOME Main Menu"
+msgid "The MATE Main Menu"
 msgstr "قائمة جنوم الرئيسية"
 
 #: ../main-menu/src/network-status-tile.c:91
@@ -796,16 +796,16 @@ msgstr "الحالة"
 msgid "System"
 msgstr "النظام"
 
-#: ../nautilus-main-menu/nautilus-main-menu.c:124
+#: ../caja-main-menu/caja-main-menu.c:124
 msgid "Add the current launcher to favorites"
 msgstr "أضف المُطْلِق الحالي إلى المفضلات"
 
-#: ../nautilus-main-menu/nautilus-main-menu.c:129
+#: ../caja-main-menu/caja-main-menu.c:129
 msgid "Add the current document to favorites"
 msgstr "أضف المستند الحالي إلى المفضلات"
 
-#: ../nautilus-main-menu/nautilus-main-menu.c:134
-#: ../nautilus-main-menu/nautilus-main-menu.c:139
+#: ../caja-main-menu/caja-main-menu.c:134
+#: ../caja-main-menu/caja-main-menu.c:139
 msgid "Remove the current document from favorites"
 msgstr "أزل المستند الحالي من المفضلات"
 
@@ -851,13 +851,13 @@ msgstr "أزل المستند الحالي من المفضلات"
 
 #, fuzzy
 #~ msgid ""
-#~ "[Change Desktop Background;background.desktop,Add Printer;gnome-cups-"
-#~ "manager.desktop,Configure Network;YaST2/lan.desktop,Change Password;gnome-"
+#~ "[Change Desktop Background;background.desktop,Add Printer;mate-cups-"
+#~ "manager.desktop,Configure Network;YaST2/lan.desktop,Change Password;mate-"
 #~ "passwd.desktop,Add User;YaST2/users.desktop,Open Administrator Settings;"
 #~ "YaST.desktop]"
 #~ msgstr ""
-#~ "[غيّر خلفية سطح المكتب;الخلفية.سطح المكتب,أضف طابعة;gnome-cups-manager."
-#~ "desktop,اضبط الشبكة;YaST2/lan.desktop,غيّر كلمة السر;gnome-passwd.desktop,"
+#~ "[غيّر خلفية سطح المكتب;الخلفية.سطح المكتب,أضف طابعة;mate-cups-manager."
+#~ "desktop,اضبط الشبكة;YaST2/lan.desktop,غيّر كلمة السر;mate-passwd.desktop,"
 #~ "أضف مستخدم;YaST2/users.desktop,افتح إعدادات المدير;YaST.desktop]"
 
 #~ msgid ""

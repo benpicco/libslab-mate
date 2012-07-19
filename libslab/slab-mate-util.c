@@ -18,27 +18,27 @@
  * Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "slab-gnome-util.h"
+#include "slab-mate-util.h"
 #include "libslab-utils.h"
 
-#include <gconf/gconf-client.h>
+#include <mateconf/mateconf-client.h>
 #include <gio/gio.h>
 #include <string.h>
 
 gboolean
-get_slab_gconf_bool (const gchar * key)
+get_slab_mateconf_bool (const gchar * key)
 {
-	GConfClient *gconf_client;
+	MateConfClient *mateconf_client;
 	GError *error;
 
 	gboolean value;
 
-	gconf_client = gconf_client_get_default ();
+	mateconf_client = mateconf_client_get_default ();
 	error = NULL;
 
-	value = gconf_client_get_bool (gconf_client, key, &error);
+	value = mateconf_client_get_bool (mateconf_client, key, &error);
 
-	g_object_unref (gconf_client);
+	g_object_unref (mateconf_client);
 
 	if (error)
 	{
@@ -50,19 +50,19 @@ get_slab_gconf_bool (const gchar * key)
 }
 
 gint
-get_slab_gconf_int (const gchar * key)
+get_slab_mateconf_int (const gchar * key)
 {
-	GConfClient *gconf_client;
+	MateConfClient *mateconf_client;
 	GError *error;
 
 	gint value;
 
-	gconf_client = gconf_client_get_default ();
+	mateconf_client = mateconf_client_get_default ();
 	error = NULL;
 
-	value = gconf_client_get_int (gconf_client, key, &error);
+	value = mateconf_client_get_int (mateconf_client, key, &error);
 
-	g_object_unref (gconf_client);
+	g_object_unref (mateconf_client);
 	if (error)
 	{
 		g_warning ("error accessing %s [%s]\n", key, error->message);
@@ -73,19 +73,19 @@ get_slab_gconf_int (const gchar * key)
 }
 
 gchar *
-get_slab_gconf_string (const gchar * key)
+get_slab_mateconf_string (const gchar * key)
 {
-	GConfClient *gconf_client;
+	MateConfClient *mateconf_client;
 	GError *error;
 
 	gchar *value;
 
-	gconf_client = gconf_client_get_default ();
+	mateconf_client = mateconf_client_get_default ();
 	error = NULL;
 
-	value = gconf_client_get_string (gconf_client, key, &error);
+	value = mateconf_client_get_string (mateconf_client, key, &error);
 
-	g_object_unref (gconf_client);
+	g_object_unref (mateconf_client);
 	if (error)
 	{
 		g_warning ("error accessing %s [%s]\n", key, error->message);
@@ -104,7 +104,7 @@ free_list_of_strings (GList * string_list)
 }
 
 void
-free_slab_gconf_slist_of_strings (GSList * string_list)
+free_slab_mateconf_slist_of_strings (GSList * string_list)
 {
 	g_assert (string_list != NULL);
 	g_slist_foreach (string_list, (GFunc) g_free, NULL);
@@ -112,19 +112,19 @@ free_slab_gconf_slist_of_strings (GSList * string_list)
 }
 
 GSList *
-get_slab_gconf_slist (const gchar * key)
+get_slab_mateconf_slist (const gchar * key)
 {
-	GConfClient *gconf_client;
+	MateConfClient *mateconf_client;
 	GError *error;
 
 	GSList *value;
 
-	gconf_client = gconf_client_get_default ();
+	mateconf_client = mateconf_client_get_default ();
 	error = NULL;
 
-	value = gconf_client_get_list (gconf_client, key, GCONF_VALUE_STRING, &error);
+	value = mateconf_client_get_list (mateconf_client, key, MATECONF_VALUE_STRING, &error);
 
-	g_object_unref (gconf_client);
+	g_object_unref (mateconf_client);
 	if (error)
 	{
 		g_warning ("error accessing %s [%s]\n", key, error->message);
@@ -135,11 +135,11 @@ get_slab_gconf_slist (const gchar * key)
 	return value;
 }
 
-GnomeDesktopItem *
-load_desktop_item_from_gconf_key (const gchar * key)
+MateDesktopItem *
+load_desktop_item_from_mateconf_key (const gchar * key)
 {
-	GnomeDesktopItem *item;
-	gchar *id = get_slab_gconf_string (key);
+	MateDesktopItem *item;
+	gchar *id = get_slab_mateconf_string (key);
 
 	if (!id)
 		return NULL;
@@ -149,16 +149,16 @@ load_desktop_item_from_gconf_key (const gchar * key)
 	return item;
 }
 
-GnomeDesktopItem *
+MateDesktopItem *
 load_desktop_item_from_unknown (const gchar *id)
 {
-	GnomeDesktopItem *item;
+	MateDesktopItem *item;
 	gchar            *basename;
 
 	GError *error = NULL;
 
 
-	item = gnome_desktop_item_new_from_uri (id, 0, &error);
+	item = mate_desktop_item_new_from_uri (id, 0, &error);
 
 	if (! error)
 		return item;
@@ -167,7 +167,7 @@ load_desktop_item_from_unknown (const gchar *id)
 		error = NULL;
 	}
 
-	item = gnome_desktop_item_new_from_file (id, 0, &error);
+	item = mate_desktop_item_new_from_file (id, 0, &error);
 
 	if (! error)
 		return item;
@@ -176,7 +176,7 @@ load_desktop_item_from_unknown (const gchar *id)
 		error = NULL;
 	}
 
-	item = gnome_desktop_item_new_from_basename (id, 0, &error);
+	item = mate_desktop_item_new_from_basename (id, 0, &error);
 
 	if (! error)
 		return item;
@@ -190,7 +190,7 @@ load_desktop_item_from_unknown (const gchar *id)
 	if (basename) {
 		basename++;
 
-		item = gnome_desktop_item_new_from_basename (basename, 0, &error);
+		item = mate_desktop_item_new_from_basename (basename, 0, &error);
 
 		if (! error)
 			return item;
@@ -204,7 +204,7 @@ load_desktop_item_from_unknown (const gchar *id)
 }
 
 gchar *
-get_package_name_from_desktop_item (GnomeDesktopItem * desktop_item)
+get_package_name_from_desktop_item (MateDesktopItem * desktop_item)
 {
 	gchar *argv[6];
 	gchar *package_name;
@@ -215,7 +215,7 @@ get_package_name_from_desktop_item (GnomeDesktopItem * desktop_item)
 	argv[1] = "-qf";
 	argv[2] = "--qf";
 	argv[3] = "%{NAME}";
-	argv[4] = g_filename_from_uri (gnome_desktop_item_get_location (desktop_item), NULL, NULL);
+	argv[4] = g_filename_from_uri (mate_desktop_item_get_location (desktop_item), NULL, NULL);
 	argv[5] = NULL;
 
 	error = NULL;
@@ -237,19 +237,19 @@ get_package_name_from_desktop_item (GnomeDesktopItem * desktop_item)
 }
 
 gboolean
-open_desktop_item_exec (GnomeDesktopItem * desktop_item)
+open_desktop_item_exec (MateDesktopItem * desktop_item)
 {
 	GError *error = NULL;
 
 	if (!desktop_item)
 		return FALSE;
 
-	gnome_desktop_item_launch (desktop_item, NULL, GNOME_DESKTOP_ITEM_LAUNCH_ONLY_ONE, &error);
+	mate_desktop_item_launch (desktop_item, NULL, MATE_DESKTOP_ITEM_LAUNCH_ONLY_ONE, &error);
 
 	if (error)
 	{
 		g_warning ("error launching %s [%s]\n",
-			gnome_desktop_item_get_location (desktop_item), error->message);
+			mate_desktop_item_get_location (desktop_item), error->message);
 
 		g_error_free (error);
 		return FALSE;
@@ -259,7 +259,7 @@ open_desktop_item_exec (GnomeDesktopItem * desktop_item)
 }
 
 gboolean
-open_desktop_item_help (GnomeDesktopItem * desktop_item)
+open_desktop_item_help (MateDesktopItem * desktop_item)
 {
 	const gchar *doc_path;
 	gchar *help_uri;
@@ -269,7 +269,7 @@ open_desktop_item_help (GnomeDesktopItem * desktop_item)
 	if (!desktop_item)
 		return FALSE;
 
-	doc_path = gnome_desktop_item_get_string (desktop_item, "DocPath");
+	doc_path = mate_desktop_item_get_string (desktop_item, "DocPath");
 
 	if (doc_path)
 	{
@@ -294,9 +294,9 @@ open_desktop_item_help (GnomeDesktopItem * desktop_item)
 }
 
 gboolean
-desktop_item_is_in_main_menu (GnomeDesktopItem * desktop_item)
+desktop_item_is_in_main_menu (MateDesktopItem * desktop_item)
 {
-	return desktop_uri_is_in_main_menu (gnome_desktop_item_get_location (desktop_item));
+	return desktop_uri_is_in_main_menu (mate_desktop_item_get_location (desktop_item));
 }
 
 gboolean
@@ -309,7 +309,7 @@ desktop_uri_is_in_main_menu (const gchar * uri)
 	gint uri_len;
 	gboolean found = FALSE;
 
-	app_list = get_slab_gconf_slist (SLAB_USER_SPECIFIED_APPS_KEY);
+	app_list = get_slab_mateconf_slist (SLAB_USER_SPECIFIED_APPS_KEY);
 
 	if (!app_list)
 		return FALSE;
@@ -330,7 +330,7 @@ desktop_uri_is_in_main_menu (const gchar * uri)
 		}
 	}
 
-	free_slab_gconf_slist_of_strings (app_list);
+	free_slab_mateconf_slist_of_strings (app_list);
 	return found;
 }
 

@@ -22,7 +22,7 @@
 #include <config.h>
 #endif
 
-#include <libgnome/gnome-desktop-item.h>
+#include <libmate/mate-desktop-item.h>
 #include <gio/gio.h>
 #include <gdk/gdkkeysyms.h>
 #include <sys/types.h>
@@ -36,7 +36,7 @@
 #include "shell-window.h"
 #include "app-resizer.h"
 #include "slab-section.h"
-#include "slab-gnome-util.h"
+#include "slab-mate-util.h"
 #include "search-bar.h"
 
 #include "application-tile.h"
@@ -56,11 +56,11 @@ static GtkWidget *create_groups_section (AppShellData * app_data, const gchar * 
 static GtkWidget *create_actions_section (AppShellData * app_data, const gchar * title,
 	void (*actions_handler) (Tile *, TileEvent *, gpointer));
 
-static void generate_category (const char * category, GMenuTreeDirectory * root_dir, AppShellData * app_data, gboolean recursive);
-static void generate_launchers (GMenuTreeDirectory * root_dir, AppShellData * app_data,
+static void generate_category (const char * category, MateMenuTreeDirectory * root_dir, AppShellData * app_data, gboolean recursive);
+static void generate_launchers (MateMenuTreeDirectory * root_dir, AppShellData * app_data,
 	CategoryData * cat_data, gboolean recursive);
 static void generate_new_apps (AppShellData * app_data);
-static void insert_launcher_into_category (CategoryData * cat_data, GnomeDesktopItem * desktop_item,
+static void insert_launcher_into_category (CategoryData * cat_data, MateDesktopItem * desktop_item,
 	AppShellData * app_data);
 
 static gboolean main_keypress_callback (GtkWidget * widget, GdkEventKey * event,
@@ -88,7 +88,7 @@ static void handle_launcher_single_clicked (Tile * launcher, gpointer data);
 static void handle_menu_action_performed (Tile * launcher, TileEvent * event, TileAction * action,
 	gpointer data);
 static gint application_launcher_compare (gconstpointer a, gconstpointer b);
-static void gmenu_tree_changed_callback (GMenuTree * tree, gpointer user_data);
+static void matemenu_tree_changed_callback (MateMenuTree * tree, gpointer user_data);
 gboolean regenerate_categories (AppShellData * app_data);
 
 void
@@ -830,10 +830,10 @@ regenerate_categories (AppShellData * app_data)
 }
 
 static void
-gmenu_tree_changed_callback (GMenuTree * old_tree, gpointer user_data)
+matemenu_tree_changed_callback (MateMenuTree * old_tree, gpointer user_data)
 {
 	/*
-	This method only gets called on the first change (gmenu appears to ignore subsequent) until
+	This method only gets called on the first change (matemenu appears to ignore subsequent) until
 	we reget the root dir which we can't do in this method because if we do for some reason this
 	method then gets called multiple times for one actual change. This actually is okay because
 	it's probably a good idea to wait a couple seconds to regenerate the categories in case there
@@ -844,13 +844,13 @@ gmenu_tree_changed_callback (GMenuTree * old_tree, gpointer user_data)
 }
 
 AppShellData *
-appshelldata_new (const gchar * menu_name, NewAppConfig * new_apps, const gchar * gconf_keys_prefix,
+appshelldata_new (const gchar * menu_name, NewAppConfig * new_apps, const gchar * mateconf_keys_prefix,
 	GtkIconSize icon_size, gboolean show_tile_generic_name, gboolean exit_on_close)
 {
 	initialize_i18n ();
 
 	AppShellData *app_data = g_new0 (AppShellData, 1);
-	app_data->gconf_prefix = gconf_keys_prefix;
+	app_data->mateconf_prefix = mateconf_keys_prefix;
 	app_data->new_apps = new_apps;
 	app_data->menu_name = menu_name;
 	app_data->icon_size = icon_size;
@@ -863,18 +863,18 @@ appshelldata_new (const gchar * menu_name, NewAppConfig * new_apps, const gchar 
 void
 generate_categories (AppShellData * app_data)
 {
-	GMenuTreeDirectory *root_dir;
+	MateMenuTreeDirectory *root_dir;
 	GSList *contents, *l;
 	gboolean need_misc = FALSE;
 
 	if (!app_data->tree)
 	{
-		app_data->tree = gmenu_tree_lookup (app_data->menu_name, GMENU_TREE_FLAGS_NONE);
-		gmenu_tree_add_monitor (app_data->tree, gmenu_tree_changed_callback, app_data);
+		app_data->tree = matemenu_tree_lookup (app_data->menu_name, MATEMENU_TREE_FLAGS_NONE);
+		matemenu_tree_add_monitor (app_data->tree, matemenu_tree_changed_callback, app_data);
 	}
-	root_dir = gmenu_tree_get_root_directory (app_data->tree);
+	root_dir = matemenu_tree_get_root_directory (app_data->tree);
 	if (root_dir)
-		contents = gmenu_tree_directory_get_contents (root_dir);
+		contents = matemenu_tree_directory_get_contents (root_dir);
 	else
 		contents = NULL;
 	if (!root_dir || !contents)
@@ -884,28 +884,28 @@ generate_categories (AppShellData * app_data)
 			app_data->menu_name);
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
-		exit (1);	/* Fixme - is there a GNOME/GTK way to do this. */
+		exit (1);	/* Fixme - is there a MATE/GTK way to do this. */
 	}
 
 	for (l = contents; l; l = l->next)
 	{
 		const char *category;
-		GMenuTreeItem *item = l->data;
+		MateMenuTreeItem *item = l->data;
 
-		switch (gmenu_tree_item_get_type (item))
+		switch (matemenu_tree_item_get_type (item))
 		{
-		case GMENU_TREE_ITEM_DIRECTORY:
-			category = gmenu_tree_directory_get_name ((GMenuTreeDirectory*)item);
-			generate_category(category, (GMenuTreeDirectory*)item, app_data, TRUE);
+		case MATEMENU_TREE_ITEM_DIRECTORY:
+			category = matemenu_tree_directory_get_name ((MateMenuTreeDirectory*)item);
+			generate_category(category, (MateMenuTreeDirectory*)item, app_data, TRUE);
 			break;
-		case GMENU_TREE_ITEM_ENTRY:
+		case MATEMENU_TREE_ITEM_ENTRY:
 			need_misc = TRUE;
 			break;
 		default:
 			break;
 		}
 
-		gmenu_tree_item_unref (item);
+		matemenu_tree_item_unref (item);
 	}
 	g_slist_free (contents);
 
@@ -918,17 +918,17 @@ generate_categories (AppShellData * app_data)
 		app_data->hash = NULL;
 	}
 
-	gmenu_tree_item_unref (root_dir);
+	matemenu_tree_item_unref (root_dir);
 
 	if (app_data->new_apps && (app_data->new_apps->max_items > 0))
 		generate_new_apps (app_data);
 }
 
 static void
-generate_category (const char * category, GMenuTreeDirectory * root_dir, AppShellData * app_data, gboolean recursive)
+generate_category (const char * category, MateMenuTreeDirectory * root_dir, AppShellData * app_data, gboolean recursive)
 {
 	CategoryData *data;
-	/* This is not needed. GMenu already returns an ordered, non duplicate list
+	/* This is not needed. MateMenu already returns an ordered, non duplicate list
 	GList *list_entry;
 	list_entry =
 		g_list_find_custom (app_data->categories_list, category,
@@ -939,7 +939,7 @@ generate_category (const char * category, GMenuTreeDirectory * root_dir, AppShel
 		data = g_new0 (CategoryData, 1);
 		data->category = g_strdup (category);
 		app_data->categories_list =
-			/* use the gmenu order instead of alphabetical */
+			/* use the matemenu order instead of alphabetical */
 			g_list_append (app_data->categories_list, data);
 			/* g_list_insert_sorted (app_data->categories_list, data, category_data_compare); */
 	/*
@@ -957,10 +957,10 @@ generate_category (const char * category, GMenuTreeDirectory * root_dir, AppShel
 }
 
 static gboolean
-check_specific_apps_hack (GnomeDesktopItem * item)
+check_specific_apps_hack (MateDesktopItem * item)
 {
-	static const gchar *COMMAND_LINE_LOCKDOWN_GCONF_KEY =
-		"/desktop/gnome/lockdown/disable_command_line";
+	static const gchar *COMMAND_LINE_LOCKDOWN_MATECONF_KEY =
+		"/desktop/mate/lockdown/disable_command_line";
 	static const gchar *COMMAND_LINE_LOCKDOWN_DESKTOP_CATEGORY = "TerminalEmulator";
 	static gboolean got_lockdown_value = FALSE;
 	static gboolean command_line_lockdown;
@@ -971,22 +971,22 @@ check_specific_apps_hack (GnomeDesktopItem * item)
 	if (!got_lockdown_value)
 	{
 		got_lockdown_value = TRUE;
-		command_line_lockdown = get_slab_gconf_bool (COMMAND_LINE_LOCKDOWN_GCONF_KEY);
+		command_line_lockdown = get_slab_mateconf_bool (COMMAND_LINE_LOCKDOWN_MATECONF_KEY);
 	}
 
 	/* This seems like an ugly hack but it's the way it's currently done in the old control center */
-	exec = gnome_desktop_item_get_string (item, GNOME_DESKTOP_ITEM_EXEC);
+	exec = mate_desktop_item_get_string (item, MATE_DESKTOP_ITEM_EXEC);
 
-	/* discard xscreensaver if gnome-screensaver is installed */
+	/* discard xscreensaver if mate-screensaver is installed */
 	if ((exec && !strcmp (exec, "xscreensaver-demo"))
-		&& (path = g_find_program_in_path ("gnome-screensaver-preferences")))
+		&& (path = g_find_program_in_path ("mate-screensaver-preferences")))
 	{
 		g_free (path);
 		return TRUE;
 	}
 
-	/* discard gnome-keyring-manager if CASA is installed */
-	if ((exec && !strcmp (exec, "gnome-keyring-manager"))
+	/* discard mate-keyring-manager if CASA is installed */
+	if ((exec && !strcmp (exec, "mate-keyring-manager"))
 		&& (path = g_find_program_in_path ("CASAManager.sh")))
 	{
 		g_free (path);
@@ -997,10 +997,10 @@ check_specific_apps_hack (GnomeDesktopItem * item)
 	if (command_line_lockdown)
 	{
 		const gchar *categories =
-			gnome_desktop_item_get_string (item, GNOME_DESKTOP_ITEM_CATEGORIES);
+			mate_desktop_item_get_string (item, MATE_DESKTOP_ITEM_CATEGORIES);
 		if (g_strrstr (categories, COMMAND_LINE_LOCKDOWN_DESKTOP_CATEGORY))
 		{
-			/* printf ("eliminating %s\n", gnome_desktop_item_get_location (item)); */
+			/* printf ("eliminating %s\n", mate_desktop_item_get_location (item)); */
 			return TRUE;
 		}
 	}
@@ -1009,25 +1009,25 @@ check_specific_apps_hack (GnomeDesktopItem * item)
 }
 
 static void
-generate_launchers (GMenuTreeDirectory * root_dir, AppShellData * app_data, CategoryData * cat_data, gboolean recursive)
+generate_launchers (MateMenuTreeDirectory * root_dir, AppShellData * app_data, CategoryData * cat_data, gboolean recursive)
 {
-	GnomeDesktopItem *desktop_item;
+	MateDesktopItem *desktop_item;
 	const gchar *desktop_file;
 	GSList *contents, *l;
 
-	contents = gmenu_tree_directory_get_contents (root_dir);
+	contents = matemenu_tree_directory_get_contents (root_dir);
 	for (l = contents; l; l = l->next)
 	{
-		switch (gmenu_tree_item_get_type (l->data))
+		switch (matemenu_tree_item_get_type (l->data))
 		{
-		case GMENU_TREE_ITEM_DIRECTORY:
-			/* g_message ("Found sub-category %s", gmenu_tree_directory_get_name (l->data)); */
+		case MATEMENU_TREE_ITEM_DIRECTORY:
+			/* g_message ("Found sub-category %s", matemenu_tree_directory_get_name (l->data)); */
 			if (recursive)
 				generate_launchers (l->data, app_data, cat_data, TRUE);
 			break;
-		case GMENU_TREE_ITEM_ENTRY:
-			/* g_message ("Found item name is:%s", gmenu_tree_entry_get_name (l->data)); */
-			desktop_file = gmenu_tree_entry_get_desktop_file_path (l->data);
+		case MATEMENU_TREE_ITEM_ENTRY:
+			/* g_message ("Found item name is:%s", matemenu_tree_entry_get_name (l->data)); */
+			desktop_file = matemenu_tree_entry_get_desktop_file_path (l->data);
 			if (desktop_file)
 			{
 				if (g_hash_table_lookup (app_data->hash, desktop_file))
@@ -1035,28 +1035,28 @@ generate_launchers (GMenuTreeDirectory * root_dir, AppShellData * app_data, Cate
 					break;	/* duplicate */
 				}
 				/* Fixme - make sure it's safe to store this without duping it. As far as I can tell it is
-				   safe as long as I don't hang on to this anylonger than I hang on to the GMenuTreeEntry*
+				   safe as long as I don't hang on to this anylonger than I hang on to the MateMenuTreeEntry*
 				   which brings up another point - am I supposed to free these or does freeing the top level recurse
 				*/
 				g_hash_table_insert (app_data->hash, (gpointer) desktop_file,
 					(gpointer) desktop_file);
 			}
-			desktop_item = gnome_desktop_item_new_from_file (desktop_file, 0, NULL);
+			desktop_item = mate_desktop_item_new_from_file (desktop_file, 0, NULL);
 			if (!desktop_item)
 			{
-				g_critical ("Failure - gnome_desktop_item_new_from_file(%s)",
+				g_critical ("Failure - mate_desktop_item_new_from_file(%s)",
 					    desktop_file);
 				break;
 			}
 			if (!check_specific_apps_hack (desktop_item))
 				insert_launcher_into_category (cat_data, desktop_item, app_data);
-			gnome_desktop_item_unref (desktop_item);
+			mate_desktop_item_unref (desktop_item);
 			break;
 		default:
 			break;
 		}
 
-		gmenu_tree_item_unref (l->data);
+		matemenu_tree_item_unref (l->data);
 	}
 	g_slist_free (contents);
 }
@@ -1068,7 +1068,7 @@ generate_new_apps (AppShellData * app_data)
 	gchar *all_apps;
 	GError *error = NULL;
 	gchar *separator = "\n";
-	gchar *gconf_key;
+	gchar *mateconf_key;
 
 	gchar *basename;
 	gchar *all_apps_file_name;
@@ -1079,12 +1079,12 @@ generate_new_apps (AppShellData * app_data)
 	GList *categories, *launchers;
 	GHashTable *new_apps_dups;
 
-	gconf_key = g_strdup_printf ("%s%s", app_data->gconf_prefix, NEW_APPS_FILE_KEY);
-	basename = get_slab_gconf_string (gconf_key);
-	g_free (gconf_key);
+	mateconf_key = g_strdup_printf ("%s%s", app_data->mateconf_prefix, NEW_APPS_FILE_KEY);
+	basename = get_slab_mateconf_string (mateconf_key);
+	g_free (mateconf_key);
 	if (!basename)
 	{
-		g_warning ("Failure getting gconf key NEW_APPS_FILE_KEY");
+		g_warning ("Failure getting mateconf key NEW_APPS_FILE_KEY");
 		return;
 	}
 
@@ -1110,9 +1110,9 @@ generate_new_apps (AppShellData * app_data)
 			for (launchers = data->launcher_list; launchers; launchers = launchers->next)
 			{
 				Tile *tile = TILE (launchers->data);
-				GnomeDesktopItem *item =
+				MateDesktopItem *item =
 					application_tile_get_desktop_item (APPLICATION_TILE (tile));
-				const gchar *uri = gnome_desktop_item_get_location (item);
+				const gchar *uri = mate_desktop_item_get_location (item);
 				g_string_append (gstr, uri);
 				g_string_append (gstr, separator);
 			}
@@ -1145,9 +1145,9 @@ generate_new_apps (AppShellData * app_data)
 		for (launchers = cat_data->launcher_list; launchers; launchers = launchers->next)
 		{
 			Tile *tile = TILE (launchers->data);
-			GnomeDesktopItem *item =
+			MateDesktopItem *item =
 				application_tile_get_desktop_item (APPLICATION_TILE (tile));
-			const gchar *uri = gnome_desktop_item_get_location (item);
+			const gchar *uri = mate_desktop_item_get_location (item);
 			if (!g_hash_table_lookup (all_apps_cache, uri))
 			{
 				GFile *file;
@@ -1240,7 +1240,7 @@ generate_new_apps (AppShellData * app_data)
 }
 
 static void
-insert_launcher_into_category (CategoryData * cat_data, GnomeDesktopItem * desktop_item,
+insert_launcher_into_category (CategoryData * cat_data, MateDesktopItem * desktop_item,
 	AppShellData * app_data)
 {
 	GtkWidget *launcher;
@@ -1254,12 +1254,12 @@ insert_launcher_into_category (CategoryData * cat_data, GnomeDesktopItem * deskt
 		icon_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
 	launcher =
-		application_tile_new_full (gnome_desktop_item_get_location (desktop_item),
-		app_data->icon_size, app_data->show_tile_generic_name, app_data->gconf_prefix);
+		application_tile_new_full (mate_desktop_item_get_location (desktop_item),
+		app_data->icon_size, app_data->show_tile_generic_name, app_data->mateconf_prefix);
 	gtk_widget_set_size_request (launcher, SIZING_TILE_WIDTH, -1);
 
 	filepath =
-		g_strdup (gnome_desktop_item_get_string (desktop_item, GNOME_DESKTOP_ITEM_EXEC));
+		g_strdup (mate_desktop_item_get_string (desktop_item, MATE_DESKTOP_ITEM_EXEC));
 	g_strdelimit (filepath, " ", '\0');	/* just want the file name - no args or replacements */
 	filename = g_strrstr (filepath, "/");
 	if (filename)
@@ -1284,7 +1284,7 @@ insert_launcher_into_category (CategoryData * cat_data, GnomeDesktopItem * deskt
 	/* destroyed when they are removed */
 	g_object_ref (launcher);
 
-	/* use alphabetical order instead of the gmenu order. We group all sub items in each top level
+	/* use alphabetical order instead of the matemenu order. We group all sub items in each top level
 	category together, ignoring sub menus, so we also ignore sub menu layout hints */
 	cat_data->launcher_list =
 		/* g_list_insert (cat_data->launcher_list, launcher, -1); */
@@ -1354,19 +1354,19 @@ static void
 handle_launcher_single_clicked (Tile * launcher, gpointer data)
 {
 	AppShellData *app_data = (AppShellData *) data;
-	gchar *gconf_key;
+	gchar *mateconf_key;
 
 	tile_trigger_action (launcher, launcher->actions[APPLICATION_TILE_ACTION_START]);
 
-	gconf_key = g_strdup_printf ("%s%s", app_data->gconf_prefix, EXIT_SHELL_ON_ACTION_START);
-	if (get_slab_gconf_bool (gconf_key))
+	mateconf_key = g_strdup_printf ("%s%s", app_data->mateconf_prefix, EXIT_SHELL_ON_ACTION_START);
+	if (get_slab_mateconf_bool (mateconf_key))
 	{
 		if (app_data->exit_on_close)
 			gtk_main_quit ();
 		else
 			hide_shell (app_data);
 	}
-	g_free (gconf_key);
+	g_free (mateconf_key);
 }
 
 static void
@@ -1379,31 +1379,31 @@ handle_menu_action_performed (Tile * launcher, TileEvent * event, TileAction * a
 	temp = NULL;
 	if (action == launcher->actions[APPLICATION_TILE_ACTION_START])
 	{
-		temp = g_strdup_printf ("%s%s", app_data->gconf_prefix, EXIT_SHELL_ON_ACTION_START);
+		temp = g_strdup_printf ("%s%s", app_data->mateconf_prefix, EXIT_SHELL_ON_ACTION_START);
 	}
 
 	else if (action == launcher->actions[APPLICATION_TILE_ACTION_HELP])
 	{
-		temp = g_strdup_printf ("%s%s", app_data->gconf_prefix, EXIT_SHELL_ON_ACTION_HELP);
+		temp = g_strdup_printf ("%s%s", app_data->mateconf_prefix, EXIT_SHELL_ON_ACTION_HELP);
 	}
 
 	else if (action == launcher->actions[APPLICATION_TILE_ACTION_UPDATE_MAIN_MENU]
 		|| action == launcher->actions[APPLICATION_TILE_ACTION_UPDATE_STARTUP])
 	{
-		temp = g_strdup_printf ("%s%s", app_data->gconf_prefix,
+		temp = g_strdup_printf ("%s%s", app_data->mateconf_prefix,
 			EXIT_SHELL_ON_ACTION_ADD_REMOVE);
 	}
 
 	else if (action == launcher->actions[APPLICATION_TILE_ACTION_UPGRADE_PACKAGE]
 		|| action == launcher->actions[APPLICATION_TILE_ACTION_UNINSTALL_PACKAGE])
 	{
-		temp = g_strdup_printf ("%s%s", app_data->gconf_prefix,
+		temp = g_strdup_printf ("%s%s", app_data->mateconf_prefix,
 			EXIT_SHELL_ON_ACTION_UPGRADE_UNINSTALL);
 	}
 
 	if (temp)
 	{
-		if (get_slab_gconf_bool (temp))
+		if (get_slab_mateconf_bool (temp))
 		{
 			if (app_data->exit_on_close)
 				gtk_main_quit ();
